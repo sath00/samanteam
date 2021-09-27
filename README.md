@@ -1,2 +1,2 @@
-# samanteam
+# SamanTeam
 Software Engineering I
