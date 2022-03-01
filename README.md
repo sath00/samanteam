@@ -17,18 +17,19 @@ Project objectives: Create a fully functioning website for Romel’s Mini Mart w
 # Project Scope
 
 Deliverables:
-Website Design
-Draft Version of Site
+Website Design,
+Draft Version of Site,
 Final Version of Site
 
 Creative requirements:
-Display
-Shows logo, product slideshow 
-Logo
+Display,
+Shows logo, 
+Product slideshow,
+Logo,
 Color palette 
 
 Out of scope:
-Check out
+Check out,
 Reservation
 
 Resources
