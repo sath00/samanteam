@@ -7,9 +7,13 @@ Software Engineering I
 # SamanTeam – Project Charter
 
 Project name: WebMart
+
 Project manager: Samantha Jane Gomez 
-Last revision date: February 25, 2022
+
+Last revision date: March 1, 2022
+
 Project purpose statement: The purpose of this project is to develop a platform for Romel’s Mini Mart through the use of a website containing their showcase of products and store information visible to customers and also help monitor inventory for the owner.
+
 Project objectives: Create a fully functioning website for Romel’s Mini Mart with the necessary features catered to the customers and the owner.
 
 
