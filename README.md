@@ -20,12 +20,13 @@ Deliverables:
 Website Design
 Draft Version of Site
 Final Version of Site
-Creative requirements:
 
+Creative requirements:
 Display
 Shows logo, product slideshow 
 Logo
 Color palette 
+
 Out of scope:
 Check out
 Reservation
