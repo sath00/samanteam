@@ -35,7 +35,7 @@ Color palette
 Out of scope:
 Check out,
 Reservation,
-user accounts
+User accounts
 
 Resources
 Scrum team (five people), 5 hours per week for 13 weeks
