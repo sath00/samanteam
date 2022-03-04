@@ -2,7 +2,7 @@
 Software Engineering I
 
 # Project Vision:
-	Develop a user-friendly online marketplace that allows customers to conveniently browse with ease and improve work ease and efficiency of Romel’s Mini Mart through technological approach.
+Develop a user-friendly online marketplace that allows customers to conveniently browse with ease and improve work ease and efficiency of Romel’s Mini Mart through technological approach.
 
 # SamanTeam – Project Charter
 
