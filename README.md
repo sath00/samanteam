@@ -37,5 +37,5 @@ Check out,
 Reservation,
 User accounts
 
-Resources
+Resources:
 Scrum team (five people), 5 hours per week for 13 weeks
