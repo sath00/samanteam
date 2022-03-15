@@ -1,0 +1,24 @@
+{
+  "name": "samanteam",
+  "version": "1.0.0",
+  "description": "Software Engineering I",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sath00/samanteam.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sath00/samanteam/issues"
+  },
+  "homepage": "https://github.com/sath00/samanteam#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.6",
+    "nodemon": "^2.0.15"
+  }
+}
