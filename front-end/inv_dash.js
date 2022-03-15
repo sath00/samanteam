@@ -4,12 +4,14 @@ const sideBar = document.querySelector("aside");
 const menuBtn = document.querySelector("#toggle-sidebar");
 const closeBtn = document.querySelector("#close-btn");
 
-menuBtn.addEventListener('click', () => {
-  sideBar.style.display = 'block';
-})
 
 closeBtn.addEventListener('click', () => {
   sideBar.style.display = 'none';
+})
+
+
+sideBar.addEventListener('click', () => {
+  
 })
 
 //toggling between dark mode and light mode
@@ -22,6 +24,8 @@ themeToggler.addEventListener('click', () => {
     themeToggler.querySelector('span:nth-child(1)').classList.toggle('active');
     themeToggler.querySelector('span:nth-child(2)').classList.toggle('active');
 });
+
+
 
 //auto-resizing notes
 

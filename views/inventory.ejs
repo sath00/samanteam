@@ -7,12 +7,12 @@
   <!-- ICONS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- STYLESHEET -->
-  <link rel="stylesheet" href="./inv_dash.css">
+  <link rel="stylesheet" href="./styles/inv_dash.css">
 </head>
 <body>
   <div class="container">
     <!--============ SIDEBAR (LEFT) ============-->
-    <aside>
+    <!-- <aside>
       <div class="topbar">
         <div class="logo">
           <img src="./assets/romels_yellow_nocart.png">
@@ -40,7 +40,8 @@
           <h3>Overview</h3>
         </a>
       </div>
-    </aside>
+    </aside> -->
+    <%- include('../front-end/partials/sidebarleft')%>
 
     <!--============ MIDDLE (MAIN) SECTION ============-->
     <main>
@@ -57,6 +58,22 @@
             </tr>
           </thead>
           <tbody>
+            <% items.forEach(item => { %>
+              <tr>
+                <td>
+                  <%= item.id%>
+                </td>
+                <td>
+                  <%= item.productName%>
+                </td>
+                <td>
+                  <%= item.price%>
+                </td>
+                <td>
+                  <%= item.description%>
+                </td>
+              </tr>
+            <%}) %>
             <!-- will be filled automatically with js function (see inv_dash.js) -->
           </tbody>
         </table>
@@ -92,7 +109,7 @@
     </div>
     <!--============ END OF RIGHT SECTION ============-->
   </div>
-  <script src="./database/db.js"></script>
-  <script src="inv_dash.js"></script>
+  <!-- <script src="./database/db.js"></script>
+  <script src="inv_dash.js"></script> -->
 </body>
 </html>

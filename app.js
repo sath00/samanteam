@@ -1,14 +1,21 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Product = require('./models/products');
+const path = require('path');
 
 
 //admin username: Admin pass:tkjKS74gP3BHehQT
 const dbURI = 'mongodb+srv://Admin:tkjKS74gP3BHehQT@cluster0.58qld.mongodb.net/Romels-Webmart?retryWrites=true&w=majority'
 
 
+
+
 //instantiating express module
 const app = express();
+
+
+//setting up view engine
+app.set('view engine', 'ejs');
 
 //connecting to our database
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
@@ -21,29 +28,20 @@ const port = 3000;
 
 //listening
 app.listen(port);
+//
+//making front-end assets public
+app.use(express.static('./front-end/'))
+
 
 app.get('/',(req, res) => {
-    res.sendFile('./views/index.html',{root:__dirname});
+    res.render('index');
 })
 
-
-app.get('/add-product',(req,res)=>{
-    const ariel = new Product({
-        productName:  'Tide',
-        price: '12.50',
-        description:"Tide Twin Pack"
-    });
-    ariel.save().then((result)=>{
-        console.log('added successfully');
-    }).catch((err)=>{
-        console.log(err);
-    });
-})
-
-
-app.get('/show-products',(req,res)=>{
+app.get('/inventory',(req,res)=>{
     Product.find()
     .then((result)=>{
-        console.log(result);
-    }).catch((err)=>{ console.log(err); });
+        res.render('inventory',{items:result});
+        module.exports.result = result;
+    }).catch((err)=>{ console.log(err); })
+    
 })

@@ -7,12 +7,12 @@
   <!-- ICONS -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- STYLESHEET -->
-  <link rel="stylesheet" href="./inv_dash.css">
+  <link rel="stylesheet" href="./styles/inv_dash.css">
 </head>
 <body>
   <div class="container">
     <!--============ SIDEBAR (LEFT) ============-->
-    <aside>
+    <!-- <aside>
       <div class="topbar">
         <div class="logo">
           <img src="./assets/romels_yellow_nocart.png">
@@ -40,7 +40,9 @@
           <h3>Overview</h3>
         </a>
       </div>
-    </aside>
+    </aside> -->
+
+    <%- include('../front-end/partials/sidebarleft')%>
 
     <!--============ MIDDLE (MAIN) SECTION ============-->
     <main>
@@ -59,7 +61,7 @@
             <h2> Remove Products </h2>
           </div>
         </a>
-        <a href = "inv_view.html">
+        <a href = "inventory">
           <div class="view-products">
             <span class="material-icons">inventory_2</span>
             <h2> View Products </h2>
