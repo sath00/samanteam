@@ -25,3 +25,25 @@ app.listen(port);
 app.get('/',(req, res) => {
     res.sendFile('./views/index.html',{root:__dirname});
 })
+
+
+app.get('/add-product',(req,res)=>{
+    const ariel = new Product({
+        productName:  'Tide',
+        price: '12.50',
+        description:"Tide Twin Pack"
+    });
+    ariel.save().then((result)=>{
+        console.log('added successfully');
+    }).catch((err)=>{
+        console.log(err);
+    });
+})
+
+
+app.get('/show-products',(req,res)=>{
+    Product.find()
+    .then((result)=>{
+        console.log(result);
+    }).catch((err)=>{ console.log(err); });
+})
