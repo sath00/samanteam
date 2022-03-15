@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-primary: darkgoldenrod;
+  --color-info-dark: #7d8da1;
+  --color-info-light: #c2c2c2;
+  --color-dark: #363949;
+  --color-light: gainsboro;
+  --color-primary-variant: #111e88;
+  --color-dark-variant: #677483;
+  --color-background: #f6f6f9;
+  --color-yellow: #fff748;
+  --color-light-toggler: gainsboro;
+  --color-header-mobile: khaki;
+  --color-notes: var(--color-dark);
+  --color-white: white;
+
+  --card-border-radius: 2rem;
+  --card-border-radius-mobile: 0.5rem;
+  --card-padding: 1.8rem;
+  --card-padding-mobile: 0.8rem;
+  --card-shadow: 0 2rem 3rem var(--color-info-light);
+
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+}
+
+/* ------------ DARK THEME ------------ */
+.dark-theme {
+  --color-background: #363949;
+  --color-light: #282c34;
+  --color-dark: gainsboro;
+  --color-dark-variant: white;
+  --color-shadow: #656a74;
+  --card-shadow: 0 2rem 3rem var(--color-light);
+  --color-header-mobile: var(--color-light);
+  --color-notes: #fff748;
+  --color-white: #282c34;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  appearance: none;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  background: var(--color-background);
+  user-select: none;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 0.87rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+}
+
+h5 {
+  font-size: 0.77rem;
+}
+
+small {
+  color: var(--color-dark);
+  font-size: 0.75rem;
+}
+
+/*Link colors*/
+a {
+  color: var(--color-dark);
+}
+
+p {
+  color: var(--color-dark-variant);
+}
+
+b {
+  color: var(--color-dark);
+}
+
+.primary {
+  color: var(--color-primary);
+}
+
+.danger {
+  color: var(--color-danger);
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.warning {
+  color: var(--color-warning);
+}
+
+/*The main area of the page where everything is contained.*/
+.container {
+  background: var(--color-background);
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: 14rem auto 23rem;
+  margin: 0 auto;
+  width: 96%;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* ------------ SIDEBAR STYLES ------------ */
+
+/*Hidden section*/
+aside {
+  height: 100vh;
+  background: var(--color-background);
+}
+
+/*Will contain logo and close sign.*/
+aside .topbar {
+  background: var(--color-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.4rem;
+}
+
+
+/*hide button on desxtop*/
+@media screen and (min-width:650px) {
+  aside .topbar .close {
+    display: none;
+  }
+}
+
+aside .logo img {
+  margin-left: 1rem;
+  height: 4.2rem;
+}
+
+aside .sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 86vh;
+  position: relative;
+  top: 2rem;
+}
+
+/*Description next to icons*/
+aside .sidebar h3 {
+  font-weight: 500;
+}
+
+/*For each row item in the sidebar*/
+aside .sidebar a {
+  display:flex;
+  gap: 0.5rem;
+  margin-left: 1rem;
+  align-items: center;
+  position: relative;
+  height: 3.7rem;
+  transition: all 300ms ease;
+  color: var(--color-info-dark);
+}
+
+aside .sidebar a span{
+  transition: all 300ms ease;
+}
+
+aside .sidebar a.active {
+  color: var(--color-primary);
+  background: var(--color-light);
+  margin-left: 0;
+}
+
+aside .sidebar a.active:before {
+  background: var(--color-primary);
+  content: '';
+  height: 100%;
+  width: 6px;
+}
+
+aside .sidebar a.active span {
+  color: var(--color-primary);
+  margin-left: 2px;
+}
+
+aside .sidebar a:hover {
+  color: var(--color-primary);
+}
+
+aside .sidebar a:hover span {
+  margin-left: 1rem;
+}
+
+/* ------------ MAIN STYLES ------------ */
+
+main {
+  margin-top: 1.4rem;
+}
+
+main h1 {
+  color: var(--color-dark);
+}
+
+main h3 {
+  color: var(--color-dark);
+  font-weight:300;
+}
+
+main b {
+  font-weight: 500;
+}
+
+main .action-cards {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+
+main .action-cards > a > div {
+  background: white;
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  margin-top: 1rem;
+  box-shadow: var(--card-shadow);
+  transition: all 300ms ease;
+}
+
+main .action-cards > a > div:hover {
+  box-shadow: none;
+}
+
+/*Icons within action cards*/
+main .action-cards > a span {
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: white;
+  font-size: 5rem;
+}
+
+main .action-cards .add-products {
+  background-color: cadetblue;
+  color: white;
+}
+
+main .action-cards .remove-products {
+  background-color: indianred;
+  color: white;
+}
+
+main .action-cards .view-products {
+  background-color: mediumpurple;
+  color: white;
+}
+
+main .action-cards .edit-products {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+main .inventory-table {
+  margin-top: 2.37rem;
+}
+
+main .inventory-table table {
+  color: var(--color-dark);
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  transition: all 300ms ease;
+}
+
+main .inventory-table table:hover {
+  box-shadow: none;
+}
+
+main table thead {
+  height: 2.8rem;
+}
+
+main table tbody td {
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-light);
+  color: var(--color-dark);
+}
+
+main table tbody tr:last-child td {
+  border: none;
+}
+
+/* ------------ RIGHT SIDE STYLES ------------ */
+
+.right {
+  margin-top: 1.4rem;
+}
+
+.right-top {
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+}
+
+/*hide button on desxtop*/
+@media screen and (min-width:650px){
+  .right-top button {
+    display: none;
+  }
+}
+
+.right-top .toggle-theme {
+  background: var(--color-light-toggler);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1.6rem;
+  width: 3.2rem;
+  cursor: pointer;
+  border-radius: var(--border-radius-1);
+}
+
+.right-top .toggle-theme span {
+  font-size: 1.2rem;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-top .light-mode {
+  color: white;
+}
+
+.right-top .toggle-theme span.active {
+  color: white;
+  background: var(--color-primary);
+  border-radius: var(--border-radius-1);
+}
+
+.right-top .profile {
+  display: flex;
+  gap: 2rem;
+  text-align: right;
+}
+
+.profile-pic {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.info {
+  color: var(--color-info-light);
+}
+
+.right h2 {
+  color: var(--color-dark);
+}
+
+.right #notes {
+  width: 100%;
+  margin-top: 1.5rem;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  background: var(--color-white);
+  color: var(--color-notes);
+  font-size: 14px;
+  resize: none;
+}
+
+.right #notes:hover {
+  box-shadow: none;
+}
+
+/* ------------ STYLES FOR MOBILE  ------------ */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  aside {
+    position: fixed;
+    left: -100%;
+    background: var(--color-background);
+    width: 18rem;
+    z-index: 3; /*sits on top of all layers*/
+    box-shadow: 1rem 3rem 4rem var(--color-light);
+    height: 100vh;
+    padding-right: var(--card-padding);
+    display: none;
+    animation: showMenu 400ms ease forwards;
+  }
+
+  @keyframes showMenu {
+      to {
+        left: 0;
+      }
+  }
+
+  aside .sidebar a {
+    width: 100%;
+    height: 3.4 rem;
+  }
+
+  aside .close {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  main {
+    margin-top: 7rem;
+    padding: 0 1.2rem;
+    z-index: 1;
+  }
+
+  main .action-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  main .action-cards > a span {
+    padding: 0.5rem;
+    border-radius: 50%;
+    color: white;
+    font-size: 2.6rem;
+    text-align: center;
+    display: block;
+  }
+
+  main .action-cards > a h2 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .right {
+    width: 94%;
+    margin: 0 auto 4rem;
+  }
+
+  .right-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    padding: 0 1.8rem;
+    height: 4.6rem;
+    width: 100%;
+    margin: 0;
+    z-index: 2;
+    box-shadow: 0 0.2rem 0.2rem var(--card-shadow);
+    background: var(--color-header-mobile);
+  }
+
+  .right-top .toggle-theme {
+    width: 4.4rem;
+    position: absolute;
+    left: 50%;
+  }
+
+  .right .profile .info {
+    display: none;
+  }
+
+  .right-top button {
+    display: inline-block;
+    background: transparent;
+    cursor: pointer;
+    color: var(--color-dark);
+    position: absolute;
+    left: 1rem;
+  }
+
+  .right .right-top button span {
+    font-size: 2rem;
+  }
+
+}
