@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, NgForm,  } from '@angular/forms';
 import { Product } from '../models/Product';
+import { ProductService } from '../services/product.service'
 
 @Component({
   selector: 'app-invadd',
@@ -9,10 +10,21 @@ import { Product } from '../models/Product';
   styleUrls: ['./invadd.component.css']
 })
 export class InvaddComponent implements OnInit{
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
-  constructor(){}
-  ngOnInit(): void {}
+  // constructor(public productService: ProductService){}
+  // ngOnInit(): void {}
 
+
+  // onAddItem(form:NgForm){
+  //   if(form.invalid){
+  //       return;
+  //     }
+  //     this.productService.addProduct(form.)
+  //     form.resetForm();
+  // }
 
   /*THIS DOESNT WORK IGNORE IGNORE IGNORE IGNORE IGNORE
   form: FormGroup; //form of type FormGroup

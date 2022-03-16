@@ -42,5 +42,8 @@ Scrum team (five people), 5 hours per week for 13 weeks
 
 # How to run
 
-use nodemon
-nodemon app.js
+use nodemon for backend:
+nodemon server.js
+
+use ng serv for frontend:
+ng serve

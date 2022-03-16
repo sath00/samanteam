@@ -24,4 +24,18 @@ export class ProductService {
         return this.productsUpdated.asObservable();
   }
 
+  addProduct(name: string, description: string, price: string, category: string, image: string, quantity: string) {
+        
+        const prod: Product = {
+            name:name,
+            price: price,
+            description: description,
+            category: category,
+            image: image,
+            quantity: quantity
+        }
+
+        this.products.push(prod);  
+        this.productsUpdated.next([...this.products]);
+    }
 }
