@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const ProductSchema = require('./models/products');
+const Product = require('./models/products');
 const bodyparser = require('body-parser');
 
 
@@ -31,18 +31,20 @@ app.use((req, res, next) => {
 
 
 app.post('/api/add-items',(req, res, next)=>{
-
-    // product.save().then((result) =>{
-    //     res.send('Added Successfully!');
-    //     }).catch((err) =>{
-    //         console.log(err);
-    //     })
-    const post = req.body;
-    console.log(post);
-    res.status(200).json({
-        message:'Added Successfully!'
+    const product = new Product({
+        name:req.body.name,
+        description:req.body.description,
+        price:req.body.price,
+        category:req.body.category,
+        image:req.body.image,
+        quantity:req.body.quantity
+    });
+    product.save().then((result) =>{
+        res.status(200).json({
+        message:'Added Successfully!'});
+    }).catch((err) =>{
+        console.log(err);
     })
-
 })
 app.get('/api/items',(req, res) => {
 
