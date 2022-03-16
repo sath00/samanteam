@@ -19,6 +19,7 @@ export class InvaddComponent implements OnInit{
       if(form.invalid){
           return;
       }
+      
       this.productService.addProduct(form.value.ProductName,form.value.ProductDisc,form.value.ProductPrice,form.value.ProductCat,form.value.ProductQuant, form.value.ProductImg);
       form.resetForm();
   }
