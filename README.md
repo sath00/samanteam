@@ -50,6 +50,5 @@ ng serve
 
 
 
-# NOTE: 
-
-remove node_modules
+# note: 
+remove node_modules folder then run npm install when greeted with an error regarding dependencies
