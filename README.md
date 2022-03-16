@@ -43,12 +43,12 @@ Scrum team (five people), 5 hours per week for 13 weeks
 # How to run
 
 use nodemon for backend:
-nodemon server.js
+`nodemon server.js`
 
 use ng serv for frontend:
-ng serve
+`ng serve`
 
 
 
-# note: 
-remove node_modules folder then run npm install when greeted with an error regarding dependencies
+# Note: 
+remove *node_modules* folder then run `npm install` when greeted with an error regarding dependencies.
