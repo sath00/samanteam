@@ -47,3 +47,9 @@ nodemon server.js
 
 use ng serv for frontend:
 ng serve
+
+
+
+# NOTE: 
+
+remove node_modules
