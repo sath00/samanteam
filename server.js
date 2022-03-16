@@ -1,5 +1,8 @@
+//imported the http module server creation
 const http = require('http');
 
+
+//imported app.js
 const app = require('./backend/app');
 
 

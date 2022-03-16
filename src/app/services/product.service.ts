@@ -37,8 +37,6 @@ export class ProductService {
         this.http.post<{message:string}>('http://localhost:3000/api/add-items',prod)
         .subscribe((responseData)=>{
             console.log(responseData.message)
-            // this.products.push(prod);  
-            // this.productsUpdated.next([...this.products]);
         })
         
         
