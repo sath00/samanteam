@@ -1,0 +1,97 @@
+.middle-part {
+  margin-top: 1.4rem;
+}
+
+.middle-part h1 {
+  color: var(--color-dark);
+}
+
+.middle-part h3 {
+  color: var(--color-dark);
+  font-weight:300;
+}
+
+.middle-part b {
+  font-weight: 500;
+}
+
+.middle-part .action-cards {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+
+.middle-part .action-cards > a > div {
+  background: white;
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  margin-top: 1rem;
+  box-shadow: var(--card-shadow);
+  transition: all 300ms ease;
+}
+
+.middle-part .action-cards > a > div:hover {
+  box-shadow: none;
+}
+
+/*Icons within action cards*/
+.middle-part .action-cards > a span {
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: white;
+  font-size: 5rem;
+}
+
+.middle-part .action-cards .add-products {
+  background-color: cadetblue;
+  color: white;
+}
+
+.middle-part .action-cards .remove-products {
+  background-color: indianred;
+  color: white;
+}
+
+.middle-part .action-cards .view-products {
+  background-color: mediumpurple;
+  color: white;
+}
+
+.middle-part .action-cards .edit-products {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+.middle-part .inventory-table {
+  margin-top: 2.37rem;
+}
+
+.middle-part .inventory-table table {
+  color: var(--color-dark);
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  transition: all 300ms ease;
+}
+
+.middle-part .inventory-table table:hover {
+  box-shadow: none;
+}
+
+.middle-part table thead {
+  height: 2.8rem;
+}
+
+.middle-part table tbody td {
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-light);
+  color: var(--color-dark);
+}
+
+.middle-part table tbody tr:last-child td {
+  border: none;
+}

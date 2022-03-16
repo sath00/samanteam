@@ -1,0 +1,28 @@
+
+    <h1>View Inventory</h1>
+    <h3> Hello <b>Romel</b>, this is what your inventory looks like right now.</h3>
+    <div class="inventory-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Image</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let product of products">
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.category}}</td>
+                <td>{{product.image}}</td>
+                <td>{{product.quantity}}</td>
+              </tr>
+              <!-- will be filled automatically with js function (see inv_dash.js) -->
+          </tbody>
+        </table>
+    </div>
