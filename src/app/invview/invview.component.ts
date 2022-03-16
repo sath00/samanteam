@@ -31,14 +31,13 @@ export class InvviewComponent implements OnInit {
   ngOnInit(): void {
     //we call the funtion getProducts from our product service
     this.productService.getProducts();
-    //Product subscription is given a subscription value to the  
+    //Product subscription is given a subscription value or an observable where we can subscribe to
     this.productSubscription = this.productService.getProductsUpdatedListener()
     .subscribe((products: Product[]) => {
       this.products = products
     })
-    console.log(this.products)
   }
-
+  //destroys the subscription to avoid memory leaks
   ngOnDestroy():void {
       this.productSubscription.unsubscribe();
   }
