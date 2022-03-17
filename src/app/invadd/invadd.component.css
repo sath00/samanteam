@@ -14,10 +14,7 @@
 }
 
 .bottomfield {
-  margin-top: 1rem;
   margin-left: 2rem;
-  display: flex;
-  justify-content: space-between;
 }
 
 .submitbtn {

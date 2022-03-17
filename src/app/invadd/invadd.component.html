@@ -1,5 +1,5 @@
 <h1>Add Products</h1>
-<h3>Input fields below, upload image file, and then click <b>Submit</b> to add a new product.</h3>
+<h3>Input fields below and then click <b>Submit</b> to add a new product.</h3>
 <div class = formcontainer>
 <form  #itemForm="ngForm" >
   <div class = "topfield">
@@ -19,7 +19,8 @@
   </div>
   <div class = "inputfield">
     <input type="text" placeholder="Enter product image description..." size="50" ngModel name = "ProductImg" required>
-    <br>
+  </div>  
+  <div class = "bottomfield">
     <button type="submit" color = "accent" class="submitbtn">Submit</button>
   </div>
 </form>
