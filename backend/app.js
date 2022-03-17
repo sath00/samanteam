@@ -55,11 +55,11 @@ app.post('/api/add-items',(req, res, next)=>{
 
 //this is the api for getting the items in the database
 app.get('/api/items',(req, res) => {
-
     Product.find()
     .then((result)=>{
         res.status(200).json(result);
     }).catch((err)=>{ console.log(err); })
+
 })
 
 module.exports = app;
