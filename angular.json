@@ -27,8 +27,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "src/app/inv_dash.css"
+              "src/styles.css"
             ],
             "scripts": [
               "src/app/inv_dash.js"
@@ -97,7 +96,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/bootstrap.styles.css"
             ],
             "scripts": []
           }
