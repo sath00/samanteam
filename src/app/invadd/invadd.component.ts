@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormGroup, FormControl, NgForm,  } from '@angular/forms';
+import { FormGroup, FormControl, NgForm  } from '@angular/forms';
 import { Product } from '../models/Product';
 import { ProductService } from '../services/product.service'
 
