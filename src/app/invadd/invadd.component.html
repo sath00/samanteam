@@ -1,7 +1,7 @@
 <h1>Add Products</h1>
 <h3>Input fields below and then click <b>Submit</b> to add a new product.</h3>
 <div class = formcontainer>
-<form  #itemForm="ngForm" >
+<form  #itemForm="ngForm" (submit)="onAddItem(itemForm)">
   <div class = "topfield">
     <input type="text" placeholder="Enter product name..." size="50" ngModel name = "ProductName" required>
   </div>
