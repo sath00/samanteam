@@ -34,12 +34,11 @@ export class ProductService {
             image: image,
             quantity: quantity
         }
-        console.log(prod);
-        this.http.post<{message: string}>('http://localhost:3000/api/add-items', prod)
+        this.http.post<{message:string}>('http://localhost:3000/api/add-items',prod)
         .subscribe((responseData)=>{
-          console.log(responseData.message);
-          this.products.push(prod);  
-          this.productsUpdated.next([...this.products]);
-        });
+            console.log(responseData.message)
+        })
+        
+        
     }
 }

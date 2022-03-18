@@ -1,22 +1,27 @@
+//Imports can be found here
 const express = require('express');
 const mongoose = require('mongoose');
-const ProductSchema = require('./schema/productschema');
+const Product = require('./models/products');
 const bodyparser = require('body-parser');
 
 
+//our mongodb URI
 const dbURI = 'mongodb+srv://Admin:tkjKS74gP3BHehQT@cluster0.58qld.mongodb.net/Romels-Webmart?retryWrites=true&w=majority'
 
 
-
+//instatiated the express app
 const app = express();
 
+
+//function that I used to connect to our mongodb
 mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
 .then(result => {
     console.log("Connected to database")
 }).catch(err => console.log(err));
 
-//body parser
 
+
+//used the body parser for parsing posts requests data this is later used in /add-items
 app.use(bodyparser.json());
 
 
@@ -29,38 +34,32 @@ app.use((req, res, next) => {
 })
 
 
-
+//this is the api for adding items to our database
 app.post('/api/add-items',(req, res, next)=>{
-    // const items = [
-    //     {name:'Ariel',description:'Ariel Powder',price:'7.50', category:"Soap",image:"sabon",quantity:"100"},
-    //     {name:'Tide',description:'Tide Bar',price:'11.50', category:"Soap",image:"sabon",quantity:"69"}
-    // ]
-    const item = req.body; 
-    const product = new ProductSchema({
-        name: item.name,description:item.description,price:item.price, category:item.category,image:item.image,quantity:item.quantity
-    })
-
+    const product = new Product({
+        name:req.body.name,
+        description:req.body.description,
+        price:req.body.price,
+        category:req.body.category,
+        image:req.body.image,
+        quantity:req.body.quantity
+    });
     product.save().then((result) =>{
-        res.send('Added Successfully!');
-        }).catch((err) =>{
-            console.log(err);
-        })
-
-    
-    // console.log(item.name);
-
-    
-    // res.status(200).json({
-    //     message:'Added Successfully!'
-    // })
-
+        res.status(200).json({
+        message:'Added Successfully!'});
+    }).catch((err) =>{
+        console.log(err);
+    })
 })
-app.get('/api/items',(req, res) => {
 
-    ProductSchema.find()
+
+//this is the api for getting the items in the database
+app.get('/api/items',(req, res) => {
+    Product.find()
     .then((result)=>{
         res.status(200).json(result);
     }).catch((err)=>{ console.log(err); })
+
 })
 
 module.exports = app;
