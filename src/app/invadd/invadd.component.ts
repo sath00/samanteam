@@ -10,21 +10,22 @@ import { ProductService } from '../services/product.service'
   styleUrls: ['./invadd.component.css']
 })
 export class InvaddComponent implements OnInit{
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
-  // constructor(public productService: ProductService){}
-  // ngOnInit(): void {}
-
-
-  // onAddItem(form:NgForm){
-  //   if(form.invalid){
-  //       return;
-  //     }
-  //     this.productService.addProduct(form.)
-  //     form.resetForm();
+  // ngOnInit(): void {
+  //   throw new Error('Method not implemented.');
   // }
+
+  constructor(public productService: ProductService){}
+  ngOnInit(): void {}
+
+
+  onAddItem(form:NgForm){
+    console.log("hello");
+    if(form.invalid){
+        return;
+      }
+      this.productService.addProduct(form.value.name, form.value.description, form.value.price, form.value.category, form.value.image, form.value.quantity);
+      form.resetForm();
+  }
 
   /*THIS DOESNT WORK IGNORE IGNORE IGNORE IGNORE IGNORE
   form: FormGroup; //form of type FormGroup
