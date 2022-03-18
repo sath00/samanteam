@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormGroup, FormControl, NgForm,  } from '@angular/forms';
+import { FormGroup, FormControl, NgForm  } from '@angular/forms';
 import { Product } from '../models/Product';
 import { ProductService } from '../services/product.service'
 
@@ -20,7 +20,7 @@ export class InvaddComponent implements OnInit{
           return;
       }
       
-      this.productService.addProduct(form.value.ProductName,form.value.ProductDisc,form.value.ProductPrice,form.value.ProductCat,form.value.ProductQuant, form.value.ProductImg);
+      this.productService.addProduct(form.value.ProductName,form.value.ProductDisc,form.value.ProductPrice,form.value.ProductCat,form.value.ProductImg, form.value.ProductQuant);
       form.resetForm();
   }
 

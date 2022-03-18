@@ -27,7 +27,7 @@ export class ProductService {
   addProduct(name: string, description: string, price: string, category: string, image: string, quantity: string) {
         
         const prod: Product = {
-            name:name,
+            name: name,
             price: price,
             description: description,
             category: category,

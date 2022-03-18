@@ -1,7 +1,7 @@
 <h1>Add Products</h1>
 <h3>Input fields below and then click <b>Submit</b> to add a new product.</h3>
 <div class = formcontainer>
-<form  #itemForm="ngForm" (submit)="onAddItem(itemForm)">
+<form  #itemForm="ngForm">
   <div class = "topfield">
     <input type="text" placeholder="Enter product name..." size="50" ngModel name = "ProductName" required>
   </div>
@@ -21,7 +21,7 @@
     <input type="text" placeholder="Enter product image description..." size="50" ngModel name = "ProductImg" required>
   </div>  
   <div class = "bottomfield">
-    <button type="submit" color = "accent" class="submitbtn">Submit</button>
+    <button type="submit" color = "accent" class="submitbtn" (click)="onAddItem(itemForm)">Submit</button>
   </div>
 </form>
 </div>
