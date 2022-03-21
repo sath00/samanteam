@@ -1,5 +1,46 @@
-<h1>Inventory Dashboard</h1>
-<h3> Hello <b>Romel</b>, what would you like to do today?</h3>
+<div class="top-bar">
+<div>
+  <h1>Inventory</h1>
+  <h3> Hello <b>Romel</b>, what would you like to do today?</h3>
+</div>
+
+  <form class="search-form">
+    <input type="text" placeholder="Search">
+    <button class="search-btn">
+      <span class="material-icons" >search</span>
+    </button>
+  </form>
+  <a routerLink="/add-products"><div class="add-product"><span class="material-icons">add</span></div></a>
+  <div class="edit-inventory" id="edit-inv" (click)="onEditInvetory()"><span class="material-icons">edit</span></div>
+</div>
+<div class="inventory-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th>Image</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.image}}</td>
+            <td>{{product.quantity}}</td>
+            <td id="delete" class=""><button class="del-btn" (click)="onDeleteProduct(product.name)"><span class="material-icons">delete</span></button></td>
+            <td id="edit" class=""><button class="edit-btn"><span class="material-icons">edit</span></button></td>
+          </tr>
+          <!-- will be filled automatically with js function (see inv_dash.js) -->
+      </tbody>
+    </table>
+</div>
+<!--
 <div class="action-cards">
   <a routerLink ="/add-products">
     <div class="add-products">
@@ -25,4 +66,4 @@
       <h2> Edit Products </h2>
     </div>
   </a>
-</div>
+</div>-->
