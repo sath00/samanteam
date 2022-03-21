@@ -6,7 +6,7 @@
   <div class = "topfield">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Enter Product Name *</mat-label>
-      <input matInput enabled value="">
+      <input matInput ngModel name = "ProductName">
     </mat-form-field>
   </div>
 
@@ -14,32 +14,32 @@
     <td><mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Price *</mat-label>
       <span matPrefix>₱&nbsp;</span>
-      <input matInput>
+      <input matInput ngModel name = "ProductPrice">
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Category</mat-label>
-      <input matInput>
+      <input matInput ngModel name = "ProductCat">
     </mat-form-field></td>
   </tr></table>
 
   <div class = "inputfield">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Product Description</mat-label>
-      <textarea matInput placeholder="Ex. Humot haha"></textarea>
+      <textarea matInput placeholder="Ex. Humot haha" ngModel name="ProductDisc"></textarea>
     </mat-form-field>
   </div>
 
   <div class = "inputfield">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Product Quantity</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput ngModel name="ProductQuant"></textarea>
     </mat-form-field>
   </div>
 
   <div class = "inputfield">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Upload Image</mat-label>
-      <textarea matInput></textarea>
+      <textarea matInput ngModel name = "ProductImg"></textarea>
     </mat-form-field>
   </div>
 
