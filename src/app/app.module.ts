@@ -19,6 +19,7 @@ import { InvviewComponent } from './invview/invview.component';
 import { InvdashComponent } from './invdash/invdash.component';
 import { InvaddComponent } from './invadd/invadd.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,8 +38,8 @@ import { InvaddComponent } from './invadd/invadd.component';
     FormsModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatButtonModule,
     MatIconModule,
+    MatButtonModule,
     MatSlideToggleModule,
     MatCardModule
   ],
