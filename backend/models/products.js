@@ -12,8 +12,6 @@ const ProductSchema = new Schema({
     category:{type: 'string',required: true},
     image:{type: 'string',required: true},
     quantity:{type: 'string',required: true},
-
-
 }, {timestamps: true}); //added timestamps because we can use this someday
 
 

@@ -20,7 +20,6 @@ mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
 }).catch(err => console.log(err));
 
 
-
 //used the body parser for parsing posts requests data this is later used in /add-items
 app.use(bodyparser.json());
 
@@ -35,18 +34,14 @@ app.use((req, res, next) => {
 
 //api for deleting items
 app.delete('/api/remove-item/:id', (req, res) => {  
-    Product.findByIdAndRemove(req.params.id, function (err, doc) {
-        if (err) {
-            res.status(400).json({
-                error: err._message
-            })
-        }else if(!doc){
-            res.status(200).json({
-                error: 'Product was not found!'
-            })
-        }else{
+    Product.deleteOne({_id:mongoose.Types.ObjectId(req.params.id)}).then(result => {
+        if(result.deletedCount>0){
             res.status(200).json({
                 message: 'Product was succesfully deleted!'
+            });
+        }else{
+            res.status(200).json({
+                message: 'Product was not found!'
             });
         }
     })
@@ -54,7 +49,7 @@ app.delete('/api/remove-item/:id', (req, res) => {
 
 
 //api for adding items 
-app.post('/api/add-items',(req, res, next)=>{
+app.post('/api/add-items',(req, res)=>{
     const product = new Product({
         name:req.body.name,
         description:req.body.description,
@@ -73,9 +68,6 @@ app.post('/api/add-items',(req, res, next)=>{
     })
 })
 
-
-
-
 //this is the api for getting the items in the database
 app.get('/api/items',(req, res) => {
     Product.find()
@@ -86,7 +78,6 @@ app.get('/api/items',(req, res) => {
             error: err._message
         }) 
     })
-
 })
 
 
