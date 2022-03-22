@@ -44,7 +44,7 @@ export class MiddlesectionComponent implements OnInit {
   }
   
   //handles the edit button on the top
-  onEditInvetory():void{
+  onEditInventory():void{
     var editInventory = document.getElementById('edit-inv');
     var element = document.querySelectorAll('td');
     editInventory?.classList.toggle('active');

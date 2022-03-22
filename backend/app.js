@@ -33,8 +33,27 @@ app.use((req, res, next) => {
     next();
 })
 
+//api for deleting items
+app.delete('/api/remove-item/:id', (req, res) => {  
+    Product.findByIdAndRemove(req.params.id, function (err, doc) {
+        if (err) {
+            res.status(400).json({
+                error: err._message
+            })
+        }else if(!doc){
+            res.status(200).json({
+                error: 'Product was not found!'
+            })
+        }else{
+            res.status(200).json({
+                message: 'Product was succesfully deleted!'
+            });
+        }
+    })
+})
 
-//this is the api for adding items to our database
+
+//api for adding items 
 app.post('/api/add-items',(req, res, next)=>{
     const product = new Product({
         name:req.body.name,
@@ -46,11 +65,15 @@ app.post('/api/add-items',(req, res, next)=>{
     });
     product.save().then((result) =>{
         res.status(200).json({
-        message:'Added Successfully!'});
+        message:'Product added successfully!'});
     }).catch((err) =>{
-        console.log(err);
+        res.status(400).json({
+            error:err._message
+        })
     })
 })
+
+
 
 
 //this is the api for getting the items in the database
@@ -58,8 +81,14 @@ app.get('/api/items',(req, res) => {
     Product.find()
     .then((result)=>{
         res.status(200).json(result);
-    }).catch((err)=>{ console.log(err); })
+    }).catch((err) => {
+        res.status(400).json({
+            error: err._message
+        }) 
+    })
 
 })
+
+
 
 module.exports = app;
