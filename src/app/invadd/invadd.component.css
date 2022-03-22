@@ -11,22 +11,25 @@
   background: var(--color-light);
   border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow);
+  width: 80%;
 }
 
 .bottomfield {
-  margin-top: 1rem;
-  margin-left: 2rem;
-  display: flex;
-  justify-content: space-between;
+  margin-left: 28rem;
 }
 
 .submitbtn {
+  top:1rem;
   border-radius: var(--card-border-radius);
   color: black;
   padding: 8px 16px;
   text-align: center;
   font-size: 12px;
   cursor: pointer;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   margin-right: 2rem;
+}
+
+.example-full-width {
+  width: 100%;
 }

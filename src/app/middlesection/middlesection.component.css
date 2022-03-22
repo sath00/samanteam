@@ -95,3 +95,78 @@
 .middle-part table tbody tr:last-child td {
   border: none;
 }
+
+
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  background-color: #FFDB58;
+  padding: 5px;
+  align-items: center;
+}
+.top-bar .search-form {
+  background-color: white;
+  vertical-align: top;
+  align-items: center;
+  padding: 4px;
+  border-radius: var(--card-border-radius);
+  margin-right: 5px;
+  margin-left: 5px;
+}
+.top-bar .search-form  .search-btn > span {
+  border-width: 4px;
+  font-size: 27px;
+}
+.top-bar .search-btn {
+  display:inline;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.top-bar input[type='text'] {
+  padding: 6px;
+  margin-right: 5px;
+  border: none;
+  font-size: 15px;
+  vertical-align: top;
+  background-color: transparent;
+}
+.top-bar a .add-product {
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+.top-bar a .add-product > span{
+  font-size: 27px;
+}
+.top-bar .edit-inventory{
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-right: 0px;
+  cursor: pointer;
+}
+
+.top-bar .edit-inventory.active{
+  background-color: yellow;
+}
+
+
+.del-btn, .edit-btn{
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+.del-btn:hover, .edit-btn:hover{
+  background-color: yellow;
+}
+#delete, #edit{
+  display: none;
+  transition: all 300ms ease-in-out;
+}
+#delete.active, #edit.active{
+  display:table-cell;
+}

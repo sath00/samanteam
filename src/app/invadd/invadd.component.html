@@ -1,7 +1,66 @@
 <h1>Add Products</h1>
-<h3>Input fields below, upload image file, and then click <b>Submit</b> to add a new product.</h3>
+<h3>Input fields below and then click <b>Add Product</b> to save.</h3>
+
 <div class = formcontainer>
-<form  #itemForm="ngForm" >
+<form  #itemForm="ngForm">
+  <div class = "topfield">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Enter Product Name *</mat-label>
+      <input matInput ngModel name = "ProductName">
+    </mat-form-field>
+  </div>
+
+  <table class="example-full-width" cellspacing="25"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Price *</mat-label>
+      <span matPrefix>₱&nbsp;</span>
+      <input matInput ngModel name = "ProductPrice">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Category</mat-label>
+      <input matInput ngModel name = "ProductCat">
+    </mat-form-field></td>
+  </tr></table>
+
+  <div class = "inputfield">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Product Description</mat-label>
+      <textarea matInput placeholder="Ex. Humot haha" ngModel name="ProductDisc"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class = "inputfield">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Product Quantity</mat-label>
+      <textarea matInput ngModel name="ProductQuant"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class = "inputfield">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Upload Image</mat-label>
+      <textarea matInput ngModel name = "ProductImg"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class = "inputfield">
+    <mat-label>Product Status</mat-label>
+  <br>
+  <mat-slide-toggle>Slide me!</mat-slide-toggle>
+  </div>
+
+  <div class = "bottomfield">
+  <button mat-raised-button color="accent" class=" submitbtn" (click)="onAddItem(itemForm)">Add Product</button>
+  </div>
+
+</form>
+</div>
+
+<!--
+<h1>Add Products</h1>
+<h3>Input fields below and then click <b>Submit</b> to add a new product.</h3>
+<div class = formcontainer>
+<form  #itemForm="ngForm">
   <div class = "topfield">
     <input type="text" placeholder="Enter product name..." size="50" ngModel name = "ProductName" required>
   </div>
@@ -19,8 +78,11 @@
   </div>
   <div class = "inputfield">
     <input type="text" placeholder="Enter product image description..." size="50" ngModel name = "ProductImg" required>
-    <br>
-    <button type="submit" color = "accent" class="submitbtn">Submit</button>
+  </div>  
+  <div class = "bottomfield">
+    <button type="submit" color = "accent" class="submitbtn" (click)="onAddItem(itemForm)">Submit</button>
   </div>
 </form>
 </div>
+
+-->
