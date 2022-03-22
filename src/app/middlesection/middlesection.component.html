@@ -11,7 +11,7 @@
     </button>
   </form>
   <a routerLink="/add-products"><div class="add-product"><span class="material-icons">add</span></div></a>
-  <div class="edit-inventory" id="edit-inv" (click)="onEditInvetory()"><span class="material-icons">edit</span></div>
+  <div class="edit-inventory" id="edit-inv" (click)="onEditInventory()"><span class="material-icons">edit</span></div>
 </div>
 <div class="inventory-table">
     <table>
@@ -22,7 +22,7 @@
           <th>Price</th>
           <th>Category</th>
           <th>Image</th>
-          <th>Quantity</th>
+          <th>Availability</th>
         </tr>
       </thead>
       <tbody>
@@ -36,11 +36,12 @@
             <td id="delete" class=""><button class="del-btn" (click)="onDeleteProduct(product.name)"><span class="material-icons">delete</span></button></td>
             <td id="edit" class=""><button class="edit-btn"><span class="material-icons">edit</span></button></td>
           </tr>
-          <!-- will be filled automatically with js function (see inv_dash.js) -->
       </tbody>
     </table>
 </div>
-<!--
+
+
+<!-- old design
 <div class="action-cards">
   <a routerLink ="/add-products">
     <div class="add-products">

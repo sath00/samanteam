@@ -127,7 +127,7 @@ b {
   background: var(--color-background);
   display: grid;
   gap: 1.8rem;
-  grid-template-columns: 14rem auto 23rem;
+  grid-template-columns: 14rem auto; /*23rem;*/
   margin: 0 auto;
   width: 96%;
 }
