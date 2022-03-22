@@ -1,4 +1,4 @@
-<h1>Add Products</h1>
+<!-- <h1>Add Products</h1>
 <h3>Input fields below and then click <b>Submit</b> to add a new product.</h3>
 <div class = formcontainer>
 <form  #itemForm="ngForm">
@@ -24,4 +24,47 @@
     <button type="submit" color = "accent" class="submitbtn" (click)="onAddItem(itemForm)">Submit</button>
   </div>
 </form>
+</div>
+  -->
+
+<br>
+<br>
+<br>
+<br>
+<h1>Add Products</h1>
+<div class = formcontainer>
+<form class="example-form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Enter Product Name *</mat-label>
+    <input matInput enabled value="">
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Price *</mat-label>
+      <span matPrefix>₱&nbsp;</span>
+      <input matInput>
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Category</mat-label>
+      <input matInput>
+    </mat-form-field></td>
+  </tr></table>
+
+  <p>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Product Description</mat-label>
+      <textarea matInput placeholder="Ex. Humot haha"></textarea>
+    </mat-form-field>
+
+    <input type="file">
+
+      <button mat-raised-button color="basic">Upload Image</button>
+  </p>
+  <mat-label>Product Status</mat-label>
+  <br>
+  <mat-slide-toggle>Slide me!</mat-slide-toggle>
+  <br>
+  <button mat-raised-button color="accent" >Add Product</button>
+</form> 
 </div>
