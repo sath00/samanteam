@@ -14,7 +14,7 @@
     <td><mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Price *</mat-label>
       <span matPrefix>₱&nbsp;</span>
-      <input matInput ngModel name = "ProductPrice">
+      <input type="number" min="0.01" step="0.01" matInput ngModel name = "ProductPrice">
     </mat-form-field></td>
     <td><mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Category</mat-label>
