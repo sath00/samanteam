@@ -56,7 +56,7 @@ app.post('/api/add-items',(req, res)=>{
         price:req.body.price,
         category:req.body.category,
         image:req.body.image,
-        quantity:req.body.quantity
+        availability:req.body.availability
     });
     product.save().then((result) =>{
         res.status(200).json({
@@ -67,6 +67,25 @@ app.post('/api/add-items',(req, res)=>{
         })
     })
 })
+
+//this is the api for marking items as sold out or available
+
+app.post('/api/:id/availability', (req,res)=>{
+    Product.updateOne({_id:mongoose.Types.ObjectId(req.params.id)},{availability:req.body.availability})
+    .then(result=>{
+        if (result.modifiedCount > 0) {
+            res.status(200).json({
+                message: 'Product was succesfully Updated!'
+            });
+        } else {
+            res.status(200).json({
+                message: 'Product was not found!'
+            });
+        }
+    })
+})
+
+
 
 //this is the api for getting the items in the database
 app.get('/api/items',(req, res) => {
