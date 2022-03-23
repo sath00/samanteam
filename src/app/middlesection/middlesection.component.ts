@@ -39,8 +39,8 @@ export class MiddlesectionComponent implements OnInit {
       this.productSubscription.unsubscribe();
   }
   //Deletefunction
-  onDeleteProduct(name:string):void {
-    console.log(name);
+  onDeleteProduct(productID:string):void {
+    this.productService.deleteProduct(productID);
   }
   
   //handles the edit button on the top
