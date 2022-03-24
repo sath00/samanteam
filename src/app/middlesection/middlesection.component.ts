@@ -13,11 +13,10 @@ import { Product } from '../models/Product'
 export class MiddlesectionComponent implements OnInit {
   //instantiated array as Product array
   products:Product[] = [];
-
-
   //created a new subscription to be used when subscribing to observables
   private productSubscription: Subscription = new Subscription();
-
+  //instantaite isModified that tracks changes on the inventory
+  isModified = false;
   //instatiated our product service
   constructor(public productService: ProductService) { }
 
@@ -31,16 +30,16 @@ export class MiddlesectionComponent implements OnInit {
     .subscribe((products: Product[]) => {
       this.products = products
     })
-
-
   }
   //destroys the subscription to avoid memory leaks
   ngOnDestroy():void {
       this.productSubscription.unsubscribe();
   }
   //Deletefunction
-  onDeleteProduct(productID:string):void {
-    this.productService.deleteProduct(productID);
+  onDeleteProduct(productID:string, productName:string):void {
+    if(confirm("Do you want to remove '"+productName+"' from the inventory?")){
+      this.productService.deleteProduct(productID);
+    }
   }
   
   //handles the edit button on the top
@@ -48,8 +47,12 @@ export class MiddlesectionComponent implements OnInit {
     var editInventory = document.getElementById('edit-inv');
     var element = document.querySelectorAll('td');
     editInventory?.classList.toggle('active');
+    if(!editInventory?.classList.contains('active') && this.isModified ==true){
+      //call the update availability function here
+      this.isModified=false;
+    }
     element.forEach((data)=>{
-      if(data.id == 'delete' || data.id == 'edit'){
+      if(data.id == 'delete' || data.id == 'edit' ||data.id=='availability-toggle' ||data.id=='availability-content'){
         data.classList.toggle('active');
       }
     })
@@ -66,4 +69,16 @@ export class MiddlesectionComponent implements OnInit {
     this.productService.updateAvailability(productID,availability)
   }
 
+  onConfirmDelete(name:string, productID:string):void{
+
+  }
+
+  toggleAvailability(product:Product):void{
+    if(product.availability == "Available"){
+      product.availability = "Not Available";
+    }else{
+      product.availability = "Available";
+    }
+    this.isModified = true;
+  }
 }
