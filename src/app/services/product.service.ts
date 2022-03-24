@@ -51,7 +51,7 @@ export class ProductService {
       console.log(responseData.message)
     })
   }
-
+  
   updateAvailability(productID:string,availability:string){
      const value = {
        _id:productID,
