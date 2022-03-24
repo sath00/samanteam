@@ -41,14 +41,28 @@ export class ProductService {
         })
     }
 
-    deleteProduct(productID:string){
-      this.http.delete<{ message: string }>('http://localhost:3000/api/remove-item/'+productID)
-      .subscribe((responseData)=>{
-        
-        this.products = this.products.filter(product => product._id != productID)
-        // this.products = updatedProds [WARNING IDK IF THIS IS IMPORTANT OR NOT SO BEST NOT TO TOUCH HAHAHAHA BASI MALIMTAN UNYA - Joey]
-        this.productsUpdated.next([...this.products])
+  deleteProduct(productID:string){
+    this.http.delete<{ message: string }>('http://localhost:3000/api/remove-item/'+productID)
+    .subscribe((responseData)=>{
+      
+      this.products = this.products.filter(product => product._id != productID)
+      // this.products = updatedProds [WARNING IDK IF THIS IS IMPORTANT OR NOT SO BEST NOT TO TOUCH HAHAHAHA BASI MALIMTAN UNYA - Joey]
+      this.productsUpdated.next([...this.products])
+      console.log(responseData.message)
+    })
+  }
+
+  updateAvailability(productID:string,availability:string){
+     const value = {
+       _id:productID,
+       availability:availability
+     }
+    this.http.post<{ message: string }>('http://localhost:3000/api/item/availability', value)
+      .subscribe((responseData) => {
+        this.getProducts()
         console.log(responseData.message)
       })
-    }
+  }
+
+
 }

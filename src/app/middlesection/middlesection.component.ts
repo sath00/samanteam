@@ -56,4 +56,14 @@ export class MiddlesectionComponent implements OnInit {
     
   }
 
+  onUpdateAvailability(productID:string,availability:string):void{
+    if(availability=='Not available'){
+      availability = 'Available';
+    }else{
+      availability = 'Not available';
+    }
+    
+    this.productService.updateAvailability(productID,availability)
+  }
+
 }
