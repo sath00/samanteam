@@ -15,7 +15,8 @@ export class MiddlesectionComponent implements OnInit {
   products:Product[] = [];
   //created a new subscription to be used when subscribing to observables
   private productSubscription: Subscription = new Subscription();
-
+  //instantaite isModified that tracks changes on the inventory
+  isModified = false;
   //instatiated our product service
   constructor(public productService: ProductService) { }
 
@@ -46,6 +47,10 @@ export class MiddlesectionComponent implements OnInit {
     var editInventory = document.getElementById('edit-inv');
     var element = document.querySelectorAll('td');
     editInventory?.classList.toggle('active');
+    if(!editInventory?.classList.contains('active') && this.isModified ==true){
+      //call the update availability function here
+      this.isModified=false;
+    }
     element.forEach((data)=>{
       if(data.id == 'delete' || data.id == 'edit' ||data.id=='availability-toggle' ||data.id=='availability-content'){
         data.classList.toggle('active');
@@ -64,5 +69,6 @@ export class MiddlesectionComponent implements OnInit {
     }else{
       product.availability = "Available";
     }
+    this.isModified = true;
   }
 }
