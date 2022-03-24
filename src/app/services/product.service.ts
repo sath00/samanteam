@@ -62,6 +62,4 @@ export class ProductService {
         console.log(responseData.message)
       })
   }
-
-
 }
