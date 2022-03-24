@@ -14,6 +14,10 @@
   width: 80%;
 }
 
+.formcontainer:hover{
+  box-shadow: none;
+}
+
 .bottomfield {
   margin-left: 28rem;
 }
@@ -32,4 +36,16 @@
 
 .example-full-width {
   width: 100%;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 0.87rem;
+  font-family: 'Poppins', sans-serif;
 }
