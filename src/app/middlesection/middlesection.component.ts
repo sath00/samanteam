@@ -58,16 +58,7 @@ export class MiddlesectionComponent implements OnInit {
     })
     
   }
-  //just call this function to update availability
-  onUpdateAvailability(productID:string,availability:string):void{
-    if(availability=='Not available'){
-      availability = 'Available';
-    }else{
-      availability = 'Not available';
-    }
-    
-    this.productService.updateAvailability(productID,availability)
-  }
+
 
   onConfirmDelete(name:string, productID:string):void{
 
@@ -79,6 +70,7 @@ export class MiddlesectionComponent implements OnInit {
     }else{
       product.availability = "Available";
     }
+    this.productService.updateAvailability(product._id, product.availability)
     this.isModified = true;
   }
 }
