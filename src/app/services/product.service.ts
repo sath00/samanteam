@@ -59,10 +59,7 @@ export class ProductService {
      }
     this.http.post<{ message: string }>('http://localhost:3000/api/item/availability', value)
       .subscribe((responseData) => {
-        this.getProducts()
         console.log(responseData.message)
       })
   }
-
-
 }
