@@ -1,5 +1,9 @@
-<h1>Add Products</h1>
-<h3>Input fields below and then click <b>Add Product</b> to save.</h3>
+<div class="top-bar">
+  <div>
+    <h1>Add Products</h1>
+    <h3>Input fields below and then click <b>Add Product</b> to save.</h3>
+  </div>
+</div>
 
 <div class = formcontainer>
 <form  #itemForm="ngForm">
@@ -48,10 +52,8 @@
   <br>
   <mat-slide-toggle [(ngModel)]="isChecked" name="availability">Available?</mat-slide-toggle>
   </div>
-
-  <div class = "bottomfield">
+  
   <button mat-raised-button color="accent" class=" submitbtn" (click)="onAddItem(itemForm)">Add Product</button>
-  </div>
 
 </form>
 </div>

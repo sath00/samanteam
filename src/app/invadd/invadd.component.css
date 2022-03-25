@@ -1,3 +1,10 @@
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  background-color: #FFDB58;
+  padding: 5px;
+  align-items: center;
+}
 .topfield {
   padding: 2rem 2rem 1rem;
 }
@@ -12,14 +19,11 @@
   border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow);
   width: 80%;
+ 
 }
 
 .formcontainer:hover{
   box-shadow: none;
-}
-
-.bottomfield {
-  margin-left: 28rem;
 }
 
 .submitbtn {
@@ -32,6 +36,9 @@
   cursor: pointer;
   margin-bottom: 3rem;
   margin-right: 2rem;
+  width:12%; 
+  margin-left:44%;
+  margin-right:44%;
 }
 
 .example-full-width {
@@ -49,3 +56,4 @@ h3 {
   font-size: 0.87rem;
   font-family: 'Poppins', sans-serif;
 }
+
