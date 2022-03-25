@@ -3,6 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormGroup, FormControl, NgForm  } from '@angular/forms';
 import { Product } from '../models/Product';
 import { ProductService } from '../services/product.service'
+import {MatSnackBar} from '@angular/material/snack-bar'
 
 
 @Component({
@@ -14,7 +15,7 @@ export class InvaddComponent implements OnInit{
   
   isChecked = true;
 
-  constructor(public productService: ProductService){}
+  constructor(public productService: ProductService, private _snackBar: MatSnackBar){}
   ngOnInit(): void {}
 
   onAddItem(form:NgForm){
@@ -29,6 +30,7 @@ export class InvaddComponent implements OnInit{
     if(form.invalid){
       return;
     }
+    this._snackBar.open("Product added!", "Dismiss");
     this.productService.addProduct(
         form.value.ProductName,
         form.value.ProductDisc,
