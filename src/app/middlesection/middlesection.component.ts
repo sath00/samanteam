@@ -74,6 +74,7 @@ export class MiddlesectionComponent implements OnInit {
   }
 
   toggleAvailability(product:Product):void{
+    //this.productService.updateAvailability(product._id, product.availability)
     if(product.availability == "Available"){
       product.availability = "Not Available";
     }else{
