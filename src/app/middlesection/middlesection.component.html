@@ -3,7 +3,7 @@
   <h1>Inventory</h1>
   <h3> Hello <b>Romel</b>, what would you like to do today?</h3>
 </div>
-
+<div style="display: flex;">
   <form class="search-form">
     <input type="text" placeholder="Search">
     <button class="search-btn">
@@ -12,6 +12,7 @@
   </form>
   <a routerLink="/add-products"><div class="add-product"><span class="material-icons">add</span></div></a>
   <div class="edit-inventory" id="edit-inv" (click)="onEditInventory()"><span class="material-icons">edit</span></div>
+</div>
 </div>
 <div class="inventory-table">
     <table>
