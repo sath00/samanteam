@@ -4,9 +4,9 @@
   <h3> Hello <b>Romel</b>, what would you like to do today?</h3>
 </div>
 <div style="display: flex;">
-  <form class="search-form">
-    <input type="text" placeholder="Search">
-    <button class="search-btn">
+  <form class="search-form" #search="ngForm">
+    <input type="search" placeholder="Search" ngModel name="SearchText">
+    <button class="search-btn" id="searchButton" (click)="onSearch(search)">
       <span class="material-icons" >search</span>
     </button>
   </form>

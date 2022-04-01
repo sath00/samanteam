@@ -29,7 +29,7 @@
   cursor: pointer;
 }
 
-.top-bar input[type='text'] {
+.top-bar input[type='search'] {
   padding: 6px;
   margin-right: 5px;
   border: none;
