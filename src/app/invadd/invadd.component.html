@@ -1,7 +1,10 @@
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>X</button>
+</mat-dialog-actions>
 <h1>Add Products</h1>
 <h3>Input fields below and then click <b>Add Product</b> to save.</h3>
 
-<div class = formcontainer>
+
 <form  #itemForm="ngForm">
   <div class = "topfield">
     <mat-form-field class="example-full-width" appearance="fill">
@@ -49,12 +52,13 @@
   <mat-slide-toggle [(ngModel)]="isChecked" name="availability">Available?</mat-slide-toggle>
   </div>
 
-  <div class = "bottomfield">
-  <button mat-raised-button color="accent" class=" submitbtn" (click)="onAddItem(itemForm)">Add Product</button>
-  </div>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button (click)="onAddItem(itemForm)">Add Product</button>
+  </mat-dialog-actions>
 
 </form>
-</div>
+
 
 <!--
 <h1>Add Products</h1>
