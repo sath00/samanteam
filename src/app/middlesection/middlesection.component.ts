@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { reduce, Subscription } from 'rxjs';
 //imported the product service 
 import { ProductService } from '../services/product.service';
 //imported the product model so we can use it as a sort of template for variables
@@ -22,11 +22,12 @@ export class MiddlesectionComponent implements OnInit {
   isModified = false;
   //instatiated our product service
   constructor(public productService: ProductService, private dialog:MatDialog) { }
+  //search results
+  searchResults:Product[] = [];
 
 
   //ng on init serves as a constructor when we initialize the InvviewComponent
   ngOnInit(): void {
-
     //we call the funtion getProducts from our product service
     this.productService.getProducts();
     //Product subscription is given a subscription value or an observable where we can subscribe to
@@ -37,6 +38,7 @@ export class MiddlesectionComponent implements OnInit {
 
 
   }
+
   //destroys the subscription to avoid memory leaks
   ngOnDestroy():void {
       this.productSubscription.unsubscribe();
@@ -75,14 +77,31 @@ export class MiddlesectionComponent implements OnInit {
     if(form.invalid){
       return;
     }
+    var invtable = document.getElementById("invTable")!; 
+    var noresults = document.getElementById("cannotFind")!;
+    noresults.style.display = "none";
+
     //Search string is stored in variable "searchString"
     var searchString = form.value.SearchText;
     console.log("Search string is '" + searchString + "'")
 
     //INSERT SEARCH API HERE
-    //INSERT DISPLAY FUNCTION HERE BASED ON API RESULT
-      //IF FOUND: DISPLAY FOUND PRODUCTS
-      //ELSE NULL: DISPLAY "CANNOT BE FOUND" SCREEN/MESSAGE
+    this.productService.searchProduct(searchString)
+    .subscribe((res:Product[])=>{
+      //stored the results of the API call in the searchResults variable
+      this.searchResults = res;
+      console.log(this.searchResults)
+
+      if(this.searchResults.length == 0){       //if results return nothing
+        console.log("Result cannot be found.")
+        invtable.style.display = "none";        //hide table
+        noresults.style.display = "block";      //show "Product cannot be found." message
+      }else{
+        this.products = this.searchResults;     //table will be built based on search results
+        invtable.style.display = "block";       //show table
+      }
+
+    })
 
     form.resetForm();
   }
@@ -104,4 +123,13 @@ export class MiddlesectionComponent implements OnInit {
     dialogConfig.autoFocus = true;
     this.dialog.open(InvaddComponent,dialogConfig)
   } 
+
+  dismissMessage() {
+    var invtable = document.getElementById("invTable")!; 
+    var noresults = document.getElementById("cannotFind")!;
+    invtable.style.display = "block"; 
+    noresults.style.display = "none";
+
+    this.productService.getProducts();
+  }
 }
