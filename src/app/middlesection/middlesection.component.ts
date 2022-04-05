@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { ProductService } from '../services/product.service';
 //imported the product model so we can use it as a sort of template for variables
 import { Product } from '../models/Product'
+import { MatDialog } from '@angular/material/dialog';
+import { ProdeditComponent } from '../prodedit/prodedit.component';
 
 @Component({
   selector: 'app-middlesection',
@@ -18,7 +20,7 @@ export class MiddlesectionComponent implements OnInit {
   //instantaite isModified that tracks changes on the inventory
   isModified = false;
   //instatiated our product service
-  constructor(public productService: ProductService) { }
+  constructor(public productService: ProductService, public dialog: MatDialog) { }
 
 
   //ng on init serves as a constructor when we initialize the InvviewComponent
@@ -59,7 +61,13 @@ export class MiddlesectionComponent implements OnInit {
     
   }
 
-
+  onProdEdit(i:number):void{
+    const dialogRef = this.dialog.open(ProdeditComponent, {
+      width: '50%',
+      height: '70%',
+      data: this.products[i]
+    })
+  }
   onConfirmDelete(name:string, productID:string):void{
 
   }

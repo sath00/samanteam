@@ -27,7 +27,7 @@
         </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let product of products">
+          <tr *ngFor="let product of products, index as i">
             <td>{{product.name}}</td>
             <td>{{product.description}}</td>
             <td>{{product.price}}</td>
@@ -40,7 +40,7 @@
             <td id="delete" class="">
               <button class="del-btn" (click)="onDeleteProduct(product._id, product.name)"><span class="material-icons">delete</span></button>
             </td>
-            <td id="edit" class=""><button class="edit-btn"><span class="material-icons">edit</span></button></td>
+            <td id="edit" class=""><button class="edit-btn" (click)="onProdEdit(i)"><span class="material-icons">edit</span></button></td>
           </tr>
       </tbody>
       <!--

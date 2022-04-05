@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule  } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';  
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,7 @@ import { SidesectionComponent } from './sidesection/sidesection.component';
 import { InvviewComponent } from './invview/invview.component';
 import { InvdashComponent } from './invdash/invdash.component';
 import { InvaddComponent } from './invadd/invadd.component';
+import { ProdeditComponent } from './prodedit/prodedit.component';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { InvaddComponent } from './invadd/invadd.component';
     SidesectionComponent,
     InvviewComponent,
     InvdashComponent,
-    InvaddComponent
+    InvaddComponent,
+    ProdeditComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { InvaddComponent } from './invadd/invadd.component';
     MatIconModule,
     MatButtonModule,
     MatSlideToggleModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
