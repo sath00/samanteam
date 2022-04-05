@@ -5,6 +5,8 @@ import { ProductService } from '../services/product.service';
 //imported the product model so we can use it as a sort of template for variables
 import { Product } from '../models/Product'
 import { FormGroup, FormControl, NgForm  } from '@angular/forms';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { InvaddComponent } from '../invadd/invadd.component';
 
 @Component({
   selector: 'app-middlesection',
@@ -19,7 +21,7 @@ export class MiddlesectionComponent implements OnInit {
   //instantaite isModified that tracks changes on the inventory
   isModified = false;
   //instatiated our product service
-  constructor(public productService: ProductService) { }
+  constructor(public productService: ProductService, private dialog:MatDialog) { }
 
 
   //ng on init serves as a constructor when we initialize the InvviewComponent
@@ -95,4 +97,11 @@ export class MiddlesectionComponent implements OnInit {
     this.productService.updateAvailability(product._id, product.availability)
     this.isModified = true;
   }
+
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(InvaddComponent,dialogConfig)
+  } 
 }
