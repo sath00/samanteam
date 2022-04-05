@@ -23,7 +23,6 @@ export class InvaddComponent implements OnInit{
 
     if (this.isChecked){
         availability = "Available";
-        console.log("toggle is activated")
     }
 
     if(form.invalid){
