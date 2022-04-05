@@ -9,6 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule  } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatSelectModule} from '@angular/material/select';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,9 +43,12 @@ import { InvaddComponent } from './invadd/invadd.component';
     MatIconModule,
     MatButtonModule,
     MatSlideToggleModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[InvaddComponent]
 })
 export class AppModule { }
