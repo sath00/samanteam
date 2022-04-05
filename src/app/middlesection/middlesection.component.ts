@@ -7,6 +7,7 @@ import { Product } from '../models/Product'
 import { FormGroup, FormControl, NgForm  } from '@angular/forms';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { InvaddComponent } from '../invadd/invadd.component';
+import { ProdeditComponent } from '../prodedit/prodedit.component';
 
 @Component({
   selector: 'app-middlesection',
@@ -67,7 +68,13 @@ export class MiddlesectionComponent implements OnInit {
     
   }
 
-
+  onProdEdit(i:number):void{
+    const dialogRef = this.dialog.open(ProdeditComponent, {
+      width: '50%',
+      height: '70%',
+      data: this.products[i]
+    })
+  }
   onConfirmDelete(name:string, productID:string):void{
 
   }
