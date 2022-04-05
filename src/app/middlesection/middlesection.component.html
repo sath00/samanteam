@@ -4,6 +4,7 @@
   <h3> Hello <b>Romel</b>, what would you like to do today?</h3>
 </div>
 <div style="display: flex;">
+  <div class="refresh-inventory" id="refreshInv" (click)="ngOnInit()"><span class="material-icons">sync</span></div>
   <form class="search-form" #search="ngForm">
     <input type="search" placeholder="Search" ngModel name="SearchText">
     <button class="search-btn" id="searchButton" (click)="onSearch(search)">

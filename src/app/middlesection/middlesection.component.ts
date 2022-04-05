@@ -36,6 +36,8 @@ export class MiddlesectionComponent implements OnInit {
     .subscribe((products: Product[]) => {
       this.products = products
     })
+
+
   }
 
   //destroys the subscription to avoid memory leaks
