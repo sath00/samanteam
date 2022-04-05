@@ -100,9 +100,9 @@ app.get('/api/items', (req, res) => {
 })
 
 //this is the api for searching products
-app.get("/search/:key", async (req, res) => {
+app.get("/api/search/:key", async (req, res) => {
     //print to console what is searched
-    console.log(req.params.key)
+    // console.log(req.params.key)
     let data = await Product.find(
         {
             "$or":[
@@ -113,5 +113,23 @@ app.get("/search/:key", async (req, res) => {
     )
     res.send(data)
 })
+
+//api for obtaining a single product data
+app.get("/api/get-product/:id",(req,res)=>{
+    console.log(req.params.id);
+    Product.findOne({ _id: mongoose.Types.ObjectId(req.params.id)})
+    .then((result)=>{
+        res.status(200).json(result);
+        //should we add a checker if the returned document is null or not?
+    }).catch(err => {
+        res.status(400).json({
+            error: err._message
+        })
+    })
+})
+
+
+
+
 
 module.exports = app;
