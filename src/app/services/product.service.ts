@@ -14,7 +14,7 @@ export class ProductService {
   constructor(private http:HttpClient) { }
 
   getProducts(){
-    this.http.get<{_id:string,name:string, description:string,price:string,category:string,image:string,availability:string}[]>('http://localhost:3000/api/items').subscribe((productsData)=>{
+    this.http.get<Product[]>('http://localhost:3000/api/products').subscribe((productsData)=>{
       this.products = productsData;
       this.productsUpdated.next(this.products);
     })
@@ -35,14 +35,15 @@ export class ProductService {
             image: image,
             availability: availability
         }
-        this.http.post<{message:string}>('http://localhost:3000/api/add-items',prod)
+        this.http.post<{message:string}>('http://localhost:3000/api/add-product',prod)
         .subscribe((responseData)=>{
-            console.log(responseData.message)
+            console.log(responseData.message);
+            this.getProducts();
         })
     }
 
   deleteProduct(productID:string){
-    this.http.delete<{ message: string }>('http://localhost:3000/api/remove-item/'+productID)
+    this.http.delete<{ message: string }>('http://localhost:3000/api/remove-product/'+productID)
     .subscribe((responseData)=>{
       
       this.products = this.products.filter(product => product._id != productID)
@@ -57,13 +58,13 @@ export class ProductService {
        _id:productID,
        availability:availability
      }
-    this.http.post<{ message: string }>('http://localhost:3000/api/item/availability', value)
+    this.http.post<{ message: string }>('http://localhost:3000/api/product/availability', value)
       .subscribe((responseData) => {
         console.log(responseData.message)
       })
   }
 
-  searchProduct(){
-    
+  searchProduct(key:string){
+    return this.http.get<Product[]>('http://localhost:3000/api/search/'+key)
   }
 }

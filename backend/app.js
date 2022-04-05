@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Product = require('./models/products');
+const Category = require('./models/category');
 const bodyparser = require('body-parser');
 
 
@@ -32,8 +33,14 @@ app.use((req, res, next) => {
     next();
 })
 
-//api for deleting items
-app.delete('/api/remove-item/:id', (req, res) => {
+
+///////////////////////////////////////////////////////////////////////
+/////////////////// PRODUCTS API START HERE ///////////////////////////
+///////////////////////////////////////////////////////////////////////
+
+
+//api for deleting products
+app.delete('/api/remove-product/:id', (req, res) => {
     Product.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) }).then(result => {
         if (result.deletedCount > 0) {
             res.status(200).json({
@@ -44,12 +51,16 @@ app.delete('/api/remove-item/:id', (req, res) => {
                 message: 'Product was not found!'
             });
         }
+    }).catch((err) => {
+        res.status(400).json({
+            error: err._message
+        })
     })
 })
 
 
-//api for adding items 
-app.post('/api/add-items', (req, res) => {
+//api for adding product 
+app.post('/api/add-product', (req, res) => {
     const product = new Product({
         name: req.body.name,
         description: req.body.description,
@@ -69,10 +80,9 @@ app.post('/api/add-items', (req, res) => {
     })
 })
 
-//this is the api for marking items as sold out or available
-
-app.post('/api/item/availability', (req, res) => {
-    Product.updateOne({ _id:req.body._id }, { availability: req.body.availability })
+//this is the api for marking products as sold out or available
+app.post('/api/product/availability', (req, res) => {
+    Product.updateOne({ _id: req.body._id }, { availability: req.body.availability })
         .then(result => {
             if (result.modifiedCount > 0) {
                 res.status(200).json({
@@ -87,8 +97,8 @@ app.post('/api/item/availability', (req, res) => {
 })
 
 
-//this is the api for getting the items in the database
-app.get('/api/items', (req, res) => {
+//this is the api for getting the products in the database
+app.get('/api/products', (req, res) => {
     Product.find()
         .then((result) => {
             res.status(200).json(result);
@@ -101,33 +111,84 @@ app.get('/api/items', (req, res) => {
 
 //this is the api for searching products
 app.get("/api/search/:key", async (req, res) => {
-    //print to console what is searched
-    // console.log(req.params.key)
     let data = await Product.find(
         {
-            "$or":[
-                { "name":{$regex:req.params.key}},
-                { "category":{$regex:req.params.key}}
+            "$or": [
+                { "name": { $regex: req.params.key } },
+                { "category": { $regex: req.params.key } }
             ]
         }
     )
-    res.send(data)
+    res.json(data)
 })
 
 //api for obtaining a single product data
-app.get("/api/get-product/:id",(req,res)=>{
+app.get("/api/get-product/:id", (req, res) => {
     console.log(req.params.id);
-    Product.findOne({ _id: mongoose.Types.ObjectId(req.params.id)})
-    .then((result)=>{
-        res.status(200).json(result);
-        //should we add a checker if the returned document is null or not?
-    }).catch(err => {
+    Product.findOne({ _id: mongoose.Types.ObjectId(req.params.id) })
+        .then((result) => {
+            res.status(200).json(result);
+            //should we add a checker if the returned document is null or not?
+        }).catch(err => {
+            res.status(400).json({
+                error: err._message
+            })
+        })
+})
+
+
+///////////////////////////////////////////////////////////////////////
+/////////////////// CATEGORY API START HERE ///////////////////////////
+///////////////////////////////////////////////////////////////////////
+
+
+//api for adding new category
+app.post('/api/add-category', (req, res) => {
+    const category = new Category({
+        name: req.body.name,
+    });
+    category.save().then(() => {
+        res.status(200).json({
+            message: 'Category added successfully!'
+        });
+    }).catch((err) => {
         res.status(400).json({
             error: err._message
         })
     })
 })
 
+
+//api for getting category list
+app.get('/api/categories', (req, res) => {
+    Category.find()
+        .then((result) => {
+            res.status(200).json(result);
+        }).catch((err) => {
+            res.status(400).json({
+                error: err._message
+            })
+        })
+})
+
+//api for deleting category
+app.delete('/api/remove-category/:id', (req, res) => {
+    Category.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) }).then(result => {
+        if (result.deletedCount > 0) {
+            res.status(200).json({
+                message: 'Category was succesfully deleted!'
+            });
+        } else {
+            res.status(200).json({
+                message: 'Category was not found!'
+            });
+        }
+    }).catch((err) => {
+        res.status(400).json({
+            error: err._message
+        })
+    })
+})
 
 
 

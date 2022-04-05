@@ -1,0 +1,5 @@
+ - the add button should be disabled if ang edit function is toggled to avoid conflicts
+
+
+ - in category, should we make it like a reference so that when we edit/delete a category it edits/deletes everything that is in that category?
+ 
