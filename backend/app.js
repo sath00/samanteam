@@ -99,6 +99,19 @@ app.get('/api/items', (req, res) => {
         })
 })
 
-
+//this is the api for searching products
+app.get("/search/:key", async (req, res) => {
+    //print to console what is searched
+    console.log(req.params.key)
+    let data = await Product.find(
+        {
+            "$or":[
+                { "name":{$regex:req.params.key}},
+                { "category":{$regex:req.params.key}}
+            ]
+        }
+    )
+    res.send(data)
+})
 
 module.exports = app;
