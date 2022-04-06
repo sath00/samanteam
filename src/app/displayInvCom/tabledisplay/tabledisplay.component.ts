@@ -5,6 +5,9 @@ import { ProductService } from 'src/app/services/product.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { InvaddComponent } from 'src/app/invadd/invadd.component';
+import { ProdeditComponent } from 'src/app/prodedit/prodedit.component';
 
 
 @Component({
@@ -22,7 +25,7 @@ export class TabledisplayComponent implements OnInit, AfterViewInit{
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort; 
   //instatiated our product service 
-  constructor(public productService: ProductService) {
+  constructor(public productService: ProductService, private dialog:MatDialog) {
     this.products = new MatTableDataSource();
   }
 
@@ -65,12 +68,29 @@ export class TabledisplayComponent implements OnInit, AfterViewInit{
     if(this.displayedColumns.includes('delete')){
       this.displayedColumns.pop();
       this.displayedColumns.pop();
+      this.displayedColumns.pop();
+      this.displayedColumns.push('availability');
     }else{
+      this.displayedColumns.pop();
+      this.displayedColumns.push('availabilityToggle');
       this.displayedColumns.push('delete');
       this.displayedColumns.push('edit');
     }
   }
 
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(InvaddComponent,dialogConfig)
+  } 
+  onProdEdit(row:Product):void{
+    const dialogRef = this.dialog.open(ProdeditComponent, {
+      disableClose: true,
+      autoFocus: true,
+      data: row
+    })
+  }
 
   onConfirmDelete(name:string, productID:string):void{
 
