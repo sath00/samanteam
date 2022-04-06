@@ -70,8 +70,6 @@ export class MiddlesectionComponent implements OnInit {
 
   onProdEdit(i:number):void{
     const dialogRef = this.dialog.open(ProdeditComponent, {
-      width: '50%',
-      height: '70%',
       data: this.products[i]
     })
   }
