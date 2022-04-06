@@ -70,6 +70,8 @@ export class MiddlesectionComponent implements OnInit {
 
   onProdEdit(i:number):void{
     const dialogRef = this.dialog.open(ProdeditComponent, {
+      disableClose: true,
+      autoFocus: true,
       data: this.products[i]
     })
   }
