@@ -24,3 +24,15 @@ div div button {
 div {
     justify-content: space-between;
 }
+#edit-inventory-btn.active{
+  background-color: yellow;
+}
+
+#on-create-btn:disabled {
+  background-color: lightgray;
+}
+
+.del-btn:hover, .edit-btn:hover {
+  background-color: yellow;
+}
+

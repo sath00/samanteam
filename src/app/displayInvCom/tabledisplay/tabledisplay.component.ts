@@ -67,11 +67,15 @@ export class TabledisplayComponent implements OnInit, AfterViewInit{
   //handles the edit button on the top
   onEditInventory():void{
     if(this.displayedColumns.includes('delete')){
+      document.getElementById('edit-inventory-btn')?.classList.remove('active');
+      (document.getElementById('on-create-btn')as HTMLInputElement ).disabled = false;
       this.displayedColumns.pop();
       this.displayedColumns.pop();
       this.displayedColumns.pop();
       this.displayedColumns.push('availability');
     }else{
+      document.getElementById('edit-inventory-btn')?.classList.add('active');
+      (document.getElementById('on-create-btn')as HTMLInputElement ).disabled = true;
       this.displayedColumns.pop();
       this.displayedColumns.push('availabilityToggle');
       this.displayedColumns.push('delete');
