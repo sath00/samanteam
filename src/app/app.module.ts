@@ -11,6 +11,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule} from '@angular/material/dialog';
 import { MatSelectModule} from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +25,8 @@ import { InvviewComponent } from './invview/invview.component';
 import { InvdashComponent } from './invdash/invdash.component';
 import { InvaddComponent } from './invadd/invadd.component';
 import { ProdeditComponent } from './prodedit/prodedit.component';
+import { GriddisplayComponent } from './displayInvCom/griddisplay/griddisplay.component';
+import { TabledisplayComponent } from './displayInvCom/tabledisplay/tabledisplay.component';
 
 
 @NgModule({
@@ -32,7 +38,9 @@ import { ProdeditComponent } from './prodedit/prodedit.component';
     InvviewComponent,
     InvdashComponent,
     InvaddComponent,
-    ProdeditComponent
+    ProdeditComponent,
+    GriddisplayComponent,
+    TabledisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +55,11 @@ import { ProdeditComponent } from './prodedit/prodedit.component';
     MatSlideToggleModule,
     MatCardModule,
     MatDialogModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent],

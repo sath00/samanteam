@@ -3,19 +3,33 @@
   <h1>Inventory</h1>
   <h3> Hello <b>Romel</b>, what would you like to do today?</h3>
 </div>
+<<<<<<< HEAD
 <div style="display: flex;">
   <div class="refresh-inventory" id="refreshInv" (click)="ngOnInit()"><span class="material-icons">sync</span></div>
   <form class="search-form" #search="ngForm">
     <input type="search" placeholder="Search" ngModel name="SearchText">
     <button class="search-btn" id="searchButton" (click)="onSearch(search)">
+=======
+<!-- <div style="display: flex;">
+  <form class="search-form">
+    <input type="text" placeholder="Search">
+    <button class="search-btn">
+>>>>>>> displayInvComponents
       <span class="material-icons" >search</span>
     </button>
   </form>
   <div class="add-product" (click)="onCreate()"><span class="material-icons">add</span></div>
   <div class="edit-inventory" id="edit-inv" (click)="onEditInventory()"><span class="material-icons">edit</span></div>
+</div> -->
 </div>
+<<<<<<< HEAD
 </div>
 <div class="inventory-table" id="invTable">
+=======
+<app-tabledisplay></app-tabledisplay>
+<!-- 
+<div class="inventory-table">
+>>>>>>> displayInvComponents
     <table>
       <thead>
         <tr>
@@ -43,7 +57,7 @@
             </td>
             <td id="edit" class=""><button class="edit-btn" (click)="onProdEdit(i)"><span class="material-icons">edit</span></button></td>
           </tr>
-      </tbody>
+      </tbody> -->
       <!--
       <div class="prevent-click"></div>
       <div class="confirm-del active">
@@ -52,8 +66,8 @@
         <button class="no-btn">No</button>
       </div>
       --->
-    </table>
-</div>
+    <!-- </table>
+</div> -->
 
 <div class="action-cards" id="cannotFind">
   <a (click)="dismissMessage()">
