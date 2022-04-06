@@ -3,6 +3,14 @@
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Titan" #input>
     </mat-form-field>
+    <!-- <div class="refresh-inventory" id="refreshInv" (click)="ngOnInit()"><span class="material-icons">sync</span></div>
+    <form class="search-form" #search="ngForm">
+        <input type="search" placeholder="Search" ngModel name="SearchText">
+        <button class="search-btn" id="searchButton">
+        <span class="material-icons" >search</span>
+        </button>
+    </form> -->
+    
     <div>
     <button mat-raised-button (click)="onCreate()">
         <mat-icon>add</mat-icon>

@@ -18,6 +18,7 @@ import { ProdeditComponent } from 'src/app/prodedit/prodedit.component';
 export class TabledisplayComponent implements OnInit, AfterViewInit{
   //instantiated array as Product array
   products: MatTableDataSource<Product>;
+  // searchResults:Product[] = [];
   displayedColumns: string[] = ['name','description', 'price', 'category', 'image',  'availability'];
   //created a new subscription to be used when subscribing to observables
   private productSubscription: Subscription = new Subscription();
@@ -105,4 +106,37 @@ export class TabledisplayComponent implements OnInit, AfterViewInit{
     }
     this.productService.updateAvailability(product._id, product.availability)
   }
+  //Search product function
+  // onSearch(form:NgForm){
+  //   if(form.invalid){
+  //     return;
+  //   }
+  //   var invtable = document.getElementById("invTable")!; 
+  //   var noresults = document.getElementById("cannotFind")!;
+  //   noresults.style.display = "none";
+
+  //   //Search string is stored in variable "searchString"
+  //   var searchString = form.value.SearchText;
+  //   console.log("Search string is '" + searchString + "'")
+
+  //   //INSERT SEARCH API HERE
+  //   this.productService.searchProduct(searchString)
+  //   .subscribe((res:Product[])=>{
+  //     //stored the results of the API call in the searchResults variable
+  //     this.searchResults = res;
+  //     console.log(this.searchResults)
+
+  //     if(this.searchResults.length == 0){       //if results return nothing
+  //       console.log("Result cannot be found.")
+  //       invtable.style.display = "none";        //hide table
+  //       noresults.style.display = "block";      //show "Product cannot be found." message
+  //     }else{
+  //       this.products = this.searchResults;     //table will be built based on search results
+  //       invtable.style.display = "block";       //show table
+  //     }
+
+  //   })
+
+  //   form.resetForm();
+  // }
 }
