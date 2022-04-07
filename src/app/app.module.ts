@@ -22,7 +22,6 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MiddlesectionComponent } from './middlesection/middlesection.component';
 import { SidesectionComponent } from './sidesection/sidesection.component';
-// import { InvviewComponent } from './invview/invview.component';
 import { InvdashComponent } from './invdash/invdash.component';
 import { InvaddComponent } from './invadd/invadd.component';
 import { ProdeditComponent } from './prodedit/prodedit.component';

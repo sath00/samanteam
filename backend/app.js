@@ -2,11 +2,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
-//image upload imports
-// const fileUpload = require('express-fileupload');
-// const cloudinary = require('cloudinary').v2;
 const ProductRoute = require('./routes/products');
 const CategoryRoute = require('./routes/categories');
+const path = require('path')
 
 //our mongodb URI
 const dbURI = 'mongodb+srv://Admin:tkjKS74gP3BHehQT@cluster0.58qld.mongodb.net/Romels-Webmart?retryWrites=true&w=majority'
@@ -14,14 +12,6 @@ const dbURI = 'mongodb+srv://Admin:tkjKS74gP3BHehQT@cluster0.58qld.mongodb.net/R
 
 //instatiated the express app
 const app = express();
-
-// //cloudinary storage for image uploads
-// cloudinary.config({ 
-//     cloud_name: 'ddzczxjsb', 
-//     api_key: '285244465365237', 
-//     api_secret: 'MU5GTnp1vj0FZljnfLFbTybKQu8' 
-//   });
-
 
 //function that I used to connect to our mongodb
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -33,11 +23,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 //used the body parser for parsing posts requests data this is later used in /add-items
 app.use(bodyparser.json());
 app.use(express.json());
-
-//for image upload
-// app.use(fileUpload({
-//     useTempFiles:true
-// }))
+app.use("/images", express.static(path.join("backend/images")))
 
 //cors headers
 app.use((req, res, next) => {

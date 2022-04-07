@@ -12,8 +12,10 @@ import { Category } from '../models/Category';
 export class InvaddComponent implements OnInit{
   isChecked = true;
   categoryList: Category[] = this.categoryService.getCategoryList()
-  constructor(public productService: ProductService, public categoryService: CategoryService){}
-  
+  constructor(public productService: ProductService, public categoryService: CategoryService){};
+  selectedFile: any ="";
+  imagePrev:string="";
+
   ngOnInit(): void {
   }
 
@@ -34,8 +36,17 @@ export class InvaddComponent implements OnInit{
         form.value.ProductDisc,
         form.value.ProductPrice,
         form.value.ProductCat,
-        "img.png",
+        this.selectedFile[0],
         availability);
     form.resetForm();
+    this.imagePrev=''
+  }
+  onImagePicked(event: Event){
+    this.selectedFile = (event.target as HTMLInputElement).files
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile[0])
+    reader.onload = ()=>{
+      this.imagePrev = reader.result!.toString();
+    }
   }
 }

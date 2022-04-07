@@ -29,7 +29,7 @@ export class ProdeditComponent implements OnInit {
     availability:this.data.availability, 
     category:this.data.category,
     price:this.data.price,
-    image:this.data.image
+    imagePath:this.data.imagePath
   }
   ngOnInit(): void {
     if(this.data.availability=='Available'){
@@ -49,7 +49,7 @@ export class ProdeditComponent implements OnInit {
     this.data.category = this.tempProduct.category;
     this.data.description = this.tempProduct.description;
     this.data.price = this.tempProduct.price;
-    this.data.image = "img.png" //this.tempProduct.image;
+    this.data.imagePath = this.tempProduct.imagePath;
 
     this.productService.updateProduct(this.tempProduct)
 
