@@ -1,0 +1,25 @@
+<html lang = "en">
+<head>
+  <meta charset="utf-8">
+  <title>Angular-Formatted Inventory</title>
+  <!-- ICONS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- STYLESHEET -->
+  <!-- <link rel="stylesheet" href="/inv_dash.css"> -->
+</head>
+
+<body>
+  <div class="container">
+    <!--============ SIDEBAR (LEFT) ============-->
+    <app-sidebar></app-sidebar>
+    <!--============ MIDDLE (MAIN) SECTION ============-->
+    <div class="middle-part">
+      <router-outlet></router-outlet>
+    </div>
+    <!--============ RIGHT SECTION "sidesection"  ============-->
+    <!-- removed for now since the scripting was done in javascript and not typescript -->
+    <!--============ END OF RIGHT SECTION ============-->
+  </div>
+  <script src="/inv_dash.js"></script>
+</body>
+</html>

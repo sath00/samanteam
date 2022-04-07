@@ -1,0 +1,249 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --color-primary: darkgoldenrod;
+  --color-info-dark: #7d8da1;
+  --color-info-light: #c2c2c2;
+  --color-dark: #363949;
+  --color-light: gainsboro;
+  --color-primary-variant: #111e88;
+  --color-dark-variant: #677483;
+  --color-background: #f6f6f9;
+  --color-yellow: #fff748;
+  --color-light-toggler: gainsboro;
+  --color-header-mobile: khaki;
+  --color-notes: var(--color-dark);
+  --color-white: white;
+
+  --card-border-radius: 2rem;
+  --card-border-radius-mobile: 0.5rem;
+  --card-padding: 1.8rem;
+  --card-padding-mobile: 0.8rem;
+  --card-shadow: 0 2rem 3rem var(--color-info-light);
+
+  --border-radius-1: 0.4rem;
+  --border-radius-2: 0.8rem;
+  --border-radius-3: 1.2rem;
+}
+
+/* ------------ DARK THEME ------------ */
+.dark-theme {
+  --color-background: #363949;
+  --color-light: #282c34;
+  --color-dark: gainsboro;
+  --color-dark-variant: white;
+  --color-shadow: #656a74;
+  --card-shadow: 0 2rem 3rem var(--color-light);
+  --color-header-mobile: var(--color-light);
+  --color-notes: #fff748;
+  --color-white: #282c34;
+
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  appearance: none;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  background: var(--color-background);
+  user-select: none;
+  overflow-x: hidden;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+h3 {
+  font-size: 0.87rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+}
+
+h5 {
+  font-size: 0.77rem;
+}
+
+small {
+  color: var(--color-dark);
+  font-size: 0.75rem;
+}
+
+/*Link colors*/
+a {
+  color: var(--color-dark);
+}
+
+p {
+  color: var(--color-dark-variant);
+}
+
+b {
+  color: var(--color-dark);
+}
+
+.primary {
+  color: var(--color-primary);
+}
+
+.danger {
+  color: var(--color-danger);
+}
+
+.success {
+  color: var(--color-success);
+}
+
+.warning {
+  color: var(--color-warning);
+}
+
+/*The area of the page where everything is contained.*/
+.container {
+  background: var(--color-background);
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: 14rem auto; /*23rem;*/
+  margin: 0 auto;
+  width: 96%;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* ------------ SIDEBAR STYLES ------------ */
+
+/* ------------ MIDDLE PART STYLES ------------ */
+
+.middle-part {
+  margin-top: 1.4rem;
+}
+
+.middle-part h1 {
+  color: var(--color-dark);
+}
+
+.middle-part h3 {
+  color: var(--color-dark);
+  font-weight:300;
+}
+
+.middle-part b {
+  font-weight: 500;
+}
+
+.middle-part .action-cards {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+
+.middle-part .action-cards > a > div {
+  background: white;
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  margin-top: 1rem;
+  box-shadow: var(--card-shadow);
+  transition: all 300ms ease;
+}
+
+.middle-part .action-cards > a > div:hover {
+  box-shadow: none;
+}
+
+/*Icons within action cards*/
+.middle-part .action-cards > a span {
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: white;
+  font-size: 5rem;
+}
+
+.middle-part .action-cards .add-products {
+  background-color: cadetblue;
+  color: white;
+}
+
+.middle-part .action-cards .remove-products {
+  background-color: indianred;
+  color: white;
+}
+
+.middle-part .action-cards .view-products {
+  background-color: blue;
+  color: white;
+}
+
+.middle-part .action-cards .edit-products {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+.middle-part .inventory-table {
+  margin-top: 2.37rem;
+}
+
+.middle-part .inventory-table table {
+  color: var(--color-dark);
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  transition: all 300ms ease;
+}
+
+.middle-part .inventory-table table:hover {
+  box-shadow: none;
+}
+
+.middle-part table thead {
+  height: 2.8rem;
+}
+
+.middle-part table tbody td {
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-light);
+  color: var(--color-dark);
+}
+
+.middle-part table tbody tr:last-child td {
+  border: none;
+}
+
+
+/* ------------ RIGHT SIDE STYLES ------------ */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,21 @@
+
+.mat-form-field {
+    font-size: 14px;
+    width:50%;
+  }
+div div button {
+    height:60px;
+    width: 60px;
+    margin-left: 10px;
+}
+div {
+    justify-content: space-between;
+}
+#edit-inventory-btn.active{
+  background-color: yellow;
+}
+
+#on-create-btn:disabled {
+  background-color: lightgray;
+}
+
