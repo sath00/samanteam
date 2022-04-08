@@ -14,7 +14,14 @@
   <div class="edit-inventory" id="edit-inv" (click)="onEditInventory()"><span class="material-icons">edit</span></div>
 </div> -->
 </div>
-<app-tabledisplay></app-tabledisplay>
+<mat-tab-group animationDuration="0ms">
+  <mat-tab label="Products"> 
+    <app-tabledisplay></app-tabledisplay>
+  </mat-tab>
+  <mat-tab label="Categories">
+    <app-catdisplay></app-catdisplay>
+  </mat-tab>
+</mat-tab-group>
 <!-- 
 <div class="inventory-table">
     <table>

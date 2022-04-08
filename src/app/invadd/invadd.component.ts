@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { FormGroup, FormControl, NgForm  } from '@angular/forms';
-import { Product } from '../models/Product';
+import { NgForm  } from '@angular/forms';
 import { ProductService } from '../services/product.service'
+import { CategoryService } from '../services/category.service';
+import { Category } from '../models/Category';
 
 @Component({
   selector: 'app-invadd',
@@ -10,21 +10,22 @@ import { ProductService } from '../services/product.service'
   styleUrls: ['./invadd.component.css']
 })
 export class InvaddComponent implements OnInit{
-  
   isChecked = true;
+  categoryList: Category[] = this.categoryService.getCategoryList()
+  constructor(public productService: ProductService, public categoryService: CategoryService){}
+  
+  ngOnInit(): void {
+  }
 
-  constructor(public productService: ProductService){}
-  ngOnInit(): void {}
+  ngOnDestroy():void{
+  }
+
 
   onAddItem(form:NgForm){
-
     var availability:string = "Not Available";
-   
-
     if (this.isChecked){
         availability = "Available";
     }
-
     if(form.invalid){
       return;
     }
@@ -33,7 +34,7 @@ export class InvaddComponent implements OnInit{
         form.value.ProductDisc,
         form.value.ProductPrice,
         form.value.ProductCat,
-        form.value.ProductImg,
+        "img.png",
         availability);
     form.resetForm();
   }

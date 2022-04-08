@@ -15,18 +15,21 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MiddlesectionComponent } from './middlesection/middlesection.component';
 import { SidesectionComponent } from './sidesection/sidesection.component';
-import { InvviewComponent } from './invview/invview.component';
+// import { InvviewComponent } from './invview/invview.component';
 import { InvdashComponent } from './invdash/invdash.component';
 import { InvaddComponent } from './invadd/invadd.component';
 import { ProdeditComponent } from './prodedit/prodedit.component';
 import { GriddisplayComponent } from './displayInvCom/griddisplay/griddisplay.component';
 import { TabledisplayComponent } from './displayInvCom/tabledisplay/tabledisplay.component';
+import { CataddComponent } from './catadd/catadd.component';
+import { CatdisplayComponent } from './catdisplay/catdisplay.component';
 
 
 @NgModule({
@@ -35,12 +38,13 @@ import { TabledisplayComponent } from './displayInvCom/tabledisplay/tabledisplay
     SidebarComponent,
     MiddlesectionComponent,
     SidesectionComponent,
-    InvviewComponent,
     InvdashComponent,
     InvaddComponent,
     ProdeditComponent,
     GriddisplayComponent,
-    TabledisplayComponent
+    TabledisplayComponent,
+    CataddComponent,
+    CatdisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +63,8 @@ import { TabledisplayComponent } from './displayInvCom/tabledisplay/tabledisplay
     MatGridListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -13,8 +13,10 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
+// PRODUCTS
+
   getProducts(){
-    this.http.get<Product[]>('http://localhost:3000/api/products').subscribe((productsData)=>{
+    this.http.get<Product[]>('http://localhost:3000/api/product/list').subscribe((productsData)=>{
       this.products = productsData;
       this.productsUpdated.next(this.products);
     })
@@ -25,7 +27,6 @@ export class ProductService {
   }
 
   addProduct(name: string, description: string, price: string, category: string, image: string, availability: string) {
-        
         const prod: Product = {
             _id:"",
             name: name,
@@ -35,7 +36,7 @@ export class ProductService {
             image: image,
             availability: availability
         }
-        this.http.post<{message:string}>('http://localhost:3000/api/add-product',prod)
+        this.http.post<{message:string}>('http://localhost:3000/api/product/add',prod)
         .subscribe((responseData)=>{
             console.log(responseData.message);
             this.getProducts();
@@ -43,11 +44,9 @@ export class ProductService {
     }
 
   deleteProduct(productID:string){
-    this.http.delete<{ message: string }>('http://localhost:3000/api/remove-product/'+productID)
+    this.http.delete<{ message: string }>('http://localhost:3000/api/product/remove/'+productID)
     .subscribe((responseData)=>{
-      
       this.products = this.products.filter(product => product._id != productID)
-      // this.products = updatedProds [WARNING IDK IF THIS IS IMPORTANT OR NOT SO BEST NOT TO TOUCH HAHAHAHA BASI MALIMTAN UNYA - Joey]
       this.productsUpdated.next([...this.products])
       console.log(responseData.message)
     })
@@ -64,7 +63,15 @@ export class ProductService {
       })
   }
 
+  updateProduct(product:Product) {
+    this.http.put<{ message: string }>('http://localhost:3000/api/product/edit/'+product._id, product)
+      .subscribe((responseData) => {
+        console.log(responseData.message);
+        this.getProducts();
+      })
+  }
+
   searchProduct(key:string){
-    return this.http.get<Product[]>('http://localhost:3000/api/search/'+key)
+    return this.http.get<Product[]>('http://localhost:3000/api/product/search/'+key)
   }
 }

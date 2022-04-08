@@ -1,0 +1,15 @@
+/* to have the X button at the rightmost */
+.top-bar .mat-dialog-actions{
+    float: right;
+  }
+  
+  /* top-bar X button style (needs more perhaps) */
+  .top-bar .mat-stroked-button{
+    border-radius: var(--card-border-radius);
+  }
+  
+  .bottom-bar .mat-stroked-button{
+    background-color:lightgrey ;
+    border-radius: var(--card-border-radius);
+  }
+  

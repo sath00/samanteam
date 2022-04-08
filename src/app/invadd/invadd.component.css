@@ -95,3 +95,8 @@ h3 {
   border-radius: var(--card-border-radius);
 }
 
+/* hide default file button for image upload */
+input[type='file']{  
+  visibility: hidden;  
+}  
+

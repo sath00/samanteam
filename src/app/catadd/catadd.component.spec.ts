@@ -1,21 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { InvaddComponent } from './invadd.component';
 
+import { CataddComponent } from './catadd.component';
 
-
-describe('InvaddComponent', () => {
-  let component: InvaddComponent;
-  let fixture: ComponentFixture<InvaddComponent>;
+describe('CataddComponent', () => {
+  let component: CataddComponent;
+  let fixture: ComponentFixture<CataddComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InvaddComponent ]
+      declarations: [ CataddComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InvaddComponent);
+    fixture = TestBed.createComponent(CataddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

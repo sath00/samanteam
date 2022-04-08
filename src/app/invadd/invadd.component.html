@@ -35,9 +35,8 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
-        <mat-select matSelect ngModel name = "ProductCat" required> 
-          <mat-option value="Option 1">Option 1</mat-option>
-          <mat-option value="Option 2">Option 2</mat-option>
+        <mat-select matSelect ngModel name = "ProductCat" required > 
+          <mat-option *ngFor="let cat of categoryList" value="{{cat.name}}">{{cat.name}}</mat-option>
         </mat-select>
       </mat-form-field>      
 
@@ -46,7 +45,8 @@
         <textarea matInput placeholder="Ex. Humot haha" ngModel name="ProductDisc" required></textarea>
       </mat-form-field>
 
-      <button mat-stroked-button id="upldBtn" >Upload Image</button>
+      <button mat-stroked-button id="upldBtn" (click)="filepicker.click()">Upload Image</button>
+      <input type="file" #filepicker>
 
       <div id="status">
         <mat-label>Status</mat-label>
@@ -55,12 +55,12 @@
       
 
     </div>
-     <!--  need it for now to add item since upload image is not yet done. just uncomment to add item
-      <mat-form-field appearance="outline">
+      <!-- need it for now to add item since upload image is not yet done. just uncomment to add item -->
+      <!-- <mat-form-field appearance="outline">
         <mat-label>Upload Image</mat-label>
         <textarea matInput ngModel name = "ProductImg"></textarea>
-      </mat-form-field>
- -->
+      </mat-form-field> -->
+
     </form> 
 
     <div class="bottom-bar">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { reduce, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 //imported the product service 
 import { ProductService } from '../services/product.service';
 //imported the product model so we can use it as a sort of template for variables
