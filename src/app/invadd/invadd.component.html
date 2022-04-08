@@ -31,7 +31,10 @@
 
     <div class="mid-fields">  
       
-      <img id="prdImg" src="https://via.placeholder.com/250">
+
+      <img id="prdImg" *ngIf="imagePrev!=='' && imagePrev" [src]="imagePrev">
+      <img id="prdImg" *ngIf="imagePrev=='' || imagePrev==null" src="https://via.placeholder.com/250">
+      
 
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
@@ -46,7 +49,7 @@
       </mat-form-field>
 
       <button mat-stroked-button id="upldBtn" (click)="filepicker.click()">Upload Image</button>
-      <input type="file" #filepicker>
+      <input type="file" #filepicker (change)="onImagePicked($event)">
 
       <div id="status">
         <mat-label>Status</mat-label>

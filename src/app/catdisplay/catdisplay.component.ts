@@ -7,6 +7,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CataddComponent } from '../catadd/catadd.component';
+import { CateditComponent } from '../catedit/catedit.component';
 
 @Component({
   selector: 'app-catdisplay',
@@ -60,4 +61,34 @@ export class CatdisplayComponent implements OnInit {
     dialogConfig.autoFocus = true;
     this.dialog.open(CataddComponent,dialogConfig)
   }
+
+  //Deletefunction
+  onDeleteCat(row:Category):void {
+    if(confirm("Do you want to remove '"+row.name+"' from the inventory?")){
+      this.categoryService.deleteCategory(row._id);
+    }
+  }
+
+  onEditCat(row:Category):void{
+    const dialogRef = this.dialog.open(CateditComponent, {
+      disableClose: true,
+      autoFocus: true,
+      data: row
+    })
+  }
+
+    //handles the edit button on the top
+    onEditInventory():void{
+      if(this.displayedColumns.includes('delete')){
+        document.getElementById('edit-inventory-btn')?.classList.remove('active');
+        (document.getElementById('on-create-btn')as HTMLInputElement ).disabled = false;
+        this.displayedColumns.pop();
+        this.displayedColumns.pop();
+      }else{
+        document.getElementById('edit-inventory-btn')?.classList.add('active');
+        (document.getElementById('on-create-btn')as HTMLInputElement ).disabled = true;
+        this.displayedColumns.push('delete');
+        this.displayedColumns.push('edit');
+      }
+    }
 }

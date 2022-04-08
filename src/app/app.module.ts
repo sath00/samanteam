@@ -22,7 +22,6 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MiddlesectionComponent } from './middlesection/middlesection.component';
 import { SidesectionComponent } from './sidesection/sidesection.component';
-// import { InvviewComponent } from './invview/invview.component';
 import { InvdashComponent } from './invdash/invdash.component';
 import { InvaddComponent } from './invadd/invadd.component';
 import { ProdeditComponent } from './prodedit/prodedit.component';
@@ -30,6 +29,7 @@ import { GriddisplayComponent } from './displayInvCom/griddisplay/griddisplay.co
 import { TabledisplayComponent } from './displayInvCom/tabledisplay/tabledisplay.component';
 import { CataddComponent } from './catadd/catadd.component';
 import { CatdisplayComponent } from './catdisplay/catdisplay.component';
+import { CateditComponent } from './catedit/catedit.component';
 
 
 @NgModule({
@@ -44,7 +44,8 @@ import { CatdisplayComponent } from './catdisplay/catdisplay.component';
     GriddisplayComponent,
     TabledisplayComponent,
     CataddComponent,
-    CatdisplayComponent
+    CatdisplayComponent,
+    CateditComponent
   ],
   imports: [
     BrowserModule,

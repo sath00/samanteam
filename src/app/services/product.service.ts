@@ -26,17 +26,18 @@ export class ProductService {
         return this.productsUpdated.asObservable();
   }
 
-  addProduct(name: string, description: string, price: string, category: string, image: string, availability: string) {
-        const prod: Product = {
-            _id:"",
-            name: name,
-            price: price,
-            description: description,
-            category: category,
-            image: image,
-            availability: availability
-        }
-        this.http.post<{message:string}>('http://localhost:3000/api/product/add',prod)
+  addProduct(name: string, description: string, price: string, category: string, image: File, availability: string) {
+        
+        const prodData = new FormData();
+        prodData.append('name',name);
+        prodData.append('price',price);
+        prodData.append('description',description);
+        prodData.append('availability',availability);
+        prodData.append('_id',"");
+        prodData.append('category',category)
+        prodData.append('image',image)
+
+        this.http.post<{message:string}>('http://localhost:3000/api/product/add',prodData)
         .subscribe((responseData)=>{
             console.log(responseData.message);
             this.getProducts();

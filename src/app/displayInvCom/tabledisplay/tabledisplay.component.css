@@ -2,7 +2,7 @@ table {
     width: 100%;
 }
 
-.mat-column-name, .mat-column-price, .mat-column-category, .mat-column-image, .mat-column-availability{
+.mat-column-name, .mat-column-price, .mat-column-category, .mat-column-availability{
     width: 15%;
     padding-right: 10px;
 }
@@ -36,3 +36,11 @@ div {
   background-color: yellow;
 }
 
+img {
+  width: 40px;
+  height: 40px;
+}
+
+mat-cell{
+  height: 100px;
+}
