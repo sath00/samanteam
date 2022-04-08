@@ -29,6 +29,7 @@ import { GriddisplayComponent } from './displayInvCom/griddisplay/griddisplay.co
 import { TabledisplayComponent } from './displayInvCom/tabledisplay/tabledisplay.component';
 import { CataddComponent } from './catadd/catadd.component';
 import { CatdisplayComponent } from './catdisplay/catdisplay.component';
+import { CateditComponent } from './catedit/catedit.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { CatdisplayComponent } from './catdisplay/catdisplay.component';
     GriddisplayComponent,
     TabledisplayComponent,
     CataddComponent,
-    CatdisplayComponent
+    CatdisplayComponent,
+    CateditComponent
   ],
   imports: [
     BrowserModule,
