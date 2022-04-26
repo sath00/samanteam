@@ -29,7 +29,7 @@
   cursor: pointer;
 }
 
-.top-bar input[type='text'] {
+.top-bar input[type='search'] {
   padding: 6px;
   margin-right: 5px;
   border: none;
@@ -38,14 +38,22 @@
   background-color: transparent;
 }
 
-.top-bar a .add-product {
+.top-bar .refresh-inventory{
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.top-bar .add-product {
   background-color: white;
   padding: 5px;
   border-radius: 10px;
   margin-right: 5px;
+  cursor: pointer;
 }
 
-.top-bar a .add-product > span{
+.top-bar .add-product > span{
   font-size: 27px;
 }
 
@@ -178,6 +186,7 @@ h3 {
 
 .middle-part .inventory-table {
   margin-top: 2.37rem;
+  display: block;
 }
 
 .middle-part .inventory-table table {
@@ -208,6 +217,30 @@ h3 {
 .middle-part table tbody tr:last-child td {
   border: none;
 }
+
+
+/*Styles for "Product cannot be found" message below.*/
+#cannotFind{
+  margin: auto;
+  padding: 1rem;
+  display: none;
+}
+
+#cannotFind .view-products{
+  background-color: #F6F6F9;
+  color: rgb(238, 152, 136);
+  text-align: center;
+  box-shadow: none;
+}
+
+#cannotFind h2{
+  font-family: 'Poppins', sans-serif;
+}
+
+#cannotFind span{
+  color: rgb(238, 152, 136);
+}
+/*Product cannot be found ends here.*/
 
 /*
 .prevent-click.active{
@@ -248,3 +281,4 @@ h3 {
   font: 1em sans-serif;
   color: white;
 }*/
+

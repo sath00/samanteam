@@ -3,82 +3,25 @@
   <h1>Inventory</h1>
   <h3> Hello <b>Romel</b>, what would you like to do today?</h3>
 </div>
-<div style="display: flex;">
-  <form class="search-form">
-    <input type="text" placeholder="Search">
-    <button class="search-btn">
-      <span class="material-icons" >search</span>
-    </button>
-  </form>
-  <a routerLink="/add-products"><div class="add-product"><span class="material-icons">add</span></div></a>
-  <div class="edit-inventory" id="edit-inv" (click)="onEditInventory()"><span class="material-icons">edit</span></div>
-</div>
-</div>
-<div class="inventory-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Category</th>
-          <th>Image</th>
-          <th>Availability</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let product of products">
-            <td>{{product.name}}</td>
-            <td>{{product.description}}</td>
-            <td>{{product.price}}</td>
-            <td>{{product.category}}</td>
-            <td>{{product.image}}</td>
-            <td id="availability-content" class="active">{{product.availability}}</td>
-            <td id="availability-toggle" class="">
-              <mat-slide-toggle [checked]="product.availability === 'Available' ? true : false" (change)="(toggleAvailability(product))" ></mat-slide-toggle>
-            </td>
-            <td id="delete" class="">
-              <button class="del-btn" (click)="onDeleteProduct(product._id, product.name)"><span class="material-icons">delete</span></button>
-            </td>
-            <td id="edit" class=""><button class="edit-btn"><span class="material-icons">edit</span></button></td>
-          </tr>
-      </tbody>
-      <!--
-      <div class="prevent-click"></div>
-      <div class="confirm-del active">
-        <h2>Are you sure to remove the item?</h2>
-        <button class="yes-btn">Yes</button>
-        <button class="no-btn">No</button>
-      </div>
-      --->
-    </table>
-</div>
 
+</div>
+<mat-tab-group animationDuration="0ms" >
+  <mat-tab label="Products"> 
+    <app-tabledisplay></app-tabledisplay>
+  </mat-tab>
+  <mat-tab label="Categories">
+    <app-catdisplay></app-catdisplay>
+  </mat-tab>
+</mat-tab-group>
 
-<!-- old design
-<div class="action-cards">
-  <a routerLink ="/add-products">
-    <div class="add-products">
-      <span class="material-icons">add_shopping_cart</span>
-      <h2> Add Products </h2>
-    </div>
-  </a>
-  <a href = "#">
-    <div class="remove-products">
-      <span class="material-icons">remove_shopping_cart</span>
-      <h2> Remove Products </h2>
-    </div>
-  </a>
-  <a routerLink="/view-products">
+<div class="action-cards" id="cannotFind">
+  <a (click)="dismissMessage()">
     <div class="view-products">
-      <span class="material-icons">inventory_2</span>
-      <h2> View Products </h2>
+      <span class="material-icons">production_quantity_limits</span>
+      <h2> Product cannot be found. </h2>
+      (Click here to return and dismiss message.)
     </div>
   </a>
-  <a href = "#">
-    <div class="edit-products">
-      <span class="material-icons">edit</span>
-      <h2> Edit Products </h2>
-    </div>
-  </a>
-</div>-->
+</div>
+
+

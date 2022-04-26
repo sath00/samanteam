@@ -4,6 +4,10 @@ import { Subscription } from 'rxjs';
 import { ProductService } from '../services/product.service';
 //imported the product model so we can use it as a sort of template for variables
 import { Product } from '../models/Product'
+import { FormGroup, FormControl, NgForm  } from '@angular/forms';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { InvaddComponent } from '../invadd/invadd.component';
+import { ProdeditComponent } from '../prodedit/prodedit.component';
 
 @Component({
   selector: 'app-middlesection',
@@ -18,7 +22,9 @@ export class MiddlesectionComponent implements OnInit {
   //instantaite isModified that tracks changes on the inventory
   isModified = false;
   //instatiated our product service
-  constructor(public productService: ProductService) { }
+  constructor(public productService: ProductService, private dialog:MatDialog) { }
+  //search results
+  searchResults:Product[] = [];
 
 
   //ng on init serves as a constructor when we initialize the InvviewComponent
@@ -30,7 +36,10 @@ export class MiddlesectionComponent implements OnInit {
     .subscribe((products: Product[]) => {
       this.products = products
     })
+
+
   }
+
   //destroys the subscription to avoid memory leaks
   ngOnDestroy():void {
       this.productSubscription.unsubscribe();
@@ -59,9 +68,49 @@ export class MiddlesectionComponent implements OnInit {
     
   }
 
-
+  onProdEdit(i:number):void{
+    const dialogRef = this.dialog.open(ProdeditComponent, {
+      disableClose: true,
+      autoFocus: true,
+      data: this.products[i]
+    })
+  }
   onConfirmDelete(name:string, productID:string):void{
 
+  }
+
+  //Search product function
+  onSearch(form:NgForm){
+    if(form.invalid){
+      return;
+    }
+    var invtable = document.getElementById("invTable")!; 
+    var noresults = document.getElementById("cannotFind")!;
+    noresults.style.display = "none";
+
+    //Search string is stored in variable "searchString"
+    var searchString = form.value.SearchText;
+    console.log("Search string is '" + searchString + "'")
+
+    //INSERT SEARCH API HERE
+    this.productService.searchProduct(searchString)
+    .subscribe((res:Product[])=>{
+      //stored the results of the API call in the searchResults variable
+      this.searchResults = res;
+      console.log(this.searchResults)
+
+      if(this.searchResults.length == 0){       //if results return nothing
+        console.log("Result cannot be found.")
+        invtable.style.display = "none";        //hide table
+        noresults.style.display = "block";      //show "Product cannot be found." message
+      }else{
+        this.products = this.searchResults;     //table will be built based on search results
+        invtable.style.display = "block";       //show table
+      }
+
+    })
+
+    form.resetForm();
   }
 
   toggleAvailability(product:Product):void{
@@ -73,5 +122,21 @@ export class MiddlesectionComponent implements OnInit {
     }
     this.productService.updateAvailability(product._id, product.availability)
     this.isModified = true;
+  }
+
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(InvaddComponent,dialogConfig)
+  } 
+
+  dismissMessage() {
+    var invtable = document.getElementById("invTable")!; 
+    var noresults = document.getElementById("cannotFind")!;
+    invtable.style.display = "block"; 
+    noresults.style.display = "none";
+
+    this.productService.getProducts();
   }
 }

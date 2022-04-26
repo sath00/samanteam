@@ -9,15 +9,29 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule  } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatSelectModule} from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatStepperModule} from '@angular/material/stepper';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MiddlesectionComponent } from './middlesection/middlesection.component';
 import { SidesectionComponent } from './sidesection/sidesection.component';
-import { InvviewComponent } from './invview/invview.component';
 import { InvdashComponent } from './invdash/invdash.component';
 import { InvaddComponent } from './invadd/invadd.component';
+import { ProdeditComponent } from './prodedit/prodedit.component';
+import { GriddisplayComponent } from './displayInvCom/griddisplay/griddisplay.component';
+import { TabledisplayComponent } from './displayInvCom/tabledisplay/tabledisplay.component';
+import { CataddComponent } from './catadd/catadd.component';
+import { CatdisplayComponent } from './catdisplay/catdisplay.component';
+import { CateditComponent } from './catedit/catedit.component';
+import { StoreinfoComponent } from './storeinfo/storeinfo.component';
 
 
 @NgModule({
@@ -26,9 +40,15 @@ import { InvaddComponent } from './invadd/invadd.component';
     SidebarComponent,
     MiddlesectionComponent,
     SidesectionComponent,
-    InvviewComponent,
     InvdashComponent,
-    InvaddComponent
+    InvaddComponent,
+    ProdeditComponent,
+    GriddisplayComponent,
+    TabledisplayComponent,
+    CataddComponent,
+    CatdisplayComponent,
+    CateditComponent,
+    StoreinfoComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +61,18 @@ import { InvaddComponent } from './invadd/invadd.component';
     MatIconModule,
     MatButtonModule,
     MatSlideToggleModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTabsModule,
+    MatStepperModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[InvaddComponent]
 })
 export class AppModule { }

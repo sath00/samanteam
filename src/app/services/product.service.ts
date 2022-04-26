@@ -13,8 +13,10 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
+// PRODUCTS
+
   getProducts(){
-    this.http.get<{_id:string,name:string, description:string,price:string,category:string,image:string,availability:string}[]>('http://localhost:3000/api/items').subscribe((productsData)=>{
+    this.http.get<Product[]>('http://localhost:3000/api/product/list').subscribe((productsData)=>{
       this.products = productsData;
       this.productsUpdated.next(this.products);
     })
@@ -24,29 +26,28 @@ export class ProductService {
         return this.productsUpdated.asObservable();
   }
 
-  addProduct(name: string, description: string, price: string, category: string, image: string, availability: string) {
+  addProduct(name: string, description: string, price: string, category: string, image: File, availability: string) {
         
-        const prod: Product = {
-            _id:"",
-            name: name,
-            price: price,
-            description: description,
-            category: category,
-            image: image,
-            availability: availability
-        }
-        this.http.post<{message:string}>('http://localhost:3000/api/add-items',prod)
+        const prodData = new FormData();
+        prodData.append('name',name);
+        prodData.append('price',price);
+        prodData.append('description',description);
+        prodData.append('availability',availability);
+        prodData.append('_id',"");
+        prodData.append('category',category)
+        prodData.append('image',image)
+
+        this.http.post<{message:string}>('http://localhost:3000/api/product/add',prodData)
         .subscribe((responseData)=>{
-            console.log(responseData.message)
+            console.log(responseData.message);
+            this.getProducts();
         })
     }
 
   deleteProduct(productID:string){
-    this.http.delete<{ message: string }>('http://localhost:3000/api/remove-item/'+productID)
+    this.http.delete<{ message: string }>('http://localhost:3000/api/product/remove/'+productID)
     .subscribe((responseData)=>{
-      
       this.products = this.products.filter(product => product._id != productID)
-      // this.products = updatedProds [WARNING IDK IF THIS IS IMPORTANT OR NOT SO BEST NOT TO TOUCH HAHAHAHA BASI MALIMTAN UNYA - Joey]
       this.productsUpdated.next([...this.products])
       console.log(responseData.message)
     })
@@ -57,9 +58,21 @@ export class ProductService {
        _id:productID,
        availability:availability
      }
-    this.http.post<{ message: string }>('http://localhost:3000/api/item/availability', value)
+    this.http.post<{ message: string }>('http://localhost:3000/api/product/availability', value)
       .subscribe((responseData) => {
         console.log(responseData.message)
       })
+  }
+
+  updateProduct(product:Product) {
+    this.http.put<{ message: string }>('http://localhost:3000/api/product/edit/'+product._id, product)
+      .subscribe((responseData) => {
+        console.log(responseData.message);
+        this.getProducts();
+      })
+  }
+
+  searchProduct(key:string){
+    return this.http.get<Product[]>('http://localhost:3000/api/product/search/'+key)
   }
 }
