@@ -13,7 +13,7 @@ export class CategoryService {
 
     constructor(private http: HttpClient) { }
 
-    // PRODUCTS
+    // CATEGORY
 
     getCategory() {
         this.http.get<Category[]>('http://localhost:3000/api/category/list').subscribe((categoriesData) => {

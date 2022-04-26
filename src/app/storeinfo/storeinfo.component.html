@@ -5,21 +5,86 @@
     </div>
 </div>
 
-<div class="mat-elevation-z8">
-    <section class="main">
-        <section class="sub-main">
-            This is where you put the input form
-            <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
-        </section>
-        <section class="sub-main">
-            This is where you display the store's info/location. 
-            With delete and edit.
-            <p>
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-            </p>
-        </section>
-    </section>
-</div>
+<div class="display">
+    <h1>Store Details</h1>
+    <h3>Display store information here</h3>
+ </div>
+
+<mat-stepper orientation="vertical">
+
+    <form #itemForm="ngForm" autocomplete="off">
+
+            <mat-step>
+                <ng-template matStepLabel>Contact Number</ng-template>
+                <ng-template matStepContent>
+                        <mat-form-field class="input-field" appearance="fill">
+                          <mat-label>Telephone</mat-label>
+                          <span matPrefix>+32 &nbsp;</span>
+                          <input type="tel" matInput placeholder="555-555-1234">
+                          <mat-icon matSuffix>mode_edit</mat-icon>
+                        </mat-form-field>
+    
+                        <mat-form-field class="input-field" appearance="fill">
+                            <mat-label>Cellphone</mat-label>
+                            <span matPrefix>+63 &nbsp;</span>
+                            <input type="tel" matInput placeholder="123456789">
+                            <mat-icon matSuffix>mode_edit</mat-icon>
+                          </mat-form-field>
+    
+                  <button mat-button matStepperNext>Next</button>
+                </ng-template>
+              </mat-step>
+    
+              <mat-step>
+                <ng-template matStepLabel>Address</ng-template>
+                <ng-template matStepContent>
+                    <mat-form-field class="input-field" appearance="fill">
+                        <mat-label>Street Address</mat-label>
+                        <input matInput placeholder="Enter">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+    
+                      <mat-form-field class="input-field" appearance="fill">
+                        <mat-label>City</mat-label>
+                        <input matInput placeholder="Enter">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+    
+                      <mat-form-field class="input-field" appearance="fill">
+                        <mat-label>State/Province</mat-label>
+                        <input matInput placeholder="Enter">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+    
+                      <mat-form-field class="input-field" appearance="fill">
+                        <mat-label>Zip/Postal Code</mat-label>
+                        <input matInput placeholder="Enter">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+    
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </ng-template>
+              </mat-step>
+    
+              <mat-step>
+                <ng-template matStepLabel>Other Details</ng-template>
+                <mat-form-field class="input-field" appearance="fill">
+                    <mat-label>Other details</mat-label>
+                    <textarea matInput placeholder="Input other store information"></textarea>
+                  </mat-form-field>
+              </mat-step>
+
+              <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button >Reset</button>
+                    <button mat-button >Save Details</button>
+                </div>
+              </mat-step>
+    </form>
+    
+  </mat-stepper>
 
