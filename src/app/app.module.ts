@@ -30,6 +30,7 @@ import { TabledisplayComponent } from './displayInvCom/tabledisplay/tabledisplay
 import { CataddComponent } from './catadd/catadd.component';
 import { CatdisplayComponent } from './catdisplay/catdisplay.component';
 import { CateditComponent } from './catedit/catedit.component';
+import { StoreinfoComponent } from './storeinfo/storeinfo.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { CateditComponent } from './catedit/catedit.component';
     TabledisplayComponent,
     CataddComponent,
     CatdisplayComponent,
-    CateditComponent
+    CateditComponent,
+    StoreinfoComponent
   ],
   imports: [
     BrowserModule,

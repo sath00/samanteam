@@ -1,0 +1,35 @@
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    background-color: #FFDB58;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0;
+    padding: 1rem 1rem 0;
+  }
+  
+  h3 {
+    font-size: 0.87rem;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 1rem 0;
+  }
+  
+  *{
+      box-sizing: border-box;
+  }
+  .sub-main{
+      border: 1px solid blue;
+  }
+
+  .main{
+      display: flex;
+
+  }
+  
