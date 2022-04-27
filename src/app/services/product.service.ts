@@ -64,8 +64,18 @@ export class ProductService {
       })
   }
 
-  updateProduct(product:Product) {
-    this.http.put<{ message: string }>('http://localhost:3000/api/product/edit/'+product._id, product)
+  updateProduct(product:Product,newImage:File) {
+    const prodData = new FormData();
+    prodData.append('name', product.name);
+    prodData.append('price', product.price);
+    prodData.append('description', product.description);
+    prodData.append('availability', product.availability);
+    prodData.append('_id', "");
+    prodData.append('category', product.category._id)
+
+    prodData.append('imagePath', product.imagePath)
+    prodData.append('image',newImage)
+    this.http.put<{ message: string }>('http://localhost:3000/api/product/edit/'+product._id, prodData)
       .subscribe((responseData) => {
         console.log(responseData.message);
         this.getProducts();

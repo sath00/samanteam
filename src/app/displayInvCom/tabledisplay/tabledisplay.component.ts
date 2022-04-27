@@ -30,6 +30,8 @@ export class TabledisplayComponent implements OnInit, AfterViewInit{
     this.products = new MatTableDataSource();
   }
 
+  
+
   //ng on init serves as a constructor when we initialize the InvviewComponent
   ngOnInit(): void {
     //we call the funtion getProducts from our product service
@@ -40,6 +42,7 @@ export class TabledisplayComponent implements OnInit, AfterViewInit{
       this.products = new MatTableDataSource(products);
       this.ngAfterViewInit();
     })
+
   }
   ngAfterViewInit():void{
     this.products.sort = this.sort;

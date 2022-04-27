@@ -95,3 +95,6 @@ h3 {
   border-radius: var(--card-border-radius);
 }
 
+input[type='file'] {
+  visibility: hidden;
+}
