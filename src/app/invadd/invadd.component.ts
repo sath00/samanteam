@@ -37,7 +37,7 @@ export class InvaddComponent implements OnInit{
         form.value.ProductPrice,
         form.value.ProductCat,
         this.selectedFile[0],
-        availability);
+        availability,);
     form.resetForm();
     this.imagePrev=''
   }

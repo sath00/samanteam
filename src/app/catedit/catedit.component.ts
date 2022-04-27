@@ -19,7 +19,6 @@ export class CateditComponent implements OnInit {
 
   categoryList: Category[] = this.categoryService.getCategoryList();
 
-
   tempCategory:Category = {
     _id:this.data._id, 
     name:this.data.name

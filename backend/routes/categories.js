@@ -54,15 +54,20 @@ router.delete('/remove/:id', (req, res) => {
 
 //api for editing category name
 router.put("/edit/:id", (req, res, next) => {
-    console.log(req.params.id);
-    Category.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, {
+    console.log("Category ID: " + req.params.id);
+    console.log("New category name (for checking): " + req.body.name);
+    Category.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, 
+    {
         $set: {
             name: req.body.name
         }
-    })
+    },
+    {returnOriginal: false}
+    )
         .then(result => {
             res.status(200).json({
-                updated_category: result
+                updated_category: result,
+                message: 'Category was successfully updated!'
             })
         })
         .catch(err => {
