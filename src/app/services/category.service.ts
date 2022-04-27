@@ -54,7 +54,7 @@ export class CategoryService {
     }
 
     updateCategory(category:Category) {
-        this.http.put<{ message: string }>('http://localhost:3000/api/product/edit/'+category._id, this.categories)
+        this.http.put<{ message: string }>('http://localhost:3000/api/category/edit/'+category._id, category)//this.categories)
           .subscribe((responseData) => {
             console.log(responseData.message);
             this.getCategory();
