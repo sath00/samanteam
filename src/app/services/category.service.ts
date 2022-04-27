@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../models/Category'
 import { Subject } from 'rxjs'
+import { ProductService } from './product.service'
 
 @Injectable({
     providedIn: 'root'
@@ -11,7 +12,7 @@ export class CategoryService {
     private categories: Category[] = [];
     private categoriesUpdated = new Subject<Category[]>();
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,public productService: ProductService) { }
 
     // CATEGORY
 
@@ -54,10 +55,11 @@ export class CategoryService {
     }
 
     updateCategory(category:Category) {
-        this.http.put<{ message: string }>('http://localhost:3000/api/category/edit/'+category._id, category)//this.categories)
-          .subscribe((responseData) => {
-            console.log(responseData.message);
+        console.log(category)
+        this.http.put<{ message: string }>('http://localhost:3000/api/category/edit/'+category._id, category)
+          .subscribe(() => {
             this.getCategory();
+            this.productService.getProducts();
           })
       }
 }

@@ -1,5 +1,6 @@
 const express = require('express');
 const Product = require('../models/products');
+const {Category} = require('../models/category');
 const multer = require('multer')
 const mongoose = require('mongoose');
 const router = express.Router();
@@ -30,10 +31,6 @@ const storage = multer.diskStorage({
     }
 });
 
-
-
-
-
 //api for deleting products
 router.delete('/remove/:id', (req, res) => {
     Product.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) }).then(result => {
@@ -54,13 +51,17 @@ router.delete('/remove/:id', (req, res) => {
 })
 
 //api for adding product (original)
-router.post('/add', multer({storage:storage}).single('image'), (req, res) => {
+router.post('/add', multer({storage:storage}).single('image'), async (req, res) => {
     const url = req.protocol + "://" + req.get("host");
+    let cat = null;
+    await Category.findOne({_id:mongoose.Types.ObjectId(req.body.category)}).then(result => {
+         cat = result;
+    });
     const product = new Product({
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
-        category: req.body.category,
+        category: cat,
         imagePath: url+"/images/"+req.file.filename,
         availability: req.body.availability
     });
@@ -133,14 +134,26 @@ router.get("/:id", (req, res) => {
 })
 
 //api for editing details in product
-router.put("/edit/:id", (req, res) => {
+router.put("/edit/:id", multer({storage:storage}).single('image') ,async (req, res) => {
+    let impath = "";
+    console.log(req.file)
+    if(req.file){
+        const url = req.protocol + "://" + req.get("host");
+        impath = url + "/images/" + req.file.filename;
+    }else{
+        impath = req.body.imagePath;
+    }
+    let cat = null;
+    await Category.findOne({ _id: mongoose.Types.ObjectId(req.body.category) }).then(result => {
+        cat = result;
+    });
     Product.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, {
         $set: {
             name: req.body.name,
             description: req.body.description,
             price: req.body.price,
-            category: req.body.category,
-            imagePath: req.body.imagePath,
+            category: cat,
+            imagePath: impath,
             availability: req.body.availability
         }
     })

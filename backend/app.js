@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const ProductRoute = require('./routes/products');
 const CategoryRoute = require('./routes/categories');
+const StoreInfoRoute = require('./routes/storeInformation');
 const path = require('path')
 
 //our mongodb URI
@@ -44,5 +45,8 @@ app.use("/api/product",ProductRoute);
 
 app.use("/api/category",CategoryRoute);
 
+/////////////////// StoreInfo API START HERE ///////////////////////////
+
+app.use("/api/store-info",StoreInfoRoute);
 
 module.exports = app;

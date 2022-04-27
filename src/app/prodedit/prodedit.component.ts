@@ -20,7 +20,12 @@ export class ProdeditComponent implements OnInit {
     ) { }
 
   categoryList: Category[] = this.categoryService.getCategoryList();
-
+  selectedFile: any = null;
+  imagePrev: string = "";
+  // mapped = this.categoryList.map((category) => {
+  //   const{ _id , name} = category;
+  //   return {_id,name}
+  // })
 
   tempProduct:Product = {
     _id:this.data._id, 
@@ -38,6 +43,7 @@ export class ProdeditComponent implements OnInit {
     }else{
       this.isChecked = false;
     }
+    
   }
 
   onSaveChanges(): void {
@@ -51,10 +57,19 @@ export class ProdeditComponent implements OnInit {
     this.data.description = this.tempProduct.description;
     this.data.price = this.tempProduct.price;
     this.data.imagePath = this.tempProduct.imagePath;
-
-    this.productService.updateProduct(this.tempProduct)
+    
+    this.productService.updateProduct(this.tempProduct,this.selectedFile)
+    
 
     this.dialogRef.close();
+  }
+  onImagePicked(event: Event) {
+    this.selectedFile = (event.target as HTMLInputElement).files
+    const reader = new FileReader();
+    reader.readAsDataURL(this.selectedFile[0])
+    reader.onload = () => {
+      this.imagePrev = reader.result!.toString();
+    }
   }
 
 }

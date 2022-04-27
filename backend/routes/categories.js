@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Category = require('../models/category');
+const { Category } = require('../models/category');
+const Product  = require('../models/products');
 const router = express.Router();
 
 
@@ -53,29 +54,46 @@ router.delete('/remove/:id', (req, res) => {
 })
 
 //api for editing category name
-router.put("/edit/:id", (req, res, next) => {
-    console.log("Category ID: " + req.params.id);
-    console.log("New category name (for checking): " + req.body.name);
-    Category.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, 
-    {
-        $set: {
-            name: req.body.name
-        }
-    },
-    {returnOriginal: false}
-    )
-        .then(result => {
-            res.status(200).json({
-                updated_category: result,
-                message: 'Category was successfully updated!'
-            })
-        })
+router.put("/edit/:id", (req, res) => {
+    Category.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, {
+        $set: { name: req.body.name }})
+    .then(result=>{
+        Product.updateMany({ "category._id": mongoose.Types.ObjectId(req.params.id) },
+            { "category.name": req.body.name })
         .catch(err => {
-            console.log(err);
             res.status(500).json({
                 error: err
             })
         })
+        res.status(200).json(result)
+    })
+    .catch(err => {
+        res.status(500).json({
+            error: err
+        })
+    })
+    
 })
+
+
+router.get('/test', (req, res)=>{
+    // Product.updateMany({"category._id":mongoose.Types.ObjectId(req.body._id)},
+    //     {"category.name":"Beverages"} ,
+    //     (err, result)=>{
+    //         if(err){
+    //             res.send(err);
+    //         }else{
+    //             res.send(result)
+    //         }
+            
+    //     })
+    // Product.updateMany(
+    //     {description:"123"},
+    //     {name:"12312312"})
+    // .then((result)=>{
+    //     res.send(result)
+    // })
+})
+
 
 module.exports = router;
