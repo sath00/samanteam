@@ -36,7 +36,7 @@ export class ProdeditComponent implements OnInit {
     price:this.data.price,
     imagePath:this.data.imagePath
   }
-
+  
   ngOnInit(): void {
     if(this.data.availability=='Available'){
       this.isChecked = true;

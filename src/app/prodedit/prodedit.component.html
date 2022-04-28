@@ -32,7 +32,6 @@
       <mat-form-field appearance="outline">
         <mat-label>Category</mat-label>
         <mat-select matInput [(ngModel)]="this.tempProduct.category" name = "ProductCat" required> 
-          
           <mat-option *ngFor="let cat of categoryList" [value] = "cat">{{cat.name}}</mat-option>
         </mat-select>
       </mat-form-field>      
