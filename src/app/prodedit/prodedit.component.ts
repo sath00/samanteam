@@ -32,11 +32,11 @@ export class ProdeditComponent implements OnInit {
     name:this.data.name, 
     description:this.data.description, 
     availability:this.data.availability, 
-    category:this.data.category,
+    category:this.categoryList[this.categoryList.findIndex(cat=>cat.name==this.data.category.name)],
     price:this.data.price,
     imagePath:this.data.imagePath
   }
-  
+
   ngOnInit(): void {
     if(this.data.availability=='Available'){
       this.isChecked = true;
