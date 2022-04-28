@@ -143,6 +143,7 @@ router.put("/edit/:id", multer({storage:storage}).single('image') ,async (req, r
     }else{
         impath = req.body.imagePath;
     }
+    console.log(impath)
     let cat = null;
     await Category.findOne({ _id: mongoose.Types.ObjectId(req.body.category) }).then(result => {
         cat = result;

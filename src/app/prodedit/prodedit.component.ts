@@ -26,6 +26,7 @@ export class ProdeditComponent implements OnInit {
   //   const{ _id , name} = category;
   //   return {_id,name}
   // })
+  changed: boolean = false;
 
   tempProduct:Product = {
     _id:this.data._id, 
@@ -58,12 +59,20 @@ export class ProdeditComponent implements OnInit {
     this.data.price = this.tempProduct.price;
     this.data.imagePath = this.tempProduct.imagePath;
     
-    this.productService.updateProduct(this.tempProduct,this.selectedFile)
+    if(this.changed){
+      this.selectedFile = this.selectedFile[0];
+    }else{
+      this.selectedFile = null;
+    }
+
+    this.productService.updateProduct(this.tempProduct,this.selectedFile);
     
 
     this.dialogRef.close();
   }
+
   onImagePicked(event: Event) {
+    this.changed = true; //a new image was picked
     this.selectedFile = (event.target as HTMLInputElement).files
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile[0])
