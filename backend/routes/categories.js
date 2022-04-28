@@ -36,7 +36,18 @@ router.get('/list', (req, res) => {
 
 //api for deleting category
 router.delete('/remove/:id', (req, res) => {
-    Category.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) }).then(result => {
+    console.log("Id to remove: " + req.params.id)
+    //delete the category
+    Category.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) })
+    .then(result => {
+        //when a category is deleted, edit all the products under that category (change category to "None")
+        Product.updateMany({"category._id": mongoose.Types.ObjectId(req.params.id) },
+            {"category._id": null, "category.name": "None" }) 
+        .catch(err => {
+            res.status(500).json({
+                error: err
+            })
+        })
         if (result.deletedCount > 0) {
             res.status(200).json({
                 message: 'Category was succesfully deleted!'

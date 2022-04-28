@@ -49,6 +49,7 @@ export class CategoryService {
                 console.log(responseData.message)
             })
     }
+
     getCategoryList(){
         this.getCategory()
         return this.categories
