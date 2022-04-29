@@ -20,12 +20,9 @@ export class ProdeditComponent implements OnInit {
     ) { }
 
   categoryList: Category[] = this.categoryService.getCategoryList();
-  selectedFile: any = null;
-  imagePrev: string = "";
-  // mapped = this.categoryList.map((category) => {
-  //   const{ _id , name} = category;
-  //   return {_id,name}
-  // })
+  selectedFile: any = "";
+  imagePrev: string = this.data.imagePath;
+
   changed: boolean = false;
 
   tempProduct:Product = {
@@ -37,7 +34,7 @@ export class ProdeditComponent implements OnInit {
     price:this.data.price,
     imagePath:this.data.imagePath
   }
-  
+
   ngOnInit(): void {
     if(this.data.availability=='Available'){
       this.isChecked = true;

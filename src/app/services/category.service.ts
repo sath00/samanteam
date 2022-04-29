@@ -29,7 +29,8 @@ export class CategoryService {
 
     addCategory(name: string) {
 
-        const cat: Category = {
+        const cat = {
+            userID:"1",
             _id: "",
             name: name,
         }
@@ -41,11 +42,11 @@ export class CategoryService {
     }
 
     deleteCategory(categoryID: string) {
-        this.http.delete<{ message: string }>('http://localhost:3000/api/category/remove/' + categoryID)
+        this.http.delete<{ message: string }>('http://localhost:3000/api/category/remove/' + categoryID,{body: {userID:"1"}})
             .subscribe((responseData) => {
                 this.categories = this.categories.filter(category => category._id != categoryID)
-                // this.products = updatedProds [WARNING IDK IF THIS IS IMPORTANT OR NOT SO BEST NOT TO TOUCH HAHAHAHA BASI MALIMTAN UNYA - Joey]
                 this.categoriesUpdated.next([...this.categories])
+                this.productService.getProducts();
                 console.log(responseData.message)
             })
     }
@@ -56,8 +57,12 @@ export class CategoryService {
     }
 
     updateCategory(category:Category) {
-        console.log(category)
-        this.http.put<{ message: string }>('http://localhost:3000/api/category/edit/'+category._id, category)
+        const cat = {
+            userID:"1",
+            _id:category._id,
+            name:category.name
+        }
+        this.http.put<{ message: string }>('http://localhost:3000/api/category/edit/'+category._id, cat)
           .subscribe(() => {
             this.getCategory();
             this.productService.getProducts();

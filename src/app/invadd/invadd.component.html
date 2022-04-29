@@ -40,7 +40,7 @@
         <mat-label>Category</mat-label>
         <mat-select matSelect ngModel name = "ProductCat" required > 
           <mat-option value="None">None</mat-option>
-          <mat-option *ngFor="let cat of categoryList" value="{{cat.name}}">{{cat.name}}</mat-option>
+          <mat-option *ngFor="let cat of categoryList" value="{{cat._id}}">{{cat.name}}</mat-option>
         </mat-select>
       </mat-form-field>      
 

@@ -29,6 +29,8 @@ export class ProductService {
   addProduct(name: string, description: string, price: string, category: string, image: File, availability: string) {
         
         const prodData = new FormData();
+        const userID = "1";
+        prodData.append('userID', userID);
         prodData.append('name',name);
         prodData.append('price',price);
         prodData.append('description',description);
@@ -45,7 +47,7 @@ export class ProductService {
     }
 
   deleteProduct(productID:string){
-    this.http.delete<{ message: string }>('http://localhost:3000/api/product/remove/'+productID)
+    this.http.delete<{ message: string }>('http://localhost:3000/api/product/remove/'+productID,{body:{userID:"1"}})
     .subscribe((responseData)=>{
       this.products = this.products.filter(product => product._id != productID)
       this.productsUpdated.next([...this.products])
@@ -55,6 +57,7 @@ export class ProductService {
   
   updateAvailability(productID:string,availability:string){
      const value = {
+       userID: "1",
        _id:productID,
        availability:availability
      }
@@ -66,14 +69,17 @@ export class ProductService {
 
   updateProduct(product:Product,newImage:File) {
     const prodData = new FormData();
+    const userID = "1";
+    prodData.append('userID', userID);
+
     prodData.append('name', product.name);
     prodData.append('price', product.price);
     prodData.append('description', product.description);
     prodData.append('availability', product.availability);
     prodData.append('_id', "");
-    prodData.append('category', product.category._id)
-
-    prodData.append('imagePath', product.imagePath)
+    prodData.append('category', product.category._id);
+    
+    prodData.append('imagePath', product.imagePath);
     prodData.append('image',newImage)
     this.http.put<{ message: string }>('http://localhost:3000/api/product/edit/'+product._id, prodData)
       .subscribe((responseData) => {
