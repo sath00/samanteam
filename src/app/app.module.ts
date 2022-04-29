@@ -32,6 +32,7 @@ import { CataddComponent } from './catadd/catadd.component';
 import { CatdisplayComponent } from './catdisplay/catdisplay.component';
 import { CateditComponent } from './catedit/catedit.component';
 import { StoreinfoComponent } from './storeinfo/storeinfo.component';
+import { StoreinfoeditComponent } from './storeinfo/storeinfoedit/storeinfoedit.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { StoreinfoComponent } from './storeinfo/storeinfo.component';
     CataddComponent,
     CatdisplayComponent,
     CateditComponent,
-    StoreinfoComponent
+    StoreinfoComponent,
+    StoreinfoeditComponent
   ],
   imports: [
     BrowserModule,
