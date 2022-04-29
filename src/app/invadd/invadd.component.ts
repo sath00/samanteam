@@ -31,6 +31,9 @@ export class InvaddComponent implements OnInit{
     if(form.invalid){
       return;
     }
+    if(form.value.ProductCat==="None"){
+      form.value.ProductCat = ""
+    }
     this.productService.addProduct(
         form.value.ProductName,
         form.value.ProductDisc,

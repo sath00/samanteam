@@ -2,10 +2,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
+const bcrypt = require('bcrypt');
+
+//routes
 const ProductRoute = require('./routes/products');
 const CategoryRoute = require('./routes/categories');
 const StoreInfoRoute = require('./routes/storeInformation');
 const path = require('path')
+
 
 //our mongodb URI
 const dbURI = 'mongodb+srv://Admin:tkjKS74gP3BHehQT@cluster0.58qld.mongodb.net/Romels-Webmart?retryWrites=true&w=majority'
@@ -37,7 +41,6 @@ app.use((req, res, next) => {
 
 /////////////////// PRODUCTS API START HERE //////////////////////////
 
-
 app.use("/api/product",ProductRoute);
 
 
@@ -48,5 +51,39 @@ app.use("/api/category",CategoryRoute);
 /////////////////// StoreInfo API START HERE ///////////////////////////
 
 app.use("/api/store-info",StoreInfoRoute);
+
+/////////////////// Admin login API START HERE ///////////////////////////
+
+
+//all variables are defined locally but to be updated later on
+app.post('/api/login',async (req,res) =>{
+    let hashPass = "";
+    try {
+        hashPass = await bcrypt.hash("Admin", 10)
+    } catch (e) {
+        console.log(e)
+    }
+
+    const admin = {
+        username: "Admin",
+        password: hashPass
+    }
+
+    if(req.body.username!==admin.username){
+        return res.status(401).json({message:"Invalid username!"})
+    }
+    try{
+     if(await bcrypt.compare(req.body.password,admin.password) ){
+         return res.status(200).json({message:"Login successful!"})
+     }else{
+         return res.status(401).json({message:"Invalid password!"})
+     }   
+    }catch(e){
+        if(e){
+            console.log(e);
+        }
+    }
+})
+
 
 module.exports = app;
