@@ -17,7 +17,7 @@ export class storeInfoService {
     //STORE INFO
 
     getStoreInfo() {
-        this.http.get<StoreInfo[]>('http://localhost:3000/api/storeInformation/details').subscribe((storeinfoData) => {
+        this.http.get<StoreInfo[]>('http://localhost:3000/api/store-info/details').subscribe((storeinfoData) => {
             this.storeinfo = storeinfoData;
             this.storeinfoUpdated.next(this.storeinfo);
         })
