@@ -17,6 +17,7 @@ export class StoreinfoeditComponent implements OnInit {
   ngOnInit(): void {
   }
   tempStoreInfo:StoreInfo = {
+    _id:this.data._id,
     telephone: this.data.telephone,
     cellphone: this.data.cellphone,
     streetAdd: this.data.streetAdd,

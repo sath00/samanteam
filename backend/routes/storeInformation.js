@@ -14,8 +14,8 @@ router.get('/details', (req, res)=>{
       })
 })
 
-router.post('/update', (req, res) => {
-    storeInfo.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.body.id) }, {
+router.put('/update', (req, res) => {
+    storeInfo.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.body._id) }, {
         $set: {
             telephone: req.body.telephone,
             cellphone: req.body.cellphone,

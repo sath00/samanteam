@@ -30,6 +30,7 @@ export class storeInfoService {
     updateStoreInfo(storeinfo: StoreInfo) {
         
         const storeinfoData = new FormData();
+        storeinfoData.append('_id',storeinfo._id)
         storeinfoData.append('telephone', storeinfo.telephone);
         storeinfoData.append('cellphone', storeinfo.cellphone);
         storeinfoData.append('city', storeinfo.city);
@@ -37,7 +38,7 @@ export class storeInfoService {
         storeinfoData.append('zip', storeinfo.zip);
         storeinfoData.append('details', storeinfo.details);
 
-        this.http.put<{message: string}>('http://localhost:3000/api/storeInformation/update',storeinfoData).subscribe((responseData) => {
+        this.http.put<{message: string}>('http://localhost:3000/api/store-info/update',storeinfoData).subscribe((responseData) => {
             console.log(responseData.message);
             this.getStoreInfo();
         })
