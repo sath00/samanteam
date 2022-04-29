@@ -30,7 +30,8 @@ export class storeInfoService {
     updateStoreInfo(storeinfo: StoreInfo) {
         
         const storeinfoData = new FormData();
-        storeinfoData.append('_id',storeinfo._id)
+        
+        storeinfoData.append('_id',this.storeinfo[0]._id)
         storeinfoData.append('telephone', storeinfo.telephone);
         storeinfoData.append('cellphone', storeinfo.cellphone);
         storeinfoData.append('city', storeinfo.city);
