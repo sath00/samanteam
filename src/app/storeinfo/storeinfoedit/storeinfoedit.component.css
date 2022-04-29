@@ -115,3 +115,8 @@ a.action-btn:hover{
     width: 50%;
     display: block;
   }
+
+::ng-deep .mat-dialog-container {
+    width: auto;
+    border-radius: var(--card-border-radius); 
+  }

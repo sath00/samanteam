@@ -4,26 +4,28 @@
       <h3> Hello <b>Romel</b>, this is your store information</h3>
     </div>
 </div>
+<div class="inventory-table">
+  <div class="display">
+    <div>
+      <h1>Store Details</h1>
+      <h3>Display store information here</h3>
+    </div>
+    <div>
+    <button mat-raised-button id="on-edt-btn" (click)="onEdit()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    </div>
+  </div>
+  <div>
+    <pre *ngFor="let info of this.storeInfo">
+      Cellphone Num : {{this.storeInfo[0].cellphone}}
+      City          : {{this.storeInfo[0].city}}
+      Details       : {{this.storeInfo[0].details}}
+      State         : {{this.storeInfo[0].state}}
+      Street Address: {{this.storeInfo[0].streetAdd}}
+      Telephone     : {{this.storeInfo[0].telephone}}
+    </pre>
+  </div>
+</div>
 
-<div class="display">
-  <div>
-    <h1>Store Details</h1>
-    <h3>Display store information here</h3>
-  </div>
-  <div>
-  <button mat-raised-button id="on-edt-btn" (click)="onEdit()">
-    <mat-icon>edit</mat-icon>
-  </button>
-  </div>
-</div>
-<div>
-  <pre *ngFor="let info of this.storeInfo">
-    Cellphone Num : {{this.storeInfo[0].cellphone}}
-    City          : {{this.storeInfo[0].city}}
-    Details       : {{this.storeInfo[0].details}}
-    State         : {{this.storeInfo[0].state}}
-    Street Address: {{this.storeInfo[0].streetAdd}}
-    Telephone     : {{this.storeInfo[0].telephone}}
-  </pre>
-</div>
 
