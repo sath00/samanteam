@@ -1,0 +1,87 @@
+
+<div class="top-bar">
+    <mat-dialog-actions >
+      <button mat-stroked-button mat-dialog-close>X</button>
+    </mat-dialog-actions>
+  
+    <h1>Edit Store Info</h1>
+    <h3>Input fields below and then click <b>Save Changes</b> to save.</h3>
+  </div>
+<mat-stepper orientation="horizontal" #stepper>
+
+    <form #itemForm="ngForm" autocomplete="off">
+
+            <mat-step>
+                <ng-template matStepLabel>Contact Number</ng-template>
+                <ng-template matStepContent>
+                        <mat-form-field class="input-field" appearance="fill">
+                          <mat-label>Telephone</mat-label>
+                          <span matPrefix>+32 &nbsp;</span>
+                          <input type="tel" matInput [(ngModel)]="this.tempStoreInfo.telephone" name="storeTelephone">
+                          <mat-icon matSuffix>mode_edit</mat-icon>
+                        </mat-form-field>
+    
+                        <mat-form-field class="input-field" appearance="fill">
+                            <mat-label>Cellphone</mat-label>
+                            <span matPrefix>+63 &nbsp;</span>
+                            <input type="tel" matInput  [(ngModel)]="this.tempStoreInfo.cellphone" name="storeCellphone">
+                            <mat-icon matSuffix>mode_edit</mat-icon>
+                          </mat-form-field>
+    
+                  <button mat-button matStepperNext>Next</button>
+                </ng-template>
+              </mat-step>
+    
+              <mat-step>
+                <ng-template matStepLabel>Address</ng-template>
+                <ng-template matStepContent>
+                    <mat-form-field class="input-field" appearance="fill">
+                        <mat-label>Street Address</mat-label>
+                        <input matInput  [(ngModel)]="this.tempStoreInfo.streetAdd" name="storeStreedAdd">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+    
+                      <mat-form-field class="input-field" appearance="fill">
+                        <mat-label>City</mat-label>
+                        <input matInput  [(ngModel)]="this.tempStoreInfo.city" name="storeCity">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+    
+                      <mat-form-field class="input-field" appearance="fill">
+                        <mat-label>State/Province</mat-label>
+                        <input matInput  [(ngModel)]="this.tempStoreInfo.state" name="storeState">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+    
+                      <mat-form-field class="input-field" appearance="fill">
+                        <mat-label>Zip/Postal Code</mat-label>
+                        <input matInput placeholder="Enter">
+                        <mat-icon matSuffix>mode_edit</mat-icon>
+                      </mat-form-field>
+    
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </ng-template>
+              </mat-step>
+    
+              <mat-step>
+                <ng-template matStepLabel>Other Details</ng-template>
+                <mat-form-field class="input-field" appearance="fill">
+                    <mat-label>Other details</mat-label>
+                    <textarea matInput  [(ngModel)]="this.tempStoreInfo.details" name="storeDetails"></textarea>
+                  </mat-form-field>
+              </mat-step>
+
+              <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button (click)="stepper.reset()">Reset</button>
+                    <button mat-button (click)="onSaveDetails()">Save Details</button>
+                </div>
+              </mat-step>
+    </form>
+    
+  </mat-stepper>
+
