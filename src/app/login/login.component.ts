@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm  } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,4 +14,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onLogin(form:NgForm){
+    console.log("Username:" + form.value.Username + "\nPassword:" + form.value.Password)
+
+    //insert credentials validation API
+
+    //if wrong username/password
+      //display incorrect credentials
+    //if correct
+      //login then go to home page
+    form.resetForm();
+  }
 }

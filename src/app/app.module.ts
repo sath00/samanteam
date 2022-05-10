@@ -34,6 +34,8 @@ import { CateditComponent } from './catedit/catedit.component';
 import { StoreinfoComponent } from './storeinfo/storeinfo.component';
 import { StoreinfoeditComponent } from './storeinfo/storeinfoedit/storeinfoedit.component';
 import { LoginComponent } from './login/login.component';
+import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
+import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { LoginComponent } from './login/login.component';
     CateditComponent,
     StoreinfoComponent,
     StoreinfoeditComponent,
-    LoginComponent
+    LoginComponent,
+    LoginLayoutComponent,
+    DefaultLayoutComponent,
   ],
   imports: [
     BrowserModule,

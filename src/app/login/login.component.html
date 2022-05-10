@@ -1,1 +1,35 @@
-<p>login works!</p>
+<div class ="login-container">
+    <div class="login-card">
+
+        <div class="top-bar">
+            <div class="yellow-strip">
+                <img src="./assets/romels_yellow_nocart.png" class="logo-img">
+            </div>
+        </div>
+
+        <div class="greeting"><h1>Welcome!</h1></div>
+        <div class="subhead"><h3>Please enter your username and password, then click <b>Login</b> to continue.</h3></div>
+        <form #itemForm="ngForm" autocomplete="off">    
+            <div class="username-field">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput ngModel name = "Username" required>
+                </mat-form-field>
+            </div>
+        
+
+        
+            <div class="password-field">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="text" matInput ngModel name = "Password" required>
+                </mat-form-field>
+            </div>
+        </form>
+
+        <div class="bottom-bar">
+            <button mat-stroked-button (click)="onLogin(itemForm)" class="login-btn">Login</button>
+        </div>
+
+    </div>
+</div>
