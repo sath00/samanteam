@@ -36,6 +36,9 @@ import { StoreinfoeditComponent } from './storeinfo/storeinfoedit/storeinfoedit.
 import { LoginComponent } from './login/login.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
+import { CustomerProdlistComponent } from './customer-prodlist/customer-prodlist.component';
+import { CustomerSidebarComponent } from './customer-sidebar/customer-sidebar.component';
+import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
 
 
 @NgModule({
@@ -57,6 +60,9 @@ import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.
     LoginComponent,
     LoginLayoutComponent,
     DefaultLayoutComponent,
+    CustomerProdlistComponent,
+    CustomerSidebarComponent,
+    CustomerLayoutComponent,
   ],
   imports: [
     BrowserModule,
