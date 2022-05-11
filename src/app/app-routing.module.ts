@@ -9,6 +9,7 @@ import { LoginLayoutComponent } from './layouts/login-layout/login-layout.compon
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
 import { CustomerProdlistComponent } from './customer-prodlist/customer-prodlist.component';
+import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
 
 
 const routes: Routes = [
@@ -16,13 +17,13 @@ const routes: Routes = [
   //multi-layout scheme
 
   // default routes (owner)
-  { path: '', component: DefaultLayoutComponent,
-    children: [
-      { path: 'view-dashboard', component: InvdashComponent },
-      { path: 'add-products', component: InvaddComponent },
-      { path: 'store-info', component: StoreinfoComponent}
-    ]
-  },
+  // { path: '', component: DefaultLayoutComponent,
+  //   children: [
+  //     { path: 'view-dashboard', component: InvdashComponent },
+  //     { path: 'add-products', component: InvaddComponent },
+  //     { path: 'store-info', component: StoreinfoComponent}
+  //   ]
+  // },
   
   // customer routes
   { path:'customer', component: CustomerLayoutComponent,
@@ -32,7 +33,15 @@ const routes: Routes = [
   },
 
   // login route
-  { path: 'login', component: LoginLayoutComponent}
+  {
+    path: 'admin', component: OwnerLayoutComponent,
+    children: [
+      { path: 'login', component: LoginLayoutComponent },
+      { path: 'view-dashboard', component: InvdashComponent },
+      { path: 'add-products', component: InvaddComponent },
+      { path: 'store-info', component: StoreinfoComponent }
+    ]
+  }
 ];
 
 @NgModule({

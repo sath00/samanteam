@@ -9,25 +9,21 @@
   </div>
   
   <div class="sidebar">
-    <a href="#">
-      <span class="material-icons">home</span>
-      <h3>Home</h3>
-    </a>
-    <a routerLink="view-dashboard">
+    <a routerLink="/admin/view-dashboard">
       <span class="material-icons">shopping_bag</span>
       <h3>Inventory</h3>
     </a>
-    <a routerLink="store-info">
+    <a routerLink="/admin/store-info">
       <span class="material-icons">phone</span>
       <h3>Store Information</h3>
     </a>
-    <a href="#">
+    <!-- <a href="#">
       <span class="material-icons">visibility</span>
       <h3>Overview</h3>
-    </a>
-    <a href = #>
+    </a> -->
+    <button mat-button (click) = "onLogout()">
       <span class="material-icons">logout</span>
       <h3>Logout</h3>
-    </a>
+    </button>
   </div>
 </aside>

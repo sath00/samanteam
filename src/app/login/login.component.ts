@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm  } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication/authentication.service'
 
 @Component({
   selector: 'app-login',
@@ -9,20 +10,19 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(){}
+  constructor(public authService: AuthenticationService) { }
 
   ngOnInit(): void {
   }
 
-  onLogin(form:NgForm){
+  onLogin(form: NgForm) {
     console.log("Username:" + form.value.Username + "\nPassword:" + form.value.Password)
 
-    //insert credentials validation API
-
-    //if wrong username/password
-      //prompt incorrect credentials
-    //if correct
-      //login then go to customer home page
+    if (form.valid) {
+      this.authService.login(form.value.Username, form.value.Password);
+    } else {
+      return
+    }
 
     form.resetForm();
   }

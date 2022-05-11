@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 
 //routes
 const ProductRoute = require('./routes/products');
@@ -33,7 +34,7 @@ app.use("/images", express.static(path.join("backend/images")))
 //cors headers
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS, PUT");
     next()
 })
@@ -41,22 +42,22 @@ app.use((req, res, next) => {
 
 /////////////////// PRODUCTS API START HERE //////////////////////////
 
-app.use("/api/product",ProductRoute);
+app.use("/api/product", ProductRoute);
 
 
 /////////////////// CATEGORY API START HERE ///////////////////////////
 
-app.use("/api/category",CategoryRoute);
+app.use("/api/category", CategoryRoute);
 
 /////////////////// StoreInfo API START HERE ///////////////////////////
 
-app.use("/api/store-info",StoreInfoRoute);
+app.use("/api/store-info", StoreInfoRoute);
 
 /////////////////// Admin login API START HERE ///////////////////////////
 
 
 //all variables are defined locally but to be updated later on
-app.post('/api/login',async (req,res) =>{
+app.post('/api/login', async (req, res) => {
     let hashPass = "";
     try {
         hashPass = await bcrypt.hash("Admin", 10)
@@ -69,17 +70,28 @@ app.post('/api/login',async (req,res) =>{
         password: hashPass
     }
 
-    if(req.body.username!==admin.username){
-        return res.status(401).json({message:"Invalid username!"})
+    if (req.body.username !== admin.username) {
+        return res.status(401).json({ message: "Invalid username!" })
     }
-    try{
-     if(await bcrypt.compare(req.body.password,admin.password) ){
-         return res.status(200).json({message:"Login successful!"})
-     }else{
-         return res.status(401).json({message:"Invalid password!"})
-     }   
-    }catch(e){
-        if(e){
+    try {
+        if (await bcrypt.compare(req.body.password, admin.password)) {
+            const token = jwt.sign(
+                { username: req.body.username, user_id: "1" },
+                "secret",
+                { expiresIn: "1h" }
+            );
+            return res.status(200).json(
+                {
+                    message: "Login successful!",
+                    token: token,
+                    expiresIn: 3600
+                }
+            )
+        } else {
+            return res.status(401).json({ message: "Invalid password!" })
+        }
+    } catch (e) {
+        if (e) {
             console.log(e);
         }
     }
