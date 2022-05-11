@@ -6,13 +6,13 @@ aside {
   }
   
   /*Will contain logo and close sign.*/
-  aside .topbar {
+  /* aside .topbar {
     background: var(--color-yellow);
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 1.4rem;
-  }
+  } */
   
   
   /*hide button on desxtop*/
@@ -22,10 +22,10 @@ aside {
     }
   }
   
-  aside .logo img {
+  /* aside .logo img {
     margin-left: 1rem;
     height: 4.2rem;
-  }
+  } */
   
   aside .sidebar {
     display: flex;
