@@ -36,6 +36,7 @@ import { StoreinfoeditComponent } from './storeinfo/storeinfoedit/storeinfoedit.
 import { LoginComponent } from './login/login.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
+import { CusnavComponent } from './cusnav/cusnav.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.
     LoginComponent,
     LoginLayoutComponent,
     DefaultLayoutComponent,
+    CusnavComponent,
   ],
   imports: [
     BrowserModule,
