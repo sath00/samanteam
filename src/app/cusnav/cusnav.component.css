@@ -1,0 +1,47 @@
+/*Will contain logo and close sign.*/
+aside .topbar {
+    background: var(--color-yellow);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0;
+    height: 10rem;
+  }
+
+  aside .logo img {
+    margin-left: 3rem;
+    float: center;
+    height: 6rem;
+  }
+
+  a {
+	line-height: 4;
+   
+	color: rgb(0, 0, 0);
+	font-weight: bolder;
+	text-decoration: none;
+	margin-left: 20px;
+	position: relative;
+	top: 48px;
+	left: -920px;
+}
+
+a:hover {
+	color: white;
+}
+
+a.active {
+	color: yellowgreen;
+}
+
+.mat-form-field {
+    left: 100px;
+    width: 50%;
+}
+
+.material-icons {
+  position: absolute;
+  top: 94px;
+  left: 1188px;
+  font-size: 3rem;
+}
