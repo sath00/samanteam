@@ -3,6 +3,25 @@
     height: 100%;
     align-items: center;
     position: relative;
+    background-color: #D8DEFD;
+}
+
+.bg-img1{
+    position: absolute;
+    object-fit: contain;
+    height: 35%;
+    bottom: 10%;
+    left: 30%;
+    z-index: 1;
+}
+
+.bg-img2{
+    position: absolute;
+    object-fit: contain;
+    height: 30%;
+    top: 10%;
+    right: 37%;
+    z-index: 1;
 }
 
 .login-card{
@@ -10,12 +29,28 @@
     background: white;
     border-radius: var(--card-border-radius);
     box-shadow: var(--card-shadow);
+    z-index: 5;
     width: 45%; /*relative to container size*/
     /*centering on login container*/
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.login-form{
+    position: relative;
+    z-index: 999;
+}
+
+.username-field, .password-field{
+    position: relative;
+    z-index: 999;
+}
+
+mat-form-field{
+    position: relative;
+    z-index: 999;
 }
 
 .yellow-strip{

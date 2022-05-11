@@ -20,9 +20,10 @@ export class LoginComponent implements OnInit {
     //insert credentials validation API
 
     //if wrong username/password
-      //display incorrect credentials
+      //prompt incorrect credentials
     //if correct
-      //login then go to home page
+      //login then go to customer home page
+
     form.resetForm();
   }
 }

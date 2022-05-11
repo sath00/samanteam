@@ -7,13 +7,15 @@ import { StoreinfoComponent } from './storeinfo/storeinfo.component';
 import { LoginComponent } from './login/login.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
+import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
+import { CustomerProdlistComponent } from './_customer/customer-prodlist/customer-prodlist.component';
 
 
 const routes: Routes = [
 
   //multi-layout scheme
 
-  // default routes
+  // default routes (owner)
   { path: '', component: DefaultLayoutComponent,
     children: [
       { path: 'view-dashboard', component: InvdashComponent },
@@ -22,6 +24,13 @@ const routes: Routes = [
     ]
   },
   
+  // customer routes
+  { path:'customer', component: CustomerLayoutComponent,
+    children: [
+      { path: 'shop', component: CustomerProdlistComponent},
+    ]
+  },
+
   // login route
   { path: 'login', component: LoginLayoutComponent}
 ];

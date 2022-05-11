@@ -37,6 +37,9 @@ import { LoginComponent } from './login/login.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { CusnavComponent } from './_customer/cusnav/cusnav.component';
+import { CustomerProdlistComponent } from './_customer/customer-prodlist/customer-prodlist.component';
+import { CustomerSidebarComponent } from './_customer/customer-sidebar/customer-sidebar.component';
+import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
 
 
 @NgModule({
@@ -59,6 +62,9 @@ import { CusnavComponent } from './_customer/cusnav/cusnav.component';
     LoginLayoutComponent,
     DefaultLayoutComponent,
     CusnavComponent,
+    CustomerProdlistComponent,
+    CustomerSidebarComponent,
+    CustomerLayoutComponent,
   ],
   imports: [
     BrowserModule,

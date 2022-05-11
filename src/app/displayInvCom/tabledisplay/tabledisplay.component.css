@@ -7,14 +7,14 @@ table {
     padding-right: 10px;
 }
 
-  .mat-form-field {
+.mat-form-field {
     font-size: 14px;
     width:50%;
-  }
+}
   
-  td, th {
+td, th {
     width: 25%;
-  }
+}
 
 div div button {
     height:60px;
