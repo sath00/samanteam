@@ -25,7 +25,7 @@ router.put('/update', (req, res) => {
             zip: req.body.zip,
             details: req.body.details
         }
-    }, { upsert: true })
+    }, { upsert: false })
         .then(result => {
             res.status(200).json({
                 message: "Store Information Updated successfully!"

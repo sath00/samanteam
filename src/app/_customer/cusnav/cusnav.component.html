@@ -1,26 +1,20 @@
-<html lang = "en">
-<head>
-  <meta charset="utf-8">
-  <title>Angular-Formatted Inventory</title>
-  <!-- ICONS -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- STYLESHEET -->
-  <!-- <link rel="stylesheet" href="/inv_dash.css"> -->
-</head>
-
-<body>
-  <div class="container">
-    <!--============ SIDEBAR (LEFT) ============-->
-   
-      <app-sidebar></app-sidebar>
-   
-    <!--============ MIDDLE (MAIN) SECTION ============-->
-    <!-- <div class="middle-part">
-      <router-outlet></router-outlet>
-    </div> -->
-    <!--============ RIGHT SECTION "sidesection"  ============-->
-    <!-- removed for now since unnecessary and the scripting was done in javascript and not typescript -->
-    <!--============ END OF RIGHT SECTION ============-->
-  </div>
-</body>
-</html>
+<aside>
+  <div class="topbar">
+      <div class="logo">
+        <img src="./assets/romels_yellow_nocart.png">
+      </div>
+      <mat-form-field class="search">
+          <input type="text" matInput placeholder="Search product">
+      </mat-form-field>
+      <a href="#">
+          <h3>Home</h3>
+        </a>
+        <a href="#">
+          <h3>All Products</h3>
+        </a>
+        <a href="#">
+          <h3>Categories</h3>
+        </a> 
+    </div>
+        <span class="material-icons">shopping_bag</span>
+</aside>
