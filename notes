@@ -1,1 +1,8 @@
-- image upload for edit product still in the works
+owner page = <localhost>/admin
+customer page = <localhost>/customer
+
+admin usernames = Admin
+admin password = Admin
+
+
+Admin view reload still in the works
