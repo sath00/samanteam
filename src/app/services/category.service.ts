@@ -30,7 +30,6 @@ export class CategoryService {
     addCategory(name: string) {
 
         const cat = {
-            userID:"1",
             _id: "",
             name: name,
         }
@@ -42,7 +41,7 @@ export class CategoryService {
     }
 
     deleteCategory(categoryID: string) {
-        this.http.delete<{ message: string }>('http://localhost:3000/api/category/remove/' + categoryID,{body: {userID:"1"}})
+        this.http.delete<{ message: string }>('http://localhost:3000/api/category/remove/' + categoryID)
             .subscribe((responseData) => {
                 this.categories = this.categories.filter(category => category._id != categoryID)
                 this.categoriesUpdated.next([...this.categories])
@@ -58,7 +57,6 @@ export class CategoryService {
 
     updateCategory(category:Category) {
         const cat = {
-            userID:"1",
             _id:category._id,
             name:category.name
         }

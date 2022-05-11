@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication/authentication.service';
 // import { Router } from 'express';
 
 @Component({
@@ -12,6 +13,7 @@ export class DefaultLayoutComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit(): void {
+
   }
 
 }

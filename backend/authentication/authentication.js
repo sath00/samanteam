@@ -1,33 +1,14 @@
-const { Users } = require('./data/authentication.data')
+const jwt = require('jsonwebtoken');
 
 
-function setUser(req, res, next) {
-    const userID = req.body.userID;
-    if (userID) {
-        req.user = Users.find(user => user.userID === userID)
+function checkToken(req, res, next) {
+    try {
+        const token = req.headers.authorization.split(" ")[1];
+        jwt.verify(token, "secret")
+    } catch (e) {
+        return res.status(401).json({ message: "auth failed!" });
     }
-    next()
+    next();
 }
 
-
-
-function authUser(req, res, next) {
-    if (req.user == null) {
-        return res.status(403).json({ message: "Not authorized" })
-    } else {
-        next()
-    }
-
-}
-
-
-function authrole(role) {
-    return (req, res, next) => {
-        if (req.user.userRole !== role) {
-            return res.status(401).json({ message: 'Access Denied' })
-        }
-        next()
-    }
-}
-
-module.exports = { setUser, authUser, authrole }
+module.exports = { checkToken } 

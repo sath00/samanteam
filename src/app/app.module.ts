@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -38,9 +38,9 @@ import { LoginLayoutComponent } from './layouts/login-layout/login-layout.compon
 import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
 import { CusnavComponent } from './_customer/cusnav/cusnav.component';
 import { CustomerProdlistComponent } from './_customer/customer-prodlist/customer-prodlist.component';
-
 import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
-
+import { AuthInterceptor } from './services/authentication/authentication.interceptor'
+import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component'
 
 @NgModule({
   declarations: [
@@ -64,6 +64,7 @@ import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layo
     CusnavComponent,
     CustomerProdlistComponent,
     CustomerLayoutComponent,
+    OwnerLayoutComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +87,7 @@ import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layo
     MatTabsModule,
     MatStepperModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent],
   entryComponents:[InvaddComponent]
 })

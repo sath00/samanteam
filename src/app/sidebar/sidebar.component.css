@@ -84,7 +84,7 @@ aside .sidebar a:hover span {
 }
 
 /*Log out nav separated from other navs*/
-aside .sidebar a:last-child {
+aside .sidebar button:last-child {
   position: absolute;
   bottom: 2rem;
   width: 100%;
