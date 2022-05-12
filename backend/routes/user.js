@@ -4,12 +4,6 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 
-// router.get('/', (req, res, next) => {        //checker api in postman /api/user
-//     res.status(200).json({
-//         message : 'user route working'
-//     })
-// })
-
 //api for creating acc
 router.post('/register',(req,res,next) => {
     bcrypt.hash(req.body.password, 10, (err, hash)=>{

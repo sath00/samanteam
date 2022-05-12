@@ -13,11 +13,10 @@ export class OwnerLayoutComponent implements OnInit, OnDestroy {
   constructor(public router: Router, private authService: AuthenticationService) { }
   private authListenerSubscription: Subscription = new Subscription;
   isAuthenticated = false;
-   
+  
   ngOnInit() {
-    this.authService.autoAuthOwner()
     this.isAuthenticated = this.authService.getAuth()
-    console.log(this.isAuthenticated)
+    this.authService.autoAuthOwner()
     this.authListenerSubscription = this.authService.getAuthStatusListener()
     .subscribe((isAuth) => {
         this.isAuthenticated = isAuth;

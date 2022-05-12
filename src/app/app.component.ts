@@ -10,7 +10,7 @@ import { AuthenticationService } from './services/authentication/authentication.
 export class AppComponent implements OnInit {
   title = 'angulayout';
 
-  constructor(public router: Router,private authService: AuthenticationService) {}
+  constructor(public router: Router) {}
 
   ngOnInit(): void {
     
