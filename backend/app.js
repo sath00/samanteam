@@ -2,14 +2,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyparser = require('body-parser');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
+
 
 //routes
 const ProductRoute = require('./routes/products');
 const CategoryRoute = require('./routes/categories');
 const StoreInfoRoute = require('./routes/storeInformation');
-const UserRoute = require('./routes/user');
+const OwnerAuthRoute = require('./routes/ownerAuth');
 const path = require('path')
 
 
@@ -59,49 +58,10 @@ app.use("/api/store-info", StoreInfoRoute);
 
 /////////////////// Admin create account API START HERE ///////////////////////////
 
-app.use("/api/user", UserRoute);
+app.use("/api/admin", OwnerAuthRoute);
 
 
-//all variables are defined locally but to be updated later on
-app.post('/api/login', async (req, res) => {
-    let hashPass = "";
-    try {
-        hashPass = await bcrypt.hash("Admin", 10)
-    } catch (e) {
-        console.log(e)
-    }
 
-    const admin = {
-        username: "Admin",
-        password: hashPass
-    }
-
-    if (req.body.username !== admin.username) {
-        return res.status(401).json({ message: "Invalid username!" })
-    }
-    try {
-        if (await bcrypt.compare(req.body.password, admin.password)) {
-            const token = jwt.sign(
-                { username: req.body.username, user_id: "1" },
-                "secret",
-                { expiresIn: "1h" }
-            );
-            return res.status(200).json(
-                {
-                    message: "Login successful!",
-                    token: token,
-                    expiresIn: 3600
-                }
-            )
-        } else {
-            return res.status(401).json({ message: "Invalid password!" })
-        }
-    } catch (e) {
-        if (e) {
-            console.log(e);
-        }
-    }
-})
 
 
 module.exports = app;

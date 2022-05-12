@@ -10,6 +10,7 @@ import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.
 import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
 import { CustomerProdlistComponent } from './_customer/customer-prodlist/customer-prodlist.component';
 import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
+import { AuthGuard } from './services/authentication/authentication.guard';
 
 
 const routes: Routes = [
@@ -31,12 +32,11 @@ const routes: Routes = [
       { path: 'shop', component: CustomerProdlistComponent},
     ]
   },
-
   // owner route
   {
     path: 'admin', component: OwnerLayoutComponent,
     children: [
-      { path: 'view-dashboard', component: InvdashComponent },
+      { path: 'view-dashboard', component: InvdashComponent},
       { path: 'add-products', component: InvaddComponent },
       { path: 'store-info', component: StoreinfoComponent }
     ]
@@ -45,6 +45,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
-  exports: [RouterModule]
+  
+  exports: [RouterModule],
+  providers: [AuthGuard]  //I added authGuard for future use
+
 })
 export class AppRoutingModule { }

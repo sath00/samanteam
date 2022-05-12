@@ -15,12 +15,12 @@ export class AuthenticationService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    login(username: string, password: string) {
+    loginOwner(username: string, password: string) {
         const authData = {
             username: username,
             password: password
         }
-        this.http.post<{ message: string, token: string, expiresIn: number }>('http://localhost:3000/api/login', authData)
+        this.http.post<{ message: string, token: string, expiresIn: number }>('http://localhost:3000/api/admin/login', authData)
             .subscribe((responseData) => {
                 const token = responseData.token
                 if (token) {
@@ -31,7 +31,7 @@ export class AuthenticationService {
                     this.setAuthTimer(expireDuration)
                     this.isAuth = true;
                     this.authStatusListener.next(true);
-                    this.router.navigate(['/admin/view-dashboard']);
+                    this.router.navigate(['/admin']);
                     //save to local Storage
                     const now = new Date();
                     const expirationDate = new Date(now.getTime() + (expireDuration * 1000))
@@ -41,7 +41,7 @@ export class AuthenticationService {
             })
     }
 
-    logout() {
+    logoutOwner() {
         console.log("logging out");
         this.token = '';
         this.isAuth = false;
@@ -49,6 +49,14 @@ export class AuthenticationService {
         clearTimeout(this.tokenTimer);
         this.clearAuthData();
         this.router.navigate(['/admin']);
+    }
+
+
+    private setAuthTimer(duration: number) {
+        console.log(duration)
+        this.tokenTimer = setTimeout(() => {
+            this.logoutOwner()
+        }, duration * 1000);
     }
 
     autoAuthOwner() {
@@ -59,9 +67,9 @@ export class AuthenticationService {
             if (expireTime > 0) {
                 this.isAuth = true;
                 this.token = authData.token;
-                this.setAuthTimer(expireTime)
+                this.setAuthTimer(expireTime/1000)
                 this.authStatusListener.next(true);
-            } 
+            }
         }
     }
 
@@ -77,7 +85,7 @@ export class AuthenticationService {
         return this.authStatusListener.asObservable();
     }
 
-    
+
 
     private saveAuthData(token: string, expirationDate: Date) {
         localStorage.setItem('token', token);
@@ -101,9 +109,5 @@ export class AuthenticationService {
         }
     }
 
-    private setAuthTimer(duration: number) {
-        this.tokenTimer = setTimeout(() => {
-            this.logout()
-        }, duration * 1000);
-    }
+    
 }
