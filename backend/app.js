@@ -9,6 +9,7 @@ const jwt = require('jsonwebtoken')
 const ProductRoute = require('./routes/products');
 const CategoryRoute = require('./routes/categories');
 const StoreInfoRoute = require('./routes/storeInformation');
+const UserRoute = require('./routes/user');
 const path = require('path')
 
 
@@ -44,7 +45,6 @@ app.use((req, res, next) => {
 
 app.use("/api/product", ProductRoute);
 
-
 /////////////////// CATEGORY API START HERE ///////////////////////////
 
 app.use("/api/category", CategoryRoute);
@@ -54,6 +54,12 @@ app.use("/api/category", CategoryRoute);
 app.use("/api/store-info", StoreInfoRoute);
 
 /////////////////// Admin login API START HERE ///////////////////////////
+
+
+
+/////////////////// Admin create account API START HERE ///////////////////////////
+
+app.use("/api/user", UserRoute);
 
 
 //all variables are defined locally but to be updated later on
