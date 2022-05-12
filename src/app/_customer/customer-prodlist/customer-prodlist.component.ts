@@ -5,6 +5,8 @@ import { ProductService } from 'src/app/services/product.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { ProdInfoComponent } from '../prodInfo/prod-info/prod-info.component';
 
 @Component({
   selector: 'app-customer-prodlist',
@@ -12,7 +14,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./customer-prodlist.component.css']
 })
 export class CustomerProdlistComponent implements OnInit {
-  
+  isTableView:boolean = false;
   //instantiated array as Product array
   products: MatTableDataSource<Product>;
   displayedColumns: string[] = ['name','description', 'price', 'category', 'image',  'availability'];
@@ -23,7 +25,7 @@ export class CustomerProdlistComponent implements OnInit {
   @ViewChild(MatSort) sort !: MatSort; 
 
   //instatiated our product service 
-  constructor(public productService: ProductService) {
+  constructor(public productService: ProductService, private dialog:MatDialog) {
     this.products = new MatTableDataSource();
   }
 
@@ -51,6 +53,15 @@ export class CustomerProdlistComponent implements OnInit {
     if (this.products.paginator) {
       this.products.paginator.firstPage();
     }
+  }
+  onProdSelect(row:Product){
+    const dialogRef = this.dialog.open(ProdInfoComponent, {
+      disableClose: true,
+      autoFocus: true,
+      width: '500px',
+      height: '430px',
+      data: row
+    })
   }
 
   //destroys the subscription to avoid memory leaks

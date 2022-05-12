@@ -17,6 +17,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatStepperModule} from '@angular/material/stepper';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,7 +41,8 @@ import { CusnavComponent } from './_customer/cusnav/cusnav.component';
 import { CustomerProdlistComponent } from './_customer/customer-prodlist/customer-prodlist.component';
 import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
 import { AuthInterceptor } from './services/authentication/authentication.interceptor'
-import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component'
+import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
+import { ProdInfoComponent } from './_customer/prodInfo/prod-info/prod-info.component'
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.compon
     CusnavComponent,
     CustomerProdlistComponent,
     CustomerLayoutComponent,
-    OwnerLayoutComponent
+    OwnerLayoutComponent,
+    ProdInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,8 @@ import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.compon
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatButtonToggleModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent],
