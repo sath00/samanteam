@@ -8,7 +8,6 @@ const Schema = mongoose.Schema;
 const UserSchema = mongoose.Schema({
     username: { type: 'string', required: true},
     password: { type: 'string', required: true},
-    password: { type: 'string', required: true}
 }, { timestamps: true }); //added timestamps because we can use this someday
 
 const User = mongoose.model('user', UserSchema);
