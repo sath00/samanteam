@@ -2,36 +2,35 @@
 .topbar {
     background: var(--color-yellow);
     display: flex;
-    
-    align-items: baseline;
+    align-items: center;
     justify-content: space-between;
     margin: 0;
     height: 8rem;
-    
-  }
+}
 
 .topbar .logo img {
-  
   display: flex;
-  margin-left: 1rem;
+  margin-left: 2rem;
   height: 4.2rem;
 }
 
 .topbar .nav-links{
-  position: absolute;
+  display: flex;
+  align-items: baseline;
+  position: relative;
   height: 4.2rem;
-  top: 8%;
+  /* top: 8%;
   left: 50%;
 	transform: translate(-50%,-50%);
- 
+  */
 }
 
 .topbar .nav-links a{
   float: left;
 	text-align: center;
+  align-items: center;
 	padding: 0 30px;
   transition: all 300ms ease;
-  
 }
 
 .topbar .nav-links a .material-icons{

@@ -5,13 +5,13 @@ h1 {
     font-size: 1.8rem;
     font-family: 'Poppins', sans-serif;
     margin-bottom: 0;
-    padding: 1rem 1rem 0;
+    padding: 1rem 2rem 0;
   }
   
 h3 {
     font-size: 0.87rem;
     font-family: 'Poppins', sans-serif;
-    padding: 0 1rem 0;
+    padding: 0 2rem 0;
 }
 
 b {
@@ -19,6 +19,10 @@ b {
 }
 
 /*Prod list styles*/
+
+.mat-elevation-z8, .filter-bar{
+  margin: 0 2rem 2rem 2rem;
+}
 
 table {
     width: 100%;
