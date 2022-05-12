@@ -11,7 +11,9 @@ export class AuthenticationService {
     private isAuth = false;
     private token: string = "";
     private authStatusListener = new Subject<boolean>();
+    private credentialListener = new Subject()
     private tokenTimer: any;
+    private credentials:any;
 
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -109,5 +111,16 @@ export class AuthenticationService {
         }
     }
 
+    getCredentials(){
+        this.http.get<{username:string,password:string}>('http://localhost:3000/api/admin/credentials')
+        .subscribe((responseData)=>{
+            this.credentials = responseData;
+            this.credentialListener.next(this.credentials);
+        })
+        
+    }
+    getCredentialListener(){
+        return this.credentialListener.asObservable()
+    }
     
 }

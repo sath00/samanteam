@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const Owner = require('../models/owner');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
+const {checkToken} = require('../authentication/authentication')
+
 //api for creating acc
 // router.post('/register',(req,res) => {
 //     bcrypt.hash(req.body.password, 10, (err, hash)=>{
@@ -29,7 +31,7 @@ const jwt = require('jsonwebtoken')
 //     })
 // })
 
-router.put('/edit', (req, res) => {
+router.put('/edit', checkToken, (req, res) => {
     bcrypt.hash(req.body.password, 10, (err, hash) => {
         if(err){
             return res.status(400).json({
@@ -92,5 +94,11 @@ router.post('/login', async (req, res) => {
     }
 })
 
+
+router.get('/credentials',checkToken, (req, res) => {
+    Owner.find().then((result) => {
+        res.status(200).json(result);
+    }) 
+})
 
 module.exports = router;
