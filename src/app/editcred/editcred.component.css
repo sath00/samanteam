@@ -1,0 +1,109 @@
+.login-container{
+   /* width: 100%;
+    height: 100%;
+    */
+    align-items: center;
+    position: relative;
+    background-color: #D8DEFD;
+}
+
+.bg-img1{
+    position: absolute;
+    object-fit: contain;
+    height: 35%;
+    bottom: 10%;
+    left: 30%;
+    z-index: 1;
+}
+
+.bg-img2{
+    position: absolute;
+    object-fit: contain;
+    height: 30%;
+    top: 10%;
+    right: 37%;
+    z-index: 1;
+}
+
+.login-card{
+    text-align: center;
+    background: white;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+    z-index: 5;
+    width: 40%; /*relative to container size*/
+    /*centering on login container*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-form{
+    position: relative;
+    z-index: 999;
+}
+
+.username-field, .password-field{
+    position: relative;
+    z-index: 999;
+}
+
+mat-form-field{
+    position: relative;
+    z-index: 999;
+}
+
+.yellow-strip{
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    background-color: #FFF748;
+    border-top-right-radius: var(--card-border-radius);
+    border-top-left-radius: var(--card-border-radius);
+}
+
+.logo-img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    text-align: center;
+}
+
+.top-bar{
+    padding-bottom: 1rem;
+}
+
+.bottom-bar{
+    padding-bottom: 2rem;
+}
+
+
+h1{
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+h3{
+    font-size: 0.87rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* to have the X button at the rightmost */
+.top-bar .mat-dialog-actions{
+    float: right;
+  }
+  
+  /* top-bar X button style (needs more perhaps) */
+  .top-bar .mat-stroked-button{
+    border-radius: var(--card-border-radius);
+  }
+  
+  .bottom-bar .mat-stroked-button{
+    background-color:lightgrey ;
+    border-radius: var(--card-border-radius);
+  }
+  

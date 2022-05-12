@@ -89,3 +89,10 @@ aside .sidebar button:last-child {
   bottom: 2rem;
   width: 100%;
 }
+
+/*Account Profile nav separated from other navs*/
+aside .sidebar button {
+  position: absolute;
+  bottom: 8rem;
+  width: 100%;
+}

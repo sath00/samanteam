@@ -40,7 +40,8 @@ import { CusnavComponent } from './_customer/cusnav/cusnav.component';
 import { CustomerProdlistComponent } from './_customer/customer-prodlist/customer-prodlist.component';
 import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
 import { AuthInterceptor } from './services/authentication/authentication.interceptor'
-import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component'
+import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
+import { EditcredComponent } from './editcred/editcred.component'
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.compon
     CusnavComponent,
     CustomerProdlistComponent,
     CustomerLayoutComponent,
-    OwnerLayoutComponent
+    OwnerLayoutComponent,
+    EditcredComponent
   ],
   imports: [
     BrowserModule,
