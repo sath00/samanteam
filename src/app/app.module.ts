@@ -17,6 +17,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatStepperModule} from '@angular/material/stepper';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,7 +42,11 @@ import { CustomerProdlistComponent } from './_customer/customer-prodlist/custome
 import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
 import { AuthInterceptor } from './services/authentication/authentication.interceptor'
 import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
+<<<<<<< HEAD
 import { EditcredComponent } from './editcred/editcred.component'
+=======
+import { ProdInfoComponent } from './_customer/prodInfo/prod-info/prod-info.component'
+>>>>>>> origin/gridDis
 
 @NgModule({
   declarations: [
@@ -66,7 +71,11 @@ import { EditcredComponent } from './editcred/editcred.component'
     CustomerProdlistComponent,
     CustomerLayoutComponent,
     OwnerLayoutComponent,
+<<<<<<< HEAD
     EditcredComponent
+=======
+    ProdInfoComponent
+>>>>>>> origin/gridDis
   ],
   imports: [
     BrowserModule,
@@ -87,7 +96,8 @@ import { EditcredComponent } from './editcred/editcred.component'
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatButtonToggleModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent],

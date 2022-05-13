@@ -29,7 +29,7 @@ const routes: Routes = [
   // customer routes
   { path:'customer', component: CustomerLayoutComponent,
     children: [
-      { path: 'shop', component: CustomerProdlistComponent},
+      { path: 'shop', component: CustomerProdlistComponent}
     ]
   },
   // owner route

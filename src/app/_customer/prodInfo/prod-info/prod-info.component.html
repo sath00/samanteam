@@ -1,0 +1,23 @@
+<mat-dialog-content>
+    <mat-dialog-actions align="start">
+      <button mat-stroked-button mat-dialog-close><mat-icon>close</mat-icon></button>
+    </mat-dialog-actions>
+    <mat-card class="product_card">
+        <div class="img-container"><img mat-card-image [src]="data.imagePath"></div>
+            <mat-card-content>
+                <h3><b>{{data.name}}</b></h3>
+                <div class="info2">
+                    <div><mat-icon class="{{data.availability}}">indeterminate_check_box</mat-icon>{{data.availability}}</div>
+                    <div class="price"><span>&#8369;</span>{{data.price}}</div>
+                </div><br>
+                <h4><b>Category</b></h4>
+                <p>{{data.category.name}}</p>
+                <br>
+                <h4><b>Description</b></h4>
+                <p>{{data.description}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button><mat-icon>add_shopping_cart</mat-icon></button>
+            </mat-card-actions>
+    </mat-card>
+</mat-dialog-content>
