@@ -31,6 +31,7 @@ const {checkToken} = require('../authentication/authentication')
 //     })
 // })
 
+//api for editing user credentials
 router.put('/edit', checkToken, (req, res) => {
     bcrypt.hash(req.body.password, 10, (err, hash) => {
         if(err){
@@ -38,19 +39,21 @@ router.put('/edit', checkToken, (req, res) => {
                 error: err
             })
         } else {
-            Owner.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.body._id) }, {
+            Owner.findOneAndUpdate(req.body._id, {
                 $set: {
                     username:req.body.username,
                     password:hash
-                }})
+                }
+            })
             .then((result) => {
                     res.status(200).json({message:"Credential Update Successful"})
+                    console.log(result);
             })
         }   
-    
     })
 })
 
+//login api
 router.post('/login', async (req, res) => {
     let hashPass = "";
     try {
@@ -94,11 +97,27 @@ router.post('/login', async (req, res) => {
     }
 })
 
-
+//display credentials
 router.get('/credentials',checkToken, (req, res) => {
     Owner.find().then((result) => {
         res.status(200).json(result);
     }) 
 })
+
+//password checker -- prints to console if hashed password = encoded password
+
+// const passwordEnteredByUser = "owner"
+// const hash = "$2b$10$/.Ce3eIXF/ZCDJ4KgRBI7ezU1jPguPv6p5tuhl9LgABUxtPVh5oiO"
+
+// bcrypt.compare(passwordEnteredByUser, hash, function(err, isMatch) {
+//   if (err) {
+//     throw err
+//   } else if (!isMatch) {
+//     console.log("Password doesn't match!")
+//   } else {
+//     console.log("Password matches!")
+//   }
+// })
+
 
 module.exports = router;

@@ -52,11 +52,7 @@ app.use("/api/category", CategoryRoute);
 
 app.use("/api/store-info", StoreInfoRoute);
 
-/////////////////// Admin login API START HERE ///////////////////////////
-
-
-
-/////////////////// Admin create account API START HERE ///////////////////////////
+/////////////////// Admin API START HERE ///////////////////////////
 
 app.use("/api/admin", OwnerAuthRoute);
 
