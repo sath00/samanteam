@@ -4,11 +4,13 @@ const { Category } = require('../models/category');
 const multer = require('multer')
 const mongoose = require('mongoose');
 const router = express.Router();
+const { checkToken } = require('../authentication/authentication')
 const MIME_TYPE_MAP = {
     "image/png": "png",
     "image/jpeg": "jpg",
     "image/jpg": "jpg"
 };
+
 
 
 const storage = multer.diskStorage({
@@ -32,7 +34,7 @@ const storage = multer.diskStorage({
 
 
 //api for deleting products
-router.delete('/remove/:id', (req, res) => {
+router.delete('/remove/:id',checkToken, (req, res) => {
     Product.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) }).then(result => {
         if (result.deletedCount > 0) {
             res.status(200).json({
@@ -51,7 +53,7 @@ router.delete('/remove/:id', (req, res) => {
 })
 
 //api for adding product (original)
-router.post('/add', multer({ storage: storage }).single('image'), async (req, res) => {
+router.post('/add', checkToken, multer({ storage: storage }).single('image'), async (req, res) => {
     const url = req.protocol + "://" + req.get("host");
     //Category Check
     let cat = new Category({
@@ -85,7 +87,7 @@ router.post('/add', multer({ storage: storage }).single('image'), async (req, re
 
 
 //this is the api for marking products as sold out or available
-router.post('/availability', (req, res) => {
+router.post('/availability', checkToken, (req, res) => {
     Product.updateOne({ _id: req.body._id }, { availability: req.body.availability })
         .then(result => {
             if (result.modifiedCount > 0) {
@@ -141,7 +143,7 @@ router.get("/:id", (req, res) => {
 })
 
 //api for editing details in product
-router.put("/edit/:id", multer({ storage: storage }).single('image'), async (req, res) => {
+router.put("/edit/:id", checkToken, multer({ storage: storage }).single('image'), async (req, res) => {
     let impath = "";
     if (req.file) {
         const url = req.protocol + "://" + req.get("host");

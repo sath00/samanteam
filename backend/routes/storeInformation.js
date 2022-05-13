@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const storeInfo = require('../models/storeinfo')
-
+const { checkToken } = require('../authentication/authentication')
 router.get('/details', (req, res)=>{    
   storeInfo.find()
       .then((result) => {
@@ -14,7 +14,7 @@ router.get('/details', (req, res)=>{
       })
 })
 
-router.put('/update', (req, res) => {
+router.put('/update', checkToken, (req, res) => {
     storeInfo.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.body._id) }, {
         $set: {
             telephone: req.body.telephone,

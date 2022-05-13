@@ -28,15 +28,16 @@ const routes: Routes = [
   // customer routes
   { path:'customer', component: CustomerLayoutComponent,
     children: [
-      { path: 'shop', component: CustomerProdlistComponent},
+      { path: 'home', component: CustomerProdlistComponent}, /* temporary */
+      { path: 'shop', component: CustomerProdlistComponent}
+      
     ]
   },
 
-  // login route
+  // owner route
   {
     path: 'admin', component: OwnerLayoutComponent,
     children: [
-      { path: 'login', component: LoginLayoutComponent },
       { path: 'view-dashboard', component: InvdashComponent },
       { path: 'add-products', component: InvaddComponent },
       { path: 'store-info', component: StoreinfoComponent }
