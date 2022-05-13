@@ -12,19 +12,38 @@ import { AuthenticationService } from '../services/authentication/authentication
 })
 export class EditcredComponent implements OnInit,OnDestroy {
   constructor(private authService: AuthenticationService) { }
-  previousCredentials:any;
+  
+  validCurrentPassword:any;
+
+  tempCredentials={
+    username:"",
+    password:""
+  };
+
   private credentialsSubscription: Subscription = new Subscription();
+  private passwordValidationSubscription: Subscription = new Subscription();
 
   ngOnInit() {
     this.authService.getCredentials()
     this.credentialsSubscription = this.authService.getCredentialListener()
-    .subscribe((creds)=>{
-      this.previousCredentials = creds
-      console.log(this.previousCredentials)
+    .subscribe((creds:any)=>{
+      this.tempCredentials = creds[0]
+    })
+    this.authService.validatePassword("");
+    this.passwordValidationSubscription = this.authService.getValidationListener()
+    .subscribe((isValid:any)=>{
+      this.validCurrentPassword = isValid;
     })
   }
 
   ngOnDestroy() {
-    this.credentialsSubscription.unsubscribe()
+    this.credentialsSubscription.unsubscribe();
+    this.passwordValidationSubscription.unsubscribe()
   }
+
+  async onSubmit(form: NgForm){
+    console.log("editcomp:" + await this.authService.validatePassword(form.value.currentPassword))
+  }
+
+  
 }

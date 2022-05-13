@@ -12,8 +12,10 @@ export class AuthenticationService {
     private token: string = "";
     private authStatusListener = new Subject<boolean>();
     private credentialListener = new Subject()
+    private validationListener = new Subject();
     private tokenTimer: any;
     private credentials:any;
+    private validation:any;
 
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -39,7 +41,7 @@ export class AuthenticationService {
                     const expirationDate = new Date(now.getTime() + (expireDuration * 1000))
                     this.saveAuthData(this.token, expirationDate)
                 }
-                console.log(responseData.message)
+                
             })
     }
 
@@ -55,7 +57,6 @@ export class AuthenticationService {
 
 
     private setAuthTimer(duration: number) {
-        console.log(duration)
         this.tokenTimer = setTimeout(() => {
             this.logoutOwner()
         }, duration * 1000);
@@ -88,6 +89,13 @@ export class AuthenticationService {
     }
 
 
+    getValidationListener() {
+        return this.validationListener.asObservable()
+    }
+
+    getCredentialListener() {
+        return this.credentialListener.asObservable()
+    }
 
     private saveAuthData(token: string, expirationDate: Date) {
         localStorage.setItem('token', token);
@@ -116,11 +124,22 @@ export class AuthenticationService {
         .subscribe((responseData)=>{
             this.credentials = responseData;
             this.credentialListener.next(this.credentials);
+        })   
+    }
+    
+
+    validatePassword(password:string){
+        const credentials = {
+            password:password
+        }
+        this.http.post<{message:string,value:string}>('http://localhost:3000/api/admin/validate',credentials)
+        .subscribe((responseData)=>{
+            this.validation = responseData.value;
+            console.log("authservice:"+this.validation)
+            this.validationListener.next(this.validation);
+            return this.validation;
         })
         
     }
-    getCredentialListener(){
-        return this.credentialListener.asObservable()
-    }
-    
+
 }

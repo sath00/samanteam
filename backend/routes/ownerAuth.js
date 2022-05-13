@@ -65,9 +65,9 @@ router.post('/login', async (req, res) => {
     .then(result => {
         admin = result
     })
-    
 
-    if (req.body.username !== admin.username) {
+
+    if (!admin||req.body.username !== admin.username) {
         return res.status(401).json({ message: "Invalid username!" })
     }
     try {
@@ -92,6 +92,8 @@ router.post('/login', async (req, res) => {
             console.log(e);
         }
     }
+    
+    
 })
 
 
@@ -99,6 +101,27 @@ router.get('/credentials',checkToken, (req, res) => {
     Owner.find().then((result) => {
         res.status(200).json(result);
     }) 
+})
+
+router.post('/validate',checkToken, async(req,res)=>{
+    await Owner.findOne()
+        .then(async(result,err) => {
+            if(err){
+                return res.status(401).json({ message: err._message});
+            }
+            let admin = result
+            if (admin&&await bcrypt.compare(req.body.password, admin.password)) {
+                return res.status(200).json(
+                    {
+                        message: "Validation Successful!",
+                        value:true
+                    }
+                )
+            }else{
+                return res.status(200).json({ message: "Validation Failed", value: false });
+            }
+    })
+    
 })
 
 module.exports = router;
