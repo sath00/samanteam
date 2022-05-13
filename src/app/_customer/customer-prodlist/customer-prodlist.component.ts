@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ProdInfoComponent } from '../prodInfo/prod-info/prod-info.component';
 
+
 @Component({
   selector: 'app-customer-prodlist',
   templateUrl: './customer-prodlist.component.html',

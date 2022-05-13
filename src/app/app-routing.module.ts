@@ -28,7 +28,7 @@ const routes: Routes = [
   // customer routes
   { path:'customer', component: CustomerLayoutComponent,
     children: [
-      { path: 'shop1', component: CustomerProdlistComponent}
+      { path: 'shop', component: CustomerProdlistComponent}
     ]
   },
 

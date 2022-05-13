@@ -66,8 +66,10 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of products"></mat-paginator>
 </div>
 
+<!-- Grid View -->
 <div class="mat-elevation-z8" [hidden]="isTableView">
-    <mat-grid-list cols="5" rowHeight="250px" gutterSize="5px" role="grid">
+
+    <mat-grid-list cols="5" rowHeight="250px" gutterSize="5px" role="grid" *ngIf="this.products.filteredData.length>0 else noData">
         <mat-grid-tile class="mat-elevation-z1" *ngFor="let product of this.products.filteredData">
             <mat-card class="product_card" (click)="onProdSelect(product)">
                 <div class="img-container"><img mat-card-image [src]="product.imagePath"></div>
@@ -78,6 +80,10 @@
             </mat-card>
         </mat-grid-tile>
     </mat-grid-list>
+    <!-- NO data     -->
+    <ng-template #noData>
+        <div>No data matching the filter "{{input.value}}"</div>
+    </ng-template>
 </div>
 <!-- <div class="mat-elevation-z8" [hidden]="!isTableView">
     <table mat-table [dataSource]="products" matSort role="grid">
