@@ -6,51 +6,37 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 const {checkToken} = require('../authentication/authentication')
 
-//api for creating acc
-// router.post('/register',(req,res) => {
-//     bcrypt.hash(req.body.password, 10, (err, hash)=>{
-//         if(err){
-//             return res.status(400).json({
-//                 error: err
-//             })
-//         } else {
-//             const user = new Owner({
-//                 username: req.body.username,
-//                 password: hash,
-//             });
-//             user.save().then((result) => {
-//                 res.status(200).json({
-//                     message: "New User added successfully!"
-//                 });
-//             }).catch((err) => {
-//                 res.status(400).json({
-//                     error: err
-//                 })
-//             })
-//         }
-//     })
-// })
-
 //api for editing user credentials
-router.put('/edit', checkToken, (req, res) => {
-    bcrypt.hash(req.body.password, 10, (err, hash) => {
-        if(err){
+router.put('/edit', checkToken, async (req, res) => {
+    let newHash;
+    await bcrypt.hash(req.body.newPassword,10,(err,hash)=>{
+        if (err) {
             return res.status(400).json({
                 error: err
             })
-        } else {
-            Owner.findOneAndUpdate(req.body._id, {
+        }
+        newHash = hash
+    })
+    let admin;
+    await Owner.find().then((result=>{
+        admin = result[0]
+    }))
+    if(!admin){
+        return res.status(401).json({ message: "Owners not found!" })
+    }
+    if(await bcrypt.compare(req.body.currentPassword, admin.password)){
+        Owner.findOneAndUpdate({_id:admin._id}, {
                 $set: {
                     username:req.body.username,
-                    password:hash
+                    password:newHash
                 }
             })
-            .then((result) => {
-                    res.status(200).json({message:"Credential Update Successful"})
-                    console.log(result);
+            .then(() => {
+                return res.status(200).json({message:"Credential Update Successful"})
             })
-        }   
-    })
+    }else{
+        return res.status(200).json({ message: "Credential Update Failed! Incorrect Password!"} )
+    }
 })
 
 //login api
@@ -100,11 +86,11 @@ router.post('/login', async (req, res) => {
 })
 
 //display credentials
-router.get('/credentials',checkToken, (req, res) => {
-    Owner.find().then((result) => {
-        res.status(200).json(result);
-    }) 
-})
+// router.get('/credentials',checkToken, (req, res) => {
+//     Owner.find().then((result) => {
+//         res.status(200).json(result);
+//     }) 
+// })
 
 //password checker -- prints to console if hashed password = encoded password
 
