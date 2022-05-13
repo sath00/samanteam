@@ -43,7 +43,7 @@ import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layo
 import { AuthInterceptor } from './services/authentication/authentication.interceptor'
 import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
 import { ProdInfoComponent } from './_customer/prodInfo/prod-info/prod-info.component'
-
+import { EditcredComponent } from './editcred/editcred.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +67,8 @@ import { ProdInfoComponent } from './_customer/prodInfo/prod-info/prod-info.comp
     CustomerProdlistComponent,
     CustomerLayoutComponent,
     OwnerLayoutComponent,
-    ProdInfoComponent
+    ProdInfoComponent,
+    EditcredComponent
   ],
   imports: [
     BrowserModule,

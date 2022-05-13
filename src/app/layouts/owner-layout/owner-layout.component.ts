@@ -15,8 +15,8 @@ export class OwnerLayoutComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   
   ngOnInit() {
-    this.isAuthenticated = this.authService.getAuth()
     this.authService.autoAuthOwner()
+    this.isAuthenticated = this.authService.getAuth()
     this.authListenerSubscription = this.authService.getAuthStatusListener()
     .subscribe((isAuth) => {
         this.isAuthenticated = isAuth;
