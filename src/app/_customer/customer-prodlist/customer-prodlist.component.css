@@ -32,10 +32,10 @@ table {
     width: 100%;
 }
 
-.mat-column-name, .mat-column-price, .mat-column-category, .mat-column-availability{
+.mat-column-name, .mat-column-price, .mat-column-category, .mat-column-image, .mat-column-availability{
     width: 15%;
     padding-right: 10px;
-}
+} 
 
 .mat-form-field {
     font-size: 14px;
@@ -44,6 +44,11 @@ table {
   
 td, th {
     width: 25%;
+}
+
+.mat-row:hover{
+  cursor: pointer;
+  background-color: var(--color-light);
 }
 
 div {
@@ -58,6 +63,7 @@ img {
 mat-cell{
   height: 100px;
 }
+
 /* GRID list style */
 
 .product_card {
@@ -97,12 +103,17 @@ mat-card-content {
 .info2 div .Not{
   color: red;
 }
-mat-card div img{
+mat-card img{
    /*this makes the image in src fit to the size specified below*/
   width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
   height: 100%;
   margin: auto;
-  width: max-content;
+  /* width: max-content; */
+  object-fit: cover;
+}
+
+mat-grid-list{
+  resize: none;
 }
 
 .prod-price{

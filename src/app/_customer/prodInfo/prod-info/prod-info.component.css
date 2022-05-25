@@ -18,6 +18,7 @@
   }
 mat-dialog-content{
   position: relative;
+  padding-bottom: 3rem;
 }
 mat-dialog-actions{
   position: absolute;
@@ -49,6 +50,7 @@ mat-dialog-actions{
     display: flex;
     vertical-align: middle;
   }
+
   mat-card-content {
     padding: 5px;
   }
@@ -69,7 +71,9 @@ mat-dialog-actions{
   mat-card-actions{
     display: flex;
     justify-content: center;
+    padding-bottom: 0.5rem;
   }
+  
   mat-card-actions button{
     background-color: var(--color-yellow);
   }
