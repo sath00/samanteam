@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/Product';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 import { Category } from 'src/app/models/Category';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-prod-info',
@@ -12,9 +13,15 @@ import { Category } from 'src/app/models/Category';
 })
 export class ProdInfoComponent implements OnInit {
 
-  constructor(public dialogRef:MatDialogRef<ProdInfoComponent>, @Inject(MAT_DIALOG_DATA)public data:Product) { }
+  constructor(public dialogRef:MatDialogRef<ProdInfoComponent>, @Inject(MAT_DIALOG_DATA)public data:Product,
+  private cartService:CartService) { }
 
   ngOnInit(): void {
+  }
+
+  onAddToCart(product:Product){
+    this.cartService.addProduct(product)
+    console.log(this.cartService.display())
   }
 
 }
