@@ -43,7 +43,8 @@ import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layo
 import { AuthInterceptor } from './services/authentication/authentication.interceptor'
 import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
 import { ProdInfoComponent } from './_customer/prodInfo/prod-info/prod-info.component'
-import { EditcredComponent } from './editcred/editcred.component'
+import { EditcredComponent } from './editcred/editcred.component';
+import { CartComponent } from './_customer/cart/cart.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +69,8 @@ import { EditcredComponent } from './editcred/editcred.component'
     CustomerLayoutComponent,
     OwnerLayoutComponent,
     ProdInfoComponent,
-    EditcredComponent
+    EditcredComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
