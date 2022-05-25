@@ -16,6 +16,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-yellow); 
 }
+
 /* to make the dialogcontainer have the same border radius as our other elements */
 ::ng-deep .mat-dialog-container {
 width: 580px;
