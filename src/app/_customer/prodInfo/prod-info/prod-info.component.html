@@ -21,6 +21,9 @@
                 <h4><b>Description</b></h4>
                 <p>{{data.description}}</p>
                 <mat-card-actions>
+                    <button mat-button (click)="minus()"><mat-icon>remove_circle</mat-icon></button>
+                    <input type="text" [value] = "quantity">
+                    <button mat-button (click)="plus()"><mat-icon>add_circle</mat-icon></button>
                     <button mat-button><mat-icon>add_shopping_cart</mat-icon></button>
                 </mat-card-actions>
             </mat-card-content>

@@ -17,4 +17,14 @@ export class ProdInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  quantity : number = 1;
+  plus(){
+    this.quantity++;
+  }
+  minus(){
+    if(this.quantity != 1){
+      this.quantity--;
+    }
+  }
+
 }
