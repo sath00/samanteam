@@ -15,6 +15,7 @@ export class ProdInfoComponent implements OnInit {
 
   constructor(public dialogRef:MatDialogRef<ProdInfoComponent>, @Inject(MAT_DIALOG_DATA)public data:Product,
   private cartService:CartService) { }
+  quantity = 0;
 
   ngOnInit(): void {
   }
@@ -22,7 +23,8 @@ export class ProdInfoComponent implements OnInit {
   onAddToCart(product:Product){
     this.cartService.addProduct(product)
     console.log(this.cartService.display())
-  quantity : number = 1;
+    this.quantity = 1;
+  }
   plus(){
     this.quantity++;
   }
