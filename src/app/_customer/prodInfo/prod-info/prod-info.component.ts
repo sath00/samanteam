@@ -18,12 +18,13 @@ export class ProdInfoComponent implements OnInit {
   quantity = 0;
 
   ngOnInit(): void {
+    this.quantity = 1;
   }
 
   onAddToCart(product:Product){
-    this.cartService.addProduct(product)
+    this.cartService.addProduct(product,this.quantity)
     console.log(this.cartService.display())
-    this.quantity = 1;
+    
   }
   plus(){
     this.quantity++;

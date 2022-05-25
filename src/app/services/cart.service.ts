@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { CartItem } from "../models/CartItem";
 import { Product } from "../models/Product";
 
 
@@ -8,12 +9,16 @@ import { Product } from "../models/Product";
 })
 export class CartService {
 
-    private cart:Product[] = [];
+    private cart:CartItem[] = [];
 
 
 
-    addProduct(product:Product){
-        this.cart.push(product);
+    addProduct(product:Product,quantity:number){
+        const temp = {
+            product: product,
+            quantity: quantity
+        }
+        this.cart.push(temp);
     }
 
 
