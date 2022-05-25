@@ -22,6 +22,14 @@ export class ProdInfoComponent implements OnInit {
   onAddToCart(product:Product){
     this.cartService.addProduct(product)
     console.log(this.cartService.display())
+  quantity : number = 1;
+  plus(){
+    this.quantity++;
+  }
+  minus(){
+    if(this.quantity != 1){
+      this.quantity--;
+    }
   }
 
 }
