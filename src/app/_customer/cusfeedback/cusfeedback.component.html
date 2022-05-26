@@ -1,0 +1,19 @@
+<div class="top-bar">
+    <h1>Customer Feedback</h1>
+    <h3>Please tell us what you think of Romel's Mini Mart.</h3>
+</div>
+
+<form  #feedForm = "ngForm">
+    <form class="feedback-form">
+        <mat-form-field class="input-fb" appearance="fill">
+          <mat-label>Leave a comment</mat-label>
+          <textarea matInput placeholder="Help us improve our service"></textarea>
+        </mat-form-field>
+      </form>
+      <div class="bottom-bar">
+        <mat-dialog-actions>
+            <button mat-stroked-button (click)="onSubmitFB(feedForm)">Submit Feedback</button>
+            <button mat-stroked-button mat-dialog-close>Cancel</button>
+        </mat-dialog-actions>
+      </div>
+</form>

@@ -1,0 +1,49 @@
+/* to have the X button at the rightmost */
+.top-bar .mat-dialog-actions{
+    float: right;
+  }
+  
+  /* top-bar X button style (needs more perhaps) */
+  .top-bar .mat-stroked-button{
+    border-radius: var(--card-border-radius);
+  }
+
+  .bottom-bar{
+      display: block;
+  }
+  
+  .bottom-bar .mat-stroked-button{
+    background-color:lightgrey ;
+    border-radius: var(--card-border-radius);
+  }
+  
+  textarea{
+    width: 100%;
+    height: 100px;
+    padding: 12px 300px;
+    margin: 8px 200px;
+    box-sizing: border-box;
+  }
+
+  .mat-dialog-actions {
+    padding: 8px 0;
+    display: inline-block;
+    min-height: 56px;
+    align-items: center;
+    box-sizing: content-box;
+    margin-bottom: -20px;
+    flex-wrap: nowrap;
+    align-content: center;
+    flex-direction: column-reverse;
+    justify-content: space-around;
+}
+
+.feedback-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+.input-fb {
+width: 100%;
+}
