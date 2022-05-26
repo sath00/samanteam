@@ -2,7 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Subscriber, Subscription } from 'rxjs';
 import { StoreInfo } from 'src/app/models/StoreInfo';
 import { storeInfoService } from 'src/app/services/storeinfo.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { CusfeedbackComponent } from '../cusfeedback/cusfeedback.component';
 
 @Component({
   selector: 'app-cusdetails',
@@ -26,5 +27,12 @@ export class CusdetailsComponent implements OnInit {
   }
   ngOnDestroy():void {
     this.storeInfoSub.unsubscribe();
+  }
+
+  onFeedback(){
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      this.dialog.open(CusfeedbackComponent,dialogConfig)
   }
 }
