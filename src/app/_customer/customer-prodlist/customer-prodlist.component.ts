@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
@@ -21,7 +21,13 @@ export class CustomerProdlistComponent implements OnInit {
   displayedColumns: string[] = ['name','description', 'price', 'category', 'image',  'availability'];
   //created a new subscription to be used when subscribing to observables
   private productSubscription: Subscription = new Subscription();
-
+  gridCol:number = 5;
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any){
+    this.gridCol = Math.floor(event.target.innerWidth/200);
+    console.log((event.target.innerWidth/200));
+  }
+  
   @ViewChild(MatPaginator) paginator !: MatPaginator;
   @ViewChild(MatSort) sort !: MatSort; 
 

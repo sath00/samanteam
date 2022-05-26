@@ -1,0 +1,73 @@
+/*General styles*/
+.header-txt{
+    padding-right: 10px;
+}
+h1 {
+    font-weight: 500;
+    font-size: 1.8rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0;
+    padding: 1rem 2rem 0;
+}
+.contain {
+    display: flex;
+    direction: row;
+    margin: 5px;
+}
+h3 {
+    font-size: 0.87rem;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 2rem 0;
+}
+table {
+    width:100%;
+}
+.summary {
+    width: 50vh;
+    border-radius: 
+    var(--border-radius-2);
+    background-color: var(--color-light-toggler);
+    padding: 5px;
+}
+/* the height of the rows in table */
+table > td, th{
+    height: 70px;
+}
+/* Width of the columns */
+.mat-column-select{
+    width: 10%;
+}
+.mat-column-image{
+    width: 20%;
+}
+.mat-column-name{
+    width: 20%;
+}
+.mat-column-quantity { 
+    width: 20%;
+}
+.mat-column-price{
+    width: 30%;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+input {
+    background-color: whitesmoke;
+}
+
+.img-container {
+    height: 70px;
+    width: 70px;
+    border-radius: var(--border-radius-2);
+}
+img{
+    width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 100%;
+    margin: auto;
+    /* width: max-content; */
+    object-fit: cover;
+}
