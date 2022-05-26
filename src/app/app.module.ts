@@ -45,7 +45,8 @@ import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.compon
 import { ProdInfoComponent } from './_customer/prodInfo/prod-info/prod-info.component'
 import { EditcredComponent } from './editcred/editcred.component';
 import { CartComponent } from './_customer/cart/cart.component';
-import { CusdetailsComponent } from './_customer/cusdetails/cusdetails.component'
+import { CusdetailsComponent } from './_customer/cusdetails/cusdetails.component';
+import { CusfeedbackComponent } from './_customer/cusfeedback/cusfeedback.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +73,8 @@ import { CusdetailsComponent } from './_customer/cusdetails/cusdetails.component
     ProdInfoComponent,
     EditcredComponent,
     CartComponent,
-    CusdetailsComponent
+    CusdetailsComponent,
+    CusfeedbackComponent
   ],
   imports: [
     BrowserModule,
