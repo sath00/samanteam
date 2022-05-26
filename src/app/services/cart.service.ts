@@ -10,7 +10,7 @@ import { Product } from "../models/Product";
 export class CartService {
 
     private cart:CartItem[] = [];
-
+    
     addProduct(product:Product,quantity:number){
         
         const found = this.cart.some(item => item.product === product) //checks if product is already in cart, true/false value
@@ -36,12 +36,14 @@ export class CartService {
     }
 
     removeProduct(product:Product){ //not yet tested hehe
-
-        this.cart.map((item:any, index:any)=>{  //python translation: for item, index in cart
-            if(product._id === item._id){       //if id of chosen product to remove matches id of item in cart
-                this.cart.splice(index,1);      //then remove 1 item starting at index of matching product, aka remove item from cart
-            }
-        })
+        const itemIndex = this.cart.findIndex((item => item.product === product));
+        this.cart.splice(itemIndex,1);
+        //console.log(this.cart)
+        // this.cart.map((item:any, index:any)=>{  //python translation: for item, index in cart
+        //     if(product._id === item._id){       //if id of chosen product to remove matches id of item in cart
+        //         this.cart.splice(index,1);      //then remove 1 item starting at index of matching product, aka remove item from cart
+        //     }
+        // })
     }
 
     display(){

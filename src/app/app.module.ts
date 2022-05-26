@@ -45,7 +45,8 @@ import { AuthInterceptor } from './services/authentication/authentication.interc
 import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
 import { ProdInfoComponent } from './_customer/prodInfo/prod-info/prod-info.component'
 import { EditcredComponent } from './editcred/editcred.component';
-import { CartComponent } from './_customer/cart/cart.component'
+import { CartComponent } from './_customer/cart/cart.component';
+import { CusdetailsComponent } from './_customer/cusdetails/cusdetails.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,8 @@ import { CartComponent } from './_customer/cart/cart.component'
     OwnerLayoutComponent,
     ProdInfoComponent,
     EditcredComponent,
-    CartComponent
+    CartComponent,
+    CusdetailsComponent
   ],
   imports: [
     BrowserModule,
