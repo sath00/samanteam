@@ -12,6 +12,7 @@ import { CustomerProdlistComponent } from './_customer/customer-prodlist/custome
 import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
 import { AuthGuard } from './services/authentication/authentication.guard';
 import { CartComponent } from './_customer/cart/cart.component';
+import { CusdetailsComponent } from './_customer/cusdetails/cusdetails.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path:'customer', component: CustomerLayoutComponent,
     children: [
       { path: 'shop', component: CustomerProdlistComponent},
+      { path: 'details', component: CusdetailsComponent},
       { path: 'cart', component: CartComponent}
     ]
   },
