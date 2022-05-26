@@ -68,15 +68,18 @@
 </div>
 
 <!-- Grid View -->
-<div class="mat-elevation-z8" [hidden]="isTableView">
+<div class="mat-elevation-z8" [hidden]="isTableView" (window:resize)="onResize($event)">
 
-    <mat-grid-list cols="5" rowHeight="250px" gutterSize="5px" role="grid" *ngIf="this.products.filteredData.length>0 else noData">
+    <mat-grid-list [cols]="gridCol" rowHeight="250px" gutterSize="5px" role="grid" *ngIf="this.products.filteredData.length>0 else noData">
         <mat-grid-tile class="mat-elevation-z1" *ngFor="let product of this.products.filteredData">
             <mat-card class="product_card" (click)="onProdSelect(product)">
                 <div class="img-container"><img mat-card-image [src]="product.imagePath"></div>
                 <mat-card-content>
                     <div><b>{{product.name}}</b></div>
-                    <div class="info2"><div><mat-icon class="{{product.availability}}">indeterminate_check_box</mat-icon>{{product.availability}}</div><div class="price"><span>&#8369;</span>{{product.price}}</div></div>
+                    <div class="info2">
+                        <div><mat-icon class="{{product.availability}}">indeterminate_check_box</mat-icon>{{product.availability}}</div>
+                        <div class="price"><span>&#8369;</span>{{product.price}}</div>
+                    </div>
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>

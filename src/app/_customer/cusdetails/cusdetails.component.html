@@ -1,0 +1,30 @@
+<div class="inventory-table">
+  <div class="display">
+    <div>
+      <h1>Store Details</h1>
+      <h3>Display store information here</h3>
+    </div>
+  </div>
+  <div>
+    <pre *ngFor="let info of this.storeInfo">
+      Cellphone Num : {{this.storeInfo[0].cellphone}}
+      City          : {{this.storeInfo[0].city}}
+      Details       : {{this.storeInfo[0].details}}
+      State         : {{this.storeInfo[0].state}}
+      Street Address: {{this.storeInfo[0].streetAdd}}
+      Telephone     : {{this.storeInfo[0].telephone}}
+    </pre>
+
+     <!-- Insert google map location of Romel's Mini Mart -->
+     <iframe 
+     src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15722.518375949354!2d123.6053541!3d9.8814102!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd3b3125abd92b23c!2sRomel&#39;s%20mini%20mart!5e0!3m2!1sen!2sph!4v1653451231980!5m2!1sen!2sph" 
+     width="400" 
+     height="300" 
+     style="border:0;" 
+     allowfullscreen="" 
+     loading="lazy" 
+     referrerpolicy="no-referrer-when-downgrade">
+     </iframe>
+
+  </div>
+</div>
