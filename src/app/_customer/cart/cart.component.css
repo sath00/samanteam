@@ -15,73 +15,129 @@ border-radius: 10px;
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-yellow); 
 }
-.container{
+
+.container /*ENTIRE CONTENT*/{
     display: flex;
     margin: 50px 50px
 }
 
 .summ-card {
-   /*  background: var(--color-yellow); */
-    border: 1px solid black;
+    align-items: center;
+    position: sticky;
+    background: var(--color-yellow);
+    box-shadow: 0 2rem 3rem var(--color-info-light);
     border-radius: var(--card-border-radius); 
     width: 30%;
-    height: 10%;
-    
+    height: 10%;   
 }
 
-.summ-card .top h1{
-    text-align: center;
+
+.summ-card .top .data h1{
+    padding: 2rem  2rem 0;
     font-weight: 800;
     font-size: 1.8rem;
     font-family: 'Poppins', sans-serif;
-    margin: 20px 0px;    
-    padding: 5px 5px;
 }
 
-
-.summ-card .bot .data{
-    padding: 10px 10px;;
-    margin: 10px 5px;
-    text-align: justify;
+/* LINE DIVIDER */
+.summ-card hr{
+    border-radius: var(--border-radius-3);
+    border: 2px solid rgb(153, 211, 18) ;
 }
 
-
-.summ-card .bot .data h3, h2{
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.8 rem;
+.summ-card .bot .data h3{
+    padding: 2rem  2rem 0;
     font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
 }
 
+.summ-card .bot .data h2{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+}
+
+
+/*  ORDERS SECTION */
+
+    /* CONTAINER FOR THE WHOLE TABLE */
 .orders-card {
-   /*  background: var(--color-yellow); */
-    border: 1px solid black;
     width: 70%;
     height: 10%;
     margin-right: 50px;
+    
+}
+    /* ROUNDED TABLE FORMAT */
+
+.mat-table{
+    background-color: transparent !important;
+  
+}
+table{
+    border-collapse: collapse;
+    border-radius: var(--card-border-radius); 
+    
+}
+   /*REMOVES THE BOT BORDER OF THE LAST ITEM */
+table tr:last-child td /*To remove the last border*/{
+  border-bottom:0 solid
 }
 
-.orders-card .top h1{
+
+.orders-card .orders-table .cart-products th{
     text-align: center;
-    font-weight: 800;
-    font-size: 1.8rem;
     font-family: 'Poppins', sans-serif;
-    margin: 20px 0px;    
-    padding: 5px 5px;
+    font-weight: 500;
+    font-size: 14px;    
 }
 
-.orders-card .center{
-    align-items: center;
-}
-.orders-card .center h1{
-    font-weight: 800;
-    font-size: 1.8rem;
-    text-align: center;
+/* the height of the rows in table */
+table > td, th{
+    height: 70px;
 }
 
-.orders-card .orders-table .cart-products{
+/* Width of the columns */
+.mat-column-select{
+    width: 1%;
+}
+.mat-column-image{
+    width: 30%;
+}
+.mat-column-name{
+    width: 30%;
+}
+
+.mat-column-quantity { 
+    width: 10%;
+}
+.mat-column-price{
+    width: 20%;
+}
+
+.mat-column-delete{
+    width: 1%;
+}
+.flex-row {
     display: flex;
-    position: relative;
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+}
+
+input {
+    background-color: whitesmoke;
+}
+
+.img-container {
+    height: 70px;
+    width: 70px;
+    border-radius: var(--border-radius-2);
+}
+
+img{
+    width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 100%;
+    margin: auto;
+    /* width: max-content; */
+    object-fit: cover;
 }
