@@ -11,16 +11,38 @@ export class CartService {
 
     private cart:CartItem[] = [];
 
-
-
     addProduct(product:Product,quantity:number){
-        const temp = {
-            product: product,
-            quantity: quantity
+        
+        const found = this.cart.some(item => item.product === product) //checks if product is already in cart, true/false value
+
+        if(!found){ //if product is not in cart yet, add product and quantity to cart
+            const temp = {
+                product: product,
+                quantity: quantity
+            }
+            this.cart.push(temp);
+        }else{      //if product is already in cart, simply update quantity
+            const itemIndex = this.cart.findIndex((item => item.product === product))
+            this.cart[itemIndex].quantity += quantity
         }
-        this.cart.push(temp);
+
+        // original joey function:
+
+        // const temp = {
+        //     product: product,
+        //     quantity: quantity
+        // }
+        // this.cart.push(temp);
     }
 
+    removeProduct(product:Product){ //not yet tested hehe
+
+        this.cart.map((item:any, index:any)=>{  //python translation: for item, index in cart
+            if(product._id === item._id){       //if id of chosen product to remove matches id of item in cart
+                this.cart.splice(index,1);      //then remove 1 item starting at index of matching product, aka remove item from cart
+            }
+        })
+    }
 
     display(){
         return this.cart
