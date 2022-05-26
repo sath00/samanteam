@@ -13,7 +13,7 @@ export class CartService {
 
     addProduct(product:Product,quantity:number){
         
-        const found = this.cart.some(item => item.product === product) //checks if product is already in cart, true/false value
+        const found = this.cart.some(item => item.product._id === product._id) //checks if product is already in cart, true/false value
 
         if(!found){ //if product is not in cart yet, add product and quantity to cart
             const temp = {
@@ -22,17 +22,11 @@ export class CartService {
             }
             this.cart.push(temp);
         }else{      //if product is already in cart, simply update quantity
-            const itemIndex = this.cart.findIndex((item => item.product === product))
+            const itemIndex = this.cart.findIndex((item => item.product._id === product._id))
             this.cart[itemIndex].quantity += quantity
         }
 
-        // original joey function:
 
-        // const temp = {
-        //     product: product,
-        //     quantity: quantity
-        // }
-        // this.cart.push(temp);
     }
 
     removeProduct(product:Product){ //not yet tested hehe
