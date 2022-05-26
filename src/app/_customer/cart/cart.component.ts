@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { Product } from 'src/app/models/Product';
 
 @Component({
   selector: 'app-cart',
@@ -12,6 +13,11 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.cartService.display())
+  }
+
+  onRemove(product: Product){ //(not yet tested) to be activated when customer wants to remove certain item from cart
+    this.cartService.removeProduct(product)
+    console.log("Updated cart: " + this.cartService.display())
   }
 
 }
