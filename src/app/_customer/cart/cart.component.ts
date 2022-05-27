@@ -21,8 +21,8 @@ export class CartComponent implements OnInit {
   displayedColumns: string[] = ['select','image', 'name', 'quantity', 'price', 'delete'];
   
   //sum of selected prices
-  sumOfPrices = 0;
-  sumOfQuantity = 0;
+  sumOfPrices:number = 0;
+  sumOfQuantity:number = 0;
   
   constructor(private cartService: CartService) { 
     this.cartProducts = new MatTableDataSource();
@@ -30,7 +30,6 @@ export class CartComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log(this.cartService.display())
     this.cartProducts = new MatTableDataSource(this.cartService.display());
     this.selection.changed.subscribe(x=>{
       // x.added.forEach(added=>{
@@ -46,10 +45,17 @@ export class CartComponent implements OnInit {
         this.sumOfQuantity += cartItem.quantity;
       })
       this.sumOfPrices = Math.round(this.sumOfPrices*100)/100 // fix issues of additional values
-      console.log(this.sumOfPrices)
     })
   }
 
+  updateOrderSummary(){
+    this.sumOfQuantity = 0;
+    this.sumOfPrices = 0;
+    this.selection.selected.forEach(cartItem => {
+      this.sumOfPrices += cartItem.quantity * parseFloat(cartItem.product.price);
+      this.sumOfQuantity += cartItem.quantity;
+    })
+  }
 
   // Handling the remove product and Change quantity 
   onRemove(cartProd: CartItem){ //(not yet tested) to be activated when customer wants to remove certain item from cart
@@ -58,8 +64,9 @@ export class CartComponent implements OnInit {
     }
     this.cartService.removeProduct(cartProd.product)
     this.cartProducts = new MatTableDataSource(this.cartService.display());
-    console.log("Updated cart: " + this.cartService.display())
+    console.log(this.selection)
   }
+
   onChangeQuantity(cartProd: CartItem,quantity: number){
     if(this.selection.isSelected(cartProd)){
       this.sumOfPrices += (quantity-cartProd.quantity)*parseFloat(cartProd.product.price)
@@ -67,7 +74,9 @@ export class CartComponent implements OnInit {
       this.sumOfPrices = Math.round(this.sumOfPrices*100)/100;
     }
     cartProd.quantity = quantity;
+    this.cartService.changeQuantity(cartProd)
   }
+
   onDeleteSelected(){
     this.selection.selected.forEach(cartItem=>{
       this.onRemove(cartItem);
@@ -79,13 +88,19 @@ export class CartComponent implements OnInit {
   isAllSelected(){
     return this.selection.selected.length === this.cartProducts.data.length;
   }
+
   selectAll(){
-    console.log(this.isAllSelected());
     if(this.isAllSelected()){
       this.selection.clear();
       return;
     }
     this.selection.select(...this.cartProducts.data);
   }
- 
+
+  onInputQuantityChange(cartProd:CartItem){
+    if(this.selection.isSelected(cartProd)){
+      this.updateOrderSummary();
+    }
+    this.cartService.changeQuantity(cartProd)
+  }
 }

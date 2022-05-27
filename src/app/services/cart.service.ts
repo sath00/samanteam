@@ -26,7 +26,7 @@ export class CartService {
             this.cart[itemIndex].quantity += quantity
         }
 
-
+        this.saveCartData(this.cart);
     }
 
     removeProduct(product: Product) { //not yet tested hehe
@@ -37,28 +37,38 @@ export class CartService {
         //         this.cart.splice(index, 1);      //then remove 1 item starting at index of matching product, aka remove item from cart
         //     }
         // })
+        this.saveCartData(this.cart);
     }
 
-    removeProd(product: Product, quantity: number) { //joeys remove product
-        const found = this.cart.some(item => item.product._id === product._id)
-        
-        if (found) {
-            const itemIndex = this.cart.findIndex((item => item.product._id === product._id))
-
-            if (this.cart[itemIndex].quantity - quantity <= 0) {
-                this.cart.splice(itemIndex, 1);
-            } else if (this.cart[itemIndex].quantity - quantity > 0) {
-                this.cart[itemIndex].quantity -= quantity;
-            } else {
-                //i think im missing something here...
-            }
-        } else {
-            console.log("product not found");
-        }
+    changeQuantity(cartItem: CartItem){
+        const itemIndex = this.cart.findIndex((item => item === cartItem));
+        this.cart[itemIndex] = cartItem;
+        this.saveCartData(this.cart);
     }
 
     display() {
+        const cart = this.getCartData()
+        if(cart){
+            this.cart = cart
+        }else{
+            console.log("Empty Cart");
+        }
+
         return this.cart
+        
+    }
+
+    private saveCartData(cartItems: CartItem[]){
+        localStorage.setItem("cartData",JSON.stringify(cartItems));
+    }
+
+    private getCartData(){
+        const data = localStorage.getItem("cartData");
+        if(data){
+            return JSON.parse(data);
+        }else{
+            console.log("Cart Empty")
+        }
     }
 
 
