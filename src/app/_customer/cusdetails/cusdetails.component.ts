@@ -4,6 +4,7 @@ import { StoreInfo } from 'src/app/models/StoreInfo';
 import { storeInfoService } from 'src/app/services/storeinfo.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CusfeedbackComponent } from '../cusfeedback/cusfeedback.component';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-cusdetails',
@@ -34,5 +35,13 @@ export class CusdetailsComponent implements OnInit {
       dialogConfig.disableClose = true;
       dialogConfig.autoFocus = true;
       this.dialog.open(CusfeedbackComponent,dialogConfig)
+  }
+
+  onSubmitFB(form: NgForm) {
+
+    if (form.invalid) {
+      return;
+    }
+    form.resetForm();
   }
 }
