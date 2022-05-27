@@ -146,3 +146,18 @@ img{
     /* width: max-content; */
     object-fit: cover;
 }
+
+
+/**for removing the arrow steps on input field number**/
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
