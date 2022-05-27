@@ -5,7 +5,7 @@ const http = require('http');
 
 //setting up the port and creating the server
 const port = 3000;
-const app = require('./backend/app');
+const app = require('./app');
 const server = http.createServer(app);
 server.listen(port);
 //imported app.js
