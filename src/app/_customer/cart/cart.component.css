@@ -100,44 +100,49 @@ table > td, th{
 
 /* Width of the columns */
 .mat-column-select{
-    width: 1%;
+    width: 10%;
 }
 .mat-column-image{
-    width: 30%;
+    width: 20%;
 }
 .mat-column-name{
     width: 30%;
 }
 
 .mat-column-quantity { 
-    width: 10%;
+    width: 20%;
 }
 .mat-column-price{
-    width: 20%;
+    width: 15%;
 }
 
 .mat-column-delete{
-    width: 1%;
+    width: 5%;
 }
 .flex-row {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
-input {
-    background-color: whitesmoke;
+.flex-row div input {
+    background-color: var(--color-header-mobile);
+    padding: 3px;
+    border-radius: var(--border-radius-2);
 }
 
 .img-container {
     height: 70px;
     width: 70px;
     border-radius: var(--border-radius-2);
+    margin: 5px;
 }
 
 img{
     width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
     height: 100%;
     margin: auto;
+    border-radius: var(--border-radius-2);
     /* width: max-content; */
     object-fit: cover;
 }

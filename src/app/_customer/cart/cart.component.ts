@@ -39,10 +39,11 @@ export class CartComponent implements OnInit {
       // x.removed.forEach(removed=>{
       //   this.sumOfPrices-=removed.quantity*parseFloat(removed.product.price)
       // })
+      this.sumOfQuantity=0;
       this.sumOfPrices = 0;
-      
       x.source.selected.forEach(cartItem=>{
         this.sumOfPrices += cartItem.quantity*parseFloat(cartItem.product.price);
+        this.sumOfQuantity += cartItem.quantity;
       })
       this.sumOfPrices = Math.round(this.sumOfPrices*100)/100 // fix issues of additional values
       console.log(this.sumOfPrices)
@@ -62,6 +63,7 @@ export class CartComponent implements OnInit {
   onChangeQuantity(cartProd: CartItem,quantity: number){
     if(this.selection.isSelected(cartProd)){
       this.sumOfPrices += (quantity-cartProd.quantity)*parseFloat(cartProd.product.price)
+      this.sumOfQuantity += quantity-cartProd.quantity;
       this.sumOfPrices = Math.round(this.sumOfPrices*100)/100;
     }
     cartProd.quantity = quantity;

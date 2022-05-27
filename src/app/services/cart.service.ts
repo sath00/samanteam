@@ -30,17 +30,18 @@ export class CartService {
     }
 
     removeProduct(product: Product) { //not yet tested hehe
-
-        this.cart.map((item: any, index: any) => {  //python translation: for item, index in cart
-            if (product._id === item._id) {       //if id of chosen product to remove matches id of item in cart
-                this.cart.splice(index, 1);      //then remove 1 item starting at index of matching product, aka remove item from cart
-            }
-        })
+        const itemIndex = this.cart.findIndex(item=> item.product._id === product._id)
+        this.cart.splice(itemIndex, 1);
+        // this.cart.map((item: any, index: any) => {  //python translation: for item, index in cart
+        //     if (product._id === item._id) {       //if id of chosen product to remove matches id of item in cart
+        //         this.cart.splice(index, 1);      //then remove 1 item starting at index of matching product, aka remove item from cart
+        //     }
+        // })
     }
 
     removeProd(product: Product, quantity: number) { //joeys remove product
         const found = this.cart.some(item => item.product._id === product._id)
-
+        
         if (found) {
             const itemIndex = this.cart.findIndex((item => item.product._id === product._id))
 
