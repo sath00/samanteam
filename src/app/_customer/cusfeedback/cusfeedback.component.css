@@ -1,4 +1,8 @@
-/* to have the X button at the rightmost */
+::ng-deep .mat-dialog-container {
+  width: 580px;
+  border-radius: var(--card-border-radius); 
+}
+
 .top-bar .mat-dialog-actions{
     float: right;
   }

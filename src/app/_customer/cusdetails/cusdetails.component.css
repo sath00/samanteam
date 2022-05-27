@@ -1,3 +1,28 @@
+.container /*ENTIRE CONTENT*/{
+  display: flex;
+  margin: 50px 50px
+}
+
+.store-info{
+  align-items: center;
+  background: var(--color-yellow);
+  /* box-shadow: 0 2rem 3rem var(--color-info-light); */
+  border-radius: var(--card-border-radius); 
+  width: 30%;
+  height: 10%; 
+}
+
+.map-container{
+  width: 70%;
+  height: 10%;
+  margin-right: 50px;
+}
+
+.map-container iframe{
+  height: 500;
+  width: 100%;
+}
+
 .top-bar {
     display: flex;
     flex-direction: row;
