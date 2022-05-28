@@ -1,0 +1,31 @@
+body{
+    background-color: #D8DEFD;
+}
+
+.container{
+    background-color:transparent;
+}
+
+
+.bg-img1 {
+    position: absolute;
+    object-fit: contain;
+    height: 35%;
+    bottom: 10%;
+    left: 30%;
+    z-index: 0;
+}
+
+.bg-img2 {
+    position: absolute;
+    object-fit: contain;
+    height: 30%;
+    top: 10%;
+    right: 0%;
+    z-index: 0;
+}
+
+.middle-part{
+    background-color:none;
+    z-index: 1;
+}

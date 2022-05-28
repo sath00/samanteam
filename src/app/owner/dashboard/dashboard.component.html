@@ -7,21 +7,33 @@
 
 <br>
 <br>
+
 <div class="dash-card">
     <div class="display">
         <div>
             <h1>Inventory Details</h1>
         </div>
     </div>
-    <div class="dash-item">
-        Total Products Count = {{this.totalProducts}}
+    <div class="dash">
+        <div class="dash-item">
+            <span class="material-icons">shopping_cart</span>
+            <h3>Total Products</h3><br>
+            <div>{{this.totalProducts}}</div>
+        </div>
+        
+        <div class="dash-item">
+            <span class="material-icons">check_circle</span>
+            <h3>Total Products Available</h3>
+            <div>{{this.availableProducts}}</div>
+        </div>
+
+        <div class="dash-item">
+            <span class="material-icons">cancel</span>
+            <h3>Total Products Unavailable</h3><br>
+            <div id>{{this.unavailableProducts}}</div>
+        </div>
     </div>
-    <div class="dash-item">
-        Total Available Products Count = {{this.availableProducts}}
-    </div>
-    <div class="dash-item">
-        Total Unavailable Products Count = {{this.unavailableProducts}}
-    </div>
+    
 
 
 </div>

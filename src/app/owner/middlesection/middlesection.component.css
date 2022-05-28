@@ -1,7 +1,8 @@
 .top-bar {
   display: flex;
   flex-direction: row;
-  background-color: #FFDB58;
+  background: var(--color-yellow);
+  border-radius: var(--card-border-radius);
   padding: 5px;
   align-items: center;
   justify-content: space-between;
