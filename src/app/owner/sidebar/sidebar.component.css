@@ -3,6 +3,7 @@
 aside {
   height: 100vh;
   background: var(--color-background);
+  position: fixed;
 }
 
 /*Will contain logo and close sign.*/
@@ -92,7 +93,22 @@ aside .sidebar button:last-child {
 
 /*Account Profile nav separated from other navs*/
 aside .sidebar button {
+  color: var(--color-info-dark);
   position: absolute;
   bottom: 8rem;
+  width: 100%;
+}
+
+
+button{
+    color: var(--color-info-dark);
+    position: absolute;
+    bottom: 8rem;
+    width: 100%;
+}
+
+button:last-child {
+  position: absolute;
+  bottom: 2rem;
   width: 100%;
 }

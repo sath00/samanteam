@@ -11,11 +11,8 @@ export class AuthenticationService {
     private isAuth = false;
     private token: string = "";
     private authStatusListener = new Subject<boolean>();
-    // private credentialListener = new Subject()
-    // private validationListener = new Subject();
     private tokenTimer: any;
-    // private credentials:any;
-    // private validation:any;
+
 
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -42,8 +39,8 @@ export class AuthenticationService {
                     this.saveAuthData(this.token, expirationDate)
                     console.log(responseData.message);
                 }
-            }, (error) => {
-                console.log(error)
+            }, error => {
+               this.authStatusListener.next(false);
              })
     }
 
@@ -91,14 +88,6 @@ export class AuthenticationService {
     }
 
 
-    // getValidationListener() {
-    //     return this.validationListener.asObservable()
-    // }
-
-    // getCredentialListener() {
-    //     return this.credentialListener.asObservable()
-    // }
-
     private saveAuthData(token: string, expirationDate: Date) {
         localStorage.setItem('token', token);
         localStorage.setItem('expiration', expirationDate.toISOString());
@@ -120,29 +109,6 @@ export class AuthenticationService {
             expiration: new Date(expiration)
         }
     }
-
-    // getCredentials(){
-    //     this.http.get<{username:string,password:string}>('http://localhost:3000/api/admin/credentials')
-    //     .subscribe((responseData)=>{
-    //         this.credentials = responseData;
-    //         this.credentialListener.next(this.credentials);
-    //     })   
-    // }
-    
-
-    // validatePassword(password:string){
-    //     const credentials = {
-    //         password:password
-    //     }
-    //     this.http.post<{message:string,value:string}>('http://localhost:3000/api/admin/validate',credentials)
-    //     .subscribe((responseData)=>{
-    //         this.validation = responseData.value;
-    //         console.log("authservice:"+this.validation)
-    //         this.validationListener.next(this.validation);
-    //         return this.validation;
-    //     })
-        
-    // }
 
     updateCredentials(username: string, currentPassword: string, newPassword: string){
         const newCredentials = {

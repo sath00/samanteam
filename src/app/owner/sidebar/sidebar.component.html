@@ -10,6 +10,10 @@
   
   <div class="sidebar">
     <a routerLink="/admin/view-dashboard">
+      <span class="material-icons">dashboard</span>
+      <h3>View Dashboard</h3>
+    </a>
+    <a routerLink="/admin/inventory">
       <span class="material-icons">shopping_bag</span>
       <h3>Inventory</h3>
     </a>
@@ -21,11 +25,11 @@
       <span class="material-icons">visibility</span>
       <h3>Overview</h3>
     </a> -->
-    <button mat-button (click)= "onEditCred()">
+    <button mat-button (click)="onEditCred()">
       <span class="material-icons">account_circle</span>
       <h3>Account</h3>
     </button>
-    <button mat-button (click) = "onLogout()">
+    <button mat-button (click)="onLogout()">
       <span class="material-icons">logout</span>
       <h3>Logout</h3>
     </button>

@@ -9,6 +9,7 @@ import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.compon
 import { AuthGuard } from './services/authentication/authentication.guard';
 import { CartComponent } from './customer/cart/cart.component';
 import { CusdetailsComponent } from './customer/cusdetails/cusdetails.component';
+import { DashboardComponent } from './owner/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,9 @@ const routes: Routes = [
   {
     path: 'admin', component: OwnerLayoutComponent,
     children: [
-      { path: 'view-dashboard', component: InvdashComponent},
+      { path: '', redirectTo: 'view-dashboard', pathMatch: 'full'},
+      { path: 'view-dashboard', component: DashboardComponent },
+      { path: 'inventory', component: InvdashComponent},
       { path: 'add-products', component: InvaddComponent },
       { path: 'store-info', component: StoreinfoComponent }
     ]

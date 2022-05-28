@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-// import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../../services/authentication/authentication.service'
 
 @Component({
@@ -12,9 +12,13 @@ export class LoginComponent implements OnInit {
 
   constructor(public authService: AuthenticationService) { }
   isLoading:Boolean | undefined;
+  authStatusSub:Subscription = new Subscription();
 
   ngOnInit(): void {  
     this.isLoading = false;
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(authdata=>{
+        this.isLoading = false;
+    })
   }
 
   onLogin(form: NgForm) {
@@ -24,4 +28,5 @@ export class LoginComponent implements OnInit {
     }
     form.resetForm();
   }
+  
 }

@@ -47,6 +47,7 @@ import { ProdInfoComponent } from './customer/prodInfo/prod-info/prod-info.compo
 import { EditcredComponent } from './owner/editcred/editcred.component';
 import { CartComponent } from './customer/cart/cart.component';
 import { CusdetailsComponent } from './customer/cusdetails/cusdetails.component';
+import { DashboardComponent } from './owner/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { CusdetailsComponent } from './customer/cusdetails/cusdetails.component'
     ProdInfoComponent,
     EditcredComponent,
     CartComponent,
-    CusdetailsComponent
+    CusdetailsComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
