@@ -48,6 +48,7 @@ import { EditcredComponent } from './owner/editcred/editcred.component';
 import { CartComponent } from './customer/cart/cart.component';
 import { CusdetailsComponent } from './customer/cusdetails/cusdetails.component';
 import { DashboardComponent } from './owner/dashboard/dashboard.component';
+import { ProdInfoOwnerComponent } from './owner/prodInfoOwner/productInfo.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { DashboardComponent } from './owner/dashboard/dashboard.component';
     CartComponent,
     CusdetailsComponent,
     DashboardComponent,
+    ProdInfoOwnerComponent
   ],
   imports: [
     BrowserModule,

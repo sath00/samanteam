@@ -20,67 +20,23 @@ h3 {
     padding: 0 2rem 0;
 }
 
-b {
+
+.product_name {
     font-weight: 800;
+    font-size: 1rem;
+    padding: 10px;
 }
 
-/*Prod list styles*/
 
-.mat-elevation-z8,
-.filter-bar {
-    margin: 0 2rem 2rem 2rem;
-}
-
-table {
-    width: 100%;
-}
-
-.mat-column-name,
-.mat-column-price,
-.mat-column-category,
-.mat-column-image,
-.mat-column-availability {
-    width: 15%;
-    padding-right: 10px;
-}
-
-.mat-form-field {
-    font-size: 14px;
-    width: 50%;
-}
-
-td,
-th {
-    width: 25%;
-}
-
-.mat-row:hover {
-    cursor: pointer;
-    background-color: var(--color-light);
-}
-
-div {
-    justify-content: space-between;
-}
-
-img {
-    width: 40px;
-    height: 40px;
-}
-
-mat-cell {
-    height: 100px;
-}
 
 /* GRID list style */
 
 .product_card {
     width: 100%;
-    height: 100%;
+    height: max-content;
     padding: 0;
     position: relative;
     transition: all 300ms ease;
-    ;
 }
 
 .product_card:hover {
@@ -96,28 +52,6 @@ mat-cell {
     background-color: rgb(235, 252, 141);
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-}
-
-div.info2 {
-    display: flex;
-    justify-content: space-between;
-}
-
-.info2 div {
-    display: flex;
-    vertical-align: middle;
-}
-
-mat-card-content {
-    padding: 5px;
-}
-
-.info2 div .Available {
-    color: rgb(98, 242, 98);
-}
-
-.info2 div .Not {
-    color: red;
 }
 
 mat-card img {
@@ -150,3 +84,32 @@ img {
     position: relative;
     transition: all 300ms ease;
 }
+
+#edit-inventory-btn.active {
+    background-color: yellow;
+}
+
+#on-create-btn:disabled {
+    background-color: lightgray;
+}
+
+.del-btn:hover,
+.edit-btn:hover {
+    background-color: yellow;
+}
+
+div div button {
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+}
+
+div {
+    justify-content: space-between;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 50%;
+}
+

@@ -6,6 +6,9 @@ import { ProductService } from 'src/app/services/product.service';
 import { ProdeditComponent } from '../../prodedit/prodedit.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
+import { ProdInfoOwnerComponent } from '../../prodInfoOwner/productInfo.component';
+import { InvaddComponent } from '../../invadd/invadd.component';
+
 @Component({
   selector: 'app-griddisplay',
   templateUrl: './griddisplay.component.html',
@@ -17,8 +20,10 @@ export class GriddisplayComponent implements OnInit {
 products: MatTableDataSource<Product>;
 //created a new subscription to be used when subscribing to observables
 private productSubscription: Subscription = new Subscription();
-//instantaite isModified that tracks changes on the inventory
-isModified = false;
+
+editON = false;
+
+
 //instatiated our product service
   constructor(public productService: ProductService, private dialog: MatDialog) { 
     this.products = new MatTableDataSource();
@@ -46,11 +51,76 @@ ngOnInit(): void {
   }
 
   onProdSelect(row: Product) {
-    const dialogRef = this.dialog.open(ProdeditComponent, {
-      disableClose: true,
-      autoFocus: true,
-      data: row
-    })
+    if(this.editON){
+      const dialogRef = this.dialog.open(ProdeditComponent, {
+        disableClose: true,
+        autoFocus: true,
+        data: row
+      })
+    }else{
+      const dialogRef = this.dialog.open(ProdInfoOwnerComponent, {
+        disableClose: true,
+        autoFocus: true,
+        data: row
+      })
+    }
+    
   }
 
+  //Deletefunction
+  onDeleteProduct(row: Product): void {
+    if (confirm("Do you want to remove '" + row.name + "' from the inventory?")) {
+      this.productService.deleteProduct(row._id);
+    }
+  }
+
+  //handles the edit button on the top
+  onEditInventory(): void {
+    // if (this.displayedColumns.includes('delete')) {
+    //   document.getElementById('edit-inventory-btn')?.classList.remove('active');
+    //   (document.getElementById('on-create-btn') as HTMLInputElement).disabled = false;
+    //   this.displayedColumns.pop();
+    //   this.displayedColumns.pop();
+    //   this.displayedColumns.pop();
+    //   this.displayedColumns.push('availability');
+    // } else {
+    //   document.getElementById('edit-inventory-btn')?.classList.add('active');
+    //   (document.getElementById('on-create-btn') as HTMLInputElement).disabled = true;
+    //   this.displayedColumns.pop();
+    //   this.displayedColumns.push('availabilityToggle');
+    //   this.displayedColumns.push('delete');
+    //   this.displayedColumns.push('edit');
+      if(this.editON){
+        this.editON = false;
+        document.getElementById('edit-inventory-btn')?.classList.remove('active');
+        (document.getElementById('on-create-btn') as HTMLInputElement).disabled = false;
+      }else{
+        this.editON = true;
+        document.getElementById('edit-inventory-btn')?.classList.add('active');
+        (document.getElementById('on-create-btn') as HTMLInputElement).disabled = true;
+      }
+    }
+  
+  
+  onCreate() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(InvaddComponent, dialogConfig)
+  } 
+
+
 }
+
+
+
+
+  // During edit
+  // onProdSelect(row: Product) {
+  //   const dialogRef = this.dialog.open(ProdeditComponent, {
+  //     disableClose: true,
+  //     autoFocus: true,
+  //     data: row
+  //   })
+  // }
+

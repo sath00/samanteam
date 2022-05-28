@@ -1,0 +1,99 @@
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: darkgray;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-yellow);
+}
+
+mat-dialog-content {
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+mat-dialog-actions {
+    position: absolute;
+    z-index: 2;
+    top: -10px;
+}
+
+.product_card {
+    width: 100%;
+    height: max-content;
+    padding: 0;
+    position: relative;
+    transition: all 300ms ease;
+}
+
+.img-container {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+div.info2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info2 div {
+    display: flex;
+    vertical-align: middle;
+}
+
+mat-card-content {
+    padding: 5px;
+}
+
+.info2 div .Available {
+    color: rgb(98, 242, 98);
+}
+
+.info2 div .Not {
+    color: red;
+}
+
+mat-card div img {
+    /*this makes the image in src fit to the size specified below*/
+    width: 100%;
+    /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 100%;
+    margin: auto;
+    width: max-content;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+}
+
+mat-card-actions button {
+    background-color: var(--color-yellow);
+}
+
+.prod-price {
+    position: absolute;
+    right: 0;
+}
+
+input {
+    text-align: center;
+}
