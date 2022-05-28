@@ -18,7 +18,12 @@ export class CategoryService {
 
     getCategory() {
         this.http.get<Category[]>('http://localhost:3000/api/category/list').subscribe((categoriesData) => {
+            const nullCat: Category = { //added a null category
+                name:"None",
+                _id:""
+            }
             this.categories = categoriesData;
+            this.categories.push(nullCat);
             this.categoriesUpdated.next(this.categories);
         })
     }

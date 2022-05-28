@@ -1,7 +1,152 @@
-mat-grid-tile{
-    background-color: aqua;
+
+/*General styles*/
+.header-txt {
+    display: flex;
+    flex-direction: row;
+    padding-right: 10px;
 }
+
+h1 {
+    font-weight: 500;
+    font-size: 1.8rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0;
+    padding: 1rem 2rem 0;
+}
+
+h3 {
+    font-size: 0.87rem;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 2rem 0;
+}
+
+b {
+    font-weight: 800;
+}
+
+/*Prod list styles*/
+
+.mat-elevation-z8,
+.filter-bar {
+    margin: 0 2rem 2rem 2rem;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-column-name,
+.mat-column-price,
+.mat-column-category,
+.mat-column-image,
+.mat-column-availability {
+    width: 15%;
+    padding-right: 10px;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 50%;
+}
+
+td,
+th {
+    width: 25%;
+}
+
+.mat-row:hover {
+    cursor: pointer;
+    background-color: var(--color-light);
+}
+
+div {
+    justify-content: space-between;
+}
+
 img {
+    width: 40px;
+    height: 40px;
+}
+
+mat-cell {
     height: 100px;
-    width: 100px;
+}
+
+/* GRID list style */
+
+.product_card {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    transition: all 300ms ease;
+    ;
+}
+
+.product_card:hover {
+    transform: scale(0.95);
+    cursor: pointer;
+}
+
+.img-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(235, 252, 141);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+div.info2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info2 div {
+    display: flex;
+    vertical-align: middle;
+}
+
+mat-card-content {
+    padding: 5px;
+}
+
+.info2 div .Available {
+    color: rgb(98, 242, 98);
+}
+
+.info2 div .Not {
+    color: red;
+}
+
+mat-card img {
+    /*this makes the image in src fit to the size specified below*/
+    width: 100%;
+    /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 100%;
+    margin: auto;
+    /* width: max-content; */
+    object-fit: cover;
+}
+
+mat-grid-list {
+    resize: none;
+}
+
+.prod-price {
+    position: absolute;
+    right: 0;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+}
+.product_card {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    transition: all 300ms ease;
 }

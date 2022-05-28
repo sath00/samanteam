@@ -1,7 +1,29 @@
-<mat-grid-list cols="4" rowHeight="1:1">
-    <mat-grid-tile *ngFor="let product of products">
-        <img id="prdImg" src="https://via.placeholder.com/250">
-        <hr>
-        {{product._id}}
-    </mat-grid-tile>
-</mat-grid-list>
+
+<div style="display: flex;" class="filter-bar">
+    <mat-form-field appearance="standard">
+        <mat-label>Search for an item:</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Titan" #input>
+    </mat-form-field>
+</div>
+
+
+
+<div class="mat-elevation-z8">
+
+    <mat-grid-list [cols]="6" rowHeight="250px" gutterSize="10px" role="grid" *ngIf="this.products.filteredData.length>0">
+        <mat-grid-tile class="mat-elevation-z1" *ngFor="let product of this.products.filteredData">
+            <mat-card class="product_card" (click)="onProdSelect(product)">
+                <div class="img-container"><img mat-card-image [src]="product.imagePath"></div>
+                <mat-card-content>
+                    <div><b>{{product.name}}</b></div>
+                    <div class="info2">
+                        <div>
+                            <mat-icon class="{{product.availability}}">indeterminate_check_box</mat-icon>
+                            {{product.availability}}
+                        </div>
+                        <div class="price"><span>&#8369;</span>{{product.price}}</div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>

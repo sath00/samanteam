@@ -20,10 +20,13 @@ export class ProdeditComponent implements OnInit {
     ) { }
 
   categoryList: Category[] = this.categoryService.getCategoryList();
+  
+
   selectedFile: any = "";
   imagePrev: string = this.data.imagePath;
 
   changed: boolean = false;
+
 
   tempProduct:Product = {
     _id:this.data._id, 
@@ -45,22 +48,23 @@ export class ProdeditComponent implements OnInit {
   }
 
   onSaveChanges(): void {
-    this.data.name = this.tempProduct.name;
+    // this.data.name = this.tempProduct.name;
     if(this.isChecked){
-      this.data.availability = 'Available';
+      this.tempProduct.availability = 'Available';
     }else{
-      this.data.availability = 'Not Available';
+      this.tempProduct.availability = 'Not Available';
     }
-    this.data.category = this.tempProduct.category;
-    this.data.description = this.tempProduct.description;
-    this.data.price = this.tempProduct.price;
-    this.data.imagePath = this.tempProduct.imagePath;
+    // this.data.category = this.tempProduct.category;
+    // this.data.description = this.tempProduct.description;
+    // this.data.price = this.tempProduct.price;
+    // this.data.imagePath = this.tempProduct.imagePath;
     
     if(this.changed){
       this.selectedFile = this.selectedFile[0];
     }else{
       this.selectedFile = null;
     }
+
 
     this.productService.updateProduct(this.tempProduct,this.selectedFile);
     

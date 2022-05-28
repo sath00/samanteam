@@ -38,6 +38,7 @@ export class CatdisplayComponent implements OnInit {
     //category subscription is given a subscription value or an observable where we can subscribe to
     this.categorieSubscription = this.categoryService.getCategoryUpdatedListener()
     .subscribe((category: Category[]) => {
+      category.splice(category.findIndex(cat=>cat.name=="None"),1);
       this.categories = new MatTableDataSource(category);
       this.ngAfterViewInit();
     })

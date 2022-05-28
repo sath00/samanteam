@@ -72,7 +72,6 @@ export class ProductService {
     prodData.append('availability', product.availability);
     prodData.append('_id', "");
     prodData.append('category', product.category._id);
-
     prodData.append('imagePath', product.imagePath);
     prodData.append('image', newImage)
     this.http.put<{ message: string }>('http://localhost:3000/api/product/edit/' + product._id, prodData)
