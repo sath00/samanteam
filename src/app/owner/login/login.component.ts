@@ -11,13 +11,15 @@ import { AuthenticationService } from '../../services/authentication/authenticat
 export class LoginComponent implements OnInit {
 
   constructor(public authService: AuthenticationService) { }
+  isLoading:Boolean | undefined;
 
   ngOnInit(): void {  
-    
+    this.isLoading = false;
   }
 
   onLogin(form: NgForm) {
     if (form.valid) {
+      this.isLoading = true;
       this.authService.loginOwner(form.value.Username, form.value.Password);
     }
     form.resetForm();

@@ -93,3 +93,7 @@ h3{
     font-size: 0.87rem;
     font-family: 'Poppins', sans-serif;
 }
+
+mat-spinner {
+    margin:auto;
+}

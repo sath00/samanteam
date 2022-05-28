@@ -40,9 +40,11 @@ export class AuthenticationService {
                     const now = new Date();
                     const expirationDate = new Date(now.getTime() + (expireDuration * 1000))
                     this.saveAuthData(this.token, expirationDate)
+                    console.log(responseData.message);
                 }
-                
-            })
+            }, (error) => {
+                console.log(error)
+             })
     }
 
     logoutOwner() {
