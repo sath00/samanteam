@@ -25,6 +25,8 @@
                 <div class="img-container"><img mat-card-image [src]="product.imagePath"></div>
                 <mat-card-content>
                     <div class="product_name">{{product.name}}</div>
+                    <!-- <mat-slide-toggle [checked]="product.availability === 'Available' ? true : false"
+                        (change)="(toggleAvailability(product))"></mat-slide-toggle> -->
                 </mat-card-content>
             </mat-card>
         </mat-grid-tile>

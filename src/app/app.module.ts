@@ -49,6 +49,8 @@ import { CartComponent } from './customer/cart/cart.component';
 import { CusdetailsComponent } from './customer/cusdetails/cusdetails.component';
 import { DashboardComponent } from './owner/dashboard/dashboard.component';
 import { ProdInfoOwnerComponent } from './owner/prodInfoOwner/productInfo.component';
+import { ErrorInterceptor } from './error-interceptor';
+import { ErrorDisplayComponent } from './error/error-display.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,8 @@ import { ProdInfoOwnerComponent } from './owner/prodInfoOwner/productInfo.compon
     CartComponent,
     CusdetailsComponent,
     DashboardComponent,
-    ProdInfoOwnerComponent
+    ProdInfoOwnerComponent,
+    ErrorDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +106,10 @@ import { ProdInfoOwnerComponent } from './owner/prodInfoOwner/productInfo.compon
     MatCheckboxModule,
     MatProgressSpinnerModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, 
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent],
   entryComponents:[InvaddComponent]
 })
