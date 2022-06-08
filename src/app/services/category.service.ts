@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Category } from '../models/Category'
 import { Subject } from 'rxjs'
 import { ProductService } from './product.service'
+import { environment } from '../../environments/environment'
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +18,7 @@ export class CategoryService {
     // CATEGORY
 
     getCategory() {
-        this.http.get<Category[]>('http://localhost:3000/api/category/list').subscribe((categoriesData) => {
+        this.http.get<Category[]>(environment.appURL +'/category/list').subscribe((categoriesData) => {
             const nullCat: Category = { //added a null category
                 name:"None",
                 _id:""
@@ -38,7 +39,7 @@ export class CategoryService {
             _id: "",
             name: name,
         }
-        this.http.post<{ message: string }>('http://localhost:3000/api/category/add', cat)
+        this.http.post<{ message: string }>(environment.appURL +'/category/add', cat)
             .subscribe((responseData) => {
                 console.log(responseData.message);
                 this.getCategory();
@@ -46,7 +47,7 @@ export class CategoryService {
     }
 
     deleteCategory(categoryID: string) {
-        this.http.delete<{ message: string }>('http://localhost:3000/api/category/remove/' + categoryID)
+        this.http.delete<{ message: string }>(environment.appURL +'/category/remove/' + categoryID)
             .subscribe((responseData) => {
                 this.categories = this.categories.filter(category => category._id != categoryID)
                 this.categoriesUpdated.next([...this.categories])
@@ -65,7 +66,7 @@ export class CategoryService {
             _id:category._id,
             name:category.name
         }
-        this.http.put<{ message: string }>('http://localhost:3000/api/category/edit/'+category._id, cat)
+        this.http.put<{ message: string }>(environment.appURL +'/category/edit/'+category._id, cat)
           .subscribe(() => {
             this.getCategory();
             this.productService.getProducts();

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
 import { StoreInfo } from '../models/StoreInfo'
 import { Subject } from 'rxjs'
+import {environment } from '../../environments/environment'
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +18,7 @@ export class storeInfoService {
     //STORE INFO
 
     getStoreInfo() {
-        this.http.get<StoreInfo[]>('http://localhost:3000/api/store-info/details').subscribe((storeinfoData) => {
+        this.http.get<StoreInfo[]>(environment.appURL +'/store-info/details').subscribe((storeinfoData) => {
             this.storeinfo = storeinfoData;
             this.storeinfoUpdated.next(this.storeinfo);
         })
@@ -40,7 +41,7 @@ export class storeInfoService {
             details: storeinfo.details
         }
 
-        this.http.put<{message: string}>('http://localhost:3000/api/store-info/update',newStoreData).subscribe((responseData) => {
+        this.http.put<{ message: string }>(environment.appURL +'/store-info/update',newStoreData).subscribe((responseData) => {
             console.log(responseData.message);
             this.getStoreInfo();
         })

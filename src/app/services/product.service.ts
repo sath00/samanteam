@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from '../models/Product'
 import { Subject } from 'rxjs'
 
+import {environment} from '../../environments/environment'
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +18,7 @@ export class ProductService {
   // PRODUCTS
 
   getProducts() {
-    this.http.get<Product[]>('http://localhost:3000/api/product/list').subscribe((productsData) => {
+    this.http.get<Product[]>(environment.appURL+'/product/list').subscribe((productsData) => {
       this.products = productsData;
       this.productsUpdated.next(this.products);
     })
@@ -37,7 +39,7 @@ export class ProductService {
     prodData.append('category', category)
     prodData.append('image', image)
 
-    this.http.post<{ message: string }>('http://localhost:3000/api/product/add', prodData)
+    this.http.post<{ message: string }>(environment.appURL+'/product/add', prodData)
       .subscribe((responseData) => {
         console.log(responseData.message);
         this.getProducts();
@@ -45,7 +47,7 @@ export class ProductService {
   }
 
   deleteProduct(productID: string) {
-    this.http.delete<{ message: string }>('http://localhost:3000/api/product/remove/' + productID)
+    this.http.delete<{ message: string }>(environment.appURL+'/product/remove/' + productID)
       .subscribe((responseData) => {
         this.products = this.products.filter(product => product._id != productID)
         this.productsUpdated.next([...this.products])
@@ -58,7 +60,7 @@ export class ProductService {
       _id: productID,
       availability: availability
     }
-    this.http.post<{ message: string }>('http://localhost:3000/api/product/availability', value)
+    this.http.post<{ message: string }>(environment.appURL +'/product/availability', value)
       .subscribe((responseData) => {
         console.log(responseData.message)
       })
@@ -74,7 +76,7 @@ export class ProductService {
     prodData.append('category', product.category._id);
     prodData.append('imagePath', product.imagePath);
     prodData.append('image', newImage)
-    this.http.put<{ message: string }>('http://localhost:3000/api/product/edit/' + product._id, prodData)
+    this.http.put<{ message: string }>(environment.appURL +'/product/edit/' + product._id, prodData)
       .subscribe((responseData) => {
         console.log(responseData.message);
         this.getProducts();
@@ -82,6 +84,6 @@ export class ProductService {
   }
 
   searchProduct(key: string) {
-    return this.http.get<Product[]>('http://localhost:3000/api/product/search/' + key)
+    return this.http.get<Product[]>(environment.appURL +'/product/search/' + key)
   }
 }

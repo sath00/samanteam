@@ -13,7 +13,7 @@ const path = require('path')
 
 
 //our mongodb URI
-const dbURI = 'mongodb+srv://Admin:tkjKS74gP3BHehQT@cluster0.58qld.mongodb.net/Romels-Webmart?retryWrites=true&w=majority'
+const dbURI = 'mongodb+srv://Admin:'+process.env.MONGO_ATLAS_PW+'@cluster0.58qld.mongodb.net/Romels-Webmart?retryWrites=true&w=majority'
 
 
 //instatiated the express app

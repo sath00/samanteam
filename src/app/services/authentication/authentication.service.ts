@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-
+import {environment} from '../../../environments/environment'
 
 @Injectable({
     providedIn: 'root'
@@ -21,7 +21,7 @@ export class AuthenticationService {
             username: username,
             password: password
         }
-        this.http.post<{ message: string, token: string, expiresIn: number }>('http://localhost:3000/api/admin/login', authData)
+        this.http.post<{ message: string, token: string, expiresIn: number }>(environment.appURL +'/admin/login', authData)
             .subscribe((responseData) => {
                 const token = responseData.token
                 if (token) {
@@ -116,7 +116,7 @@ export class AuthenticationService {
             currentPassword:currentPassword,
             newPassword:newPassword
         }
-        this.http.put<{ message: string }>('http://localhost:3000/api/admin/edit',newCredentials)
+        this.http.put<{ message: string }>(environment.appURL +'/admin/edit',newCredentials)
         .subscribe((responseData)=>{
             console.log(responseData.message); 
         })
