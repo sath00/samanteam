@@ -1,0 +1,9 @@
+.error-container{
+    text-align: center;
+}
+
+.error-close{
+    margin:auto;
+    padding:10px;
+    margin-left:30%;
+}

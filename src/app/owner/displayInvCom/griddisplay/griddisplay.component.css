@@ -46,7 +46,7 @@ h3 {
 
 .img-container {
     width: 100%;
-    height: 80%;
+    height: 75%;
     display: flex;
     justify-content: center;
     background-color: rgb(235, 252, 141);
@@ -113,3 +113,25 @@ div {
     width: 50%;
 }
 
+.del-btn{
+    position:absolute;
+    left:69.5%;
+}
+
+.availability-container{
+    display: flex;
+    position: absolute;
+    left:4%;
+}
+.availability-container div{
+    margin:auto
+}
+
+
+.availability-container .Available {
+    color: rgb(98, 242, 98);
+}
+
+.availability-container .Not {
+    color: red;
+}
