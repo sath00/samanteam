@@ -1,5 +1,5 @@
 const Owner = require('../models/owner');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
 
 exports.editCredentials = async (req, res) => {
