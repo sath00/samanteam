@@ -4,6 +4,8 @@ import { Category } from '../models/Category'
 import { Subject } from 'rxjs'
 import { ProductService } from './product.service'
 import { environment } from '../../environments/environment'
+import { SuccessDialogComponent } from '../success/success-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
     providedIn: 'root'
@@ -13,8 +15,7 @@ export class CategoryService {
     private categories: Category[] = [];
     private categoriesUpdated = new Subject<Category[]>();
 
-    constructor(private http: HttpClient,public productService: ProductService) { }
-
+    constructor(private http: HttpClient, public productService: ProductService, private dialog: MatDialog) { }
     // CATEGORY
 
     getCategory() {
@@ -41,7 +42,10 @@ export class CategoryService {
         }
         this.http.post<{ message: string }>(environment.appURL +'/category/add', cat)
             .subscribe((responseData) => {
-                console.log(responseData.message);
+                this.dialog.open(SuccessDialogComponent, {
+                    width: '300px',
+                    data: { message: responseData.message }
+                });
                 this.getCategory();
             })
     }
@@ -52,7 +56,10 @@ export class CategoryService {
                 this.categories = this.categories.filter(category => category._id != categoryID)
                 this.categoriesUpdated.next([...this.categories])
                 this.productService.getProducts();
-                console.log(responseData.message)
+                this.dialog.open(SuccessDialogComponent, {
+                    width: '300px',
+                    data: { message: responseData.message }
+                });
             })
     }
 
@@ -67,9 +74,13 @@ export class CategoryService {
             name:category.name
         }
         this.http.put<{ message: string }>(environment.appURL +'/category/edit/'+category._id, cat)
-          .subscribe(() => {
+          .subscribe((responseData) => {
             this.getCategory();
             this.productService.getProducts();
+            this.dialog.open(SuccessDialogComponent, {
+                width: '300px',
+                data: { message: responseData.message }
+            });
           })
       }
 }

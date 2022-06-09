@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import {environment} from '../../../environments/environment'
+import { MatDialog } from '@angular/material/dialog';
+import { SuccessDialogComponent } from 'src/app/success/success-dialog.component';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +16,7 @@ export class AuthenticationService {
     private tokenTimer: any;
 
 
-    constructor(private http: HttpClient, private router: Router) { }
+    constructor(private http: HttpClient, private router: Router, private dialog:MatDialog) { }
 
     loginOwner(username: string, password: string) {
         const authData = {
@@ -37,7 +39,10 @@ export class AuthenticationService {
                     const now = new Date();
                     const expirationDate = new Date(now.getTime() + (expireDuration * 1000))
                     this.saveAuthData(this.token, expirationDate)
-                    console.log(responseData.message);
+                    this.dialog.open(SuccessDialogComponent, {
+                        width: '300px',
+                        data: { message: responseData.message }
+                    });
                 }
             }, error => {
                this.authStatusListener.next(false);
@@ -118,7 +123,10 @@ export class AuthenticationService {
         }
         this.http.put<{ message: string }>(environment.appURL +'/admin/edit',newCredentials)
         .subscribe((responseData)=>{
-            console.log(responseData.message); 
+            this.dialog.open(SuccessDialogComponent, {
+                width: '300px',
+                data: { message: responseData.message }
+            });
         })
     }
 

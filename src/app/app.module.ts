@@ -6,21 +6,21 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule  } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
-import { MatDialogModule} from '@angular/material/dialog';
-import { MatSelectModule} from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTabsModule } from '@angular/material/tabs';
-import { MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +52,7 @@ import { DashboardComponent } from './owner/dashboard/dashboard.component';
 import { ProdInfoOwnerComponent } from './owner/prodInfoOwner/productInfo.component';
 import { ErrorInterceptor } from './error-interceptor';
 import { ErrorDisplayComponent } from './error/error-display.component';
+import { SuccessDialogComponent } from './success/success-dialog.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { ErrorDisplayComponent } from './error/error-display.component';
     CusdetailsComponent,
     DashboardComponent,
     ProdInfoOwnerComponent,
-    ErrorDisplayComponent
+    ErrorDisplayComponent,
+    SuccessDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -109,10 +111,10 @@ import { ErrorDisplayComponent } from './error/error-display.component';
     MatSnackBarModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, 
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
-  entryComponents:[InvaddComponent]
+  entryComponents: [InvaddComponent]
 })
 export class AppModule { }

@@ -4,6 +4,8 @@ import { Product } from '../models/Product'
 import { Subject } from 'rxjs'
 
 import {environment} from '../../environments/environment'
+import { MatDialog } from '@angular/material/dialog';
+import { SuccessDialogComponent } from '../success/success-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,7 @@ export class ProductService {
   private products: Product[] = [];
   private productsUpdated = new Subject<Product[]>();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private dialog: MatDialog) { }
 
   // PRODUCTS
 
@@ -41,7 +43,10 @@ export class ProductService {
 
     this.http.post<{ message: string }>(environment.appURL+'/product/add', prodData)
       .subscribe((responseData) => {
-        console.log(responseData.message);
+        this.dialog.open(SuccessDialogComponent, {
+          width: '300px',
+          data: { message: responseData.message }
+        });
         this.getProducts();
       })
   }
@@ -51,7 +56,10 @@ export class ProductService {
       .subscribe((responseData) => {
         this.products = this.products.filter(product => product._id != productID)
         this.productsUpdated.next([...this.products])
-        console.log(responseData.message)
+        this.dialog.open(SuccessDialogComponent, {
+          width: '300px',
+          data: { message: responseData.message }
+        });
       })
   }
 
@@ -62,7 +70,10 @@ export class ProductService {
     }
     this.http.post<{ message: string }>(environment.appURL +'/product/availability', value)
       .subscribe((responseData) => {
-        console.log(responseData.message)
+        this.dialog.open(SuccessDialogComponent, {
+          width: '300px',
+          data: { message: responseData.message }
+        });
       })
   }
 
@@ -78,7 +89,10 @@ export class ProductService {
     prodData.append('image', newImage)
     this.http.put<{ message: string }>(environment.appURL +'/product/edit/' + product._id, prodData)
       .subscribe((responseData) => {
-        console.log(responseData.message);
+        this.dialog.open(SuccessDialogComponent, {
+          width: '300px',
+          data: { message: responseData.message }
+        });
         this.getProducts();
       })
   }

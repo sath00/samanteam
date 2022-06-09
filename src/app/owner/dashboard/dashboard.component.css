@@ -49,6 +49,7 @@ button {
 
 .dash{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .dash-card {

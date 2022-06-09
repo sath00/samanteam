@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { StoreInfo } from '../models/StoreInfo'
 import { Subject } from 'rxjs'
 import {environment } from '../../environments/environment'
+import { SuccessDialogComponent } from "../success/success-dialog.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +15,7 @@ export class storeInfoService {
     private storeinfo : StoreInfo[] = [];
     private storeinfoUpdated = new Subject<StoreInfo[]>();
 
-    constructor(private http:HttpClient) { }
+    constructor(private http: HttpClient, private dialog: MatDialog) { }
 
     //STORE INFO
 
@@ -42,7 +44,10 @@ export class storeInfoService {
         }
 
         this.http.put<{ message: string }>(environment.appURL +'/store-info/update',newStoreData).subscribe((responseData) => {
-            console.log(responseData.message);
+            this.dialog.open(SuccessDialogComponent, {
+                width: '300px',
+                data: { message: responseData.message }
+            });
             this.getStoreInfo();
         })
     }
