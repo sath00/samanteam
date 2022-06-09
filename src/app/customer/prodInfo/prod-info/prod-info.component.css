@@ -18,7 +18,7 @@
   }
 mat-dialog-content{
   position: relative;
-  padding-bottom: 3rem;
+  padding-bottom: 0.5rem;
 }
 mat-dialog-actions{
   position: absolute;
@@ -52,7 +52,7 @@ mat-dialog-actions{
   }
 
   mat-card-content {
-    padding: 5px;
+    padding: 23px;
   }
   .info2 div .Available{
     color:rgb(98, 242, 98);
@@ -68,16 +68,27 @@ mat-dialog-actions{
     width: max-content;
   }
 
-  mat-card-actions{
+  mat-dialog-actions{
     display: flex;
     justify-content: center;
     padding-bottom: 0.5rem;
+    top: 56px;
+    left: 779px;
   }
-  
-  mat-card-actions button{
+
+  mat-card-actions button, mat-dialog-actions button{
     background-color: var(--color-yellow);
   }
-  
+
+  /* top-bar X button style (needs more perhaps) */
+.top-bar .mat-stroked-button{
+  border-radius: var(--card-border-radius);
+}
+  /* to make the dialogcontainer have the same border radius as our other elements */
+::ng-deep .mat-dialog-container {
+  width: 474px;
+  border-radius: var(--card-border-radius); 
+}
   .prod-price{
     position: absolute;
     right: 0;
@@ -86,3 +97,4 @@ mat-dialog-actions{
   input { 
     text-align: center; 
 }
+
