@@ -9,6 +9,7 @@ const ProductRoute = require('./routes/products');
 const CategoryRoute = require('./routes/categories');
 const StoreInfoRoute = require('./routes/storeInformation');
 const OwnerAuthRoute = require('./routes/ownerAuth');
+const FeedbackRoute = require('./routes/feedbacks');
 const path = require('path')
 
 
@@ -55,6 +56,10 @@ app.use("/api/store-info", StoreInfoRoute);
 /////////////////// Admin API START HERE ///////////////////////////
 
 app.use("/api/admin", OwnerAuthRoute);
+
+/////////////////// Feedback API START HERE ///////////////////////////
+
+app.use("/api/feedback", FeedbackRoute);
 
 
 
