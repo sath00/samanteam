@@ -3,7 +3,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartItem } from 'src/app/models/CartItem';
 import { SelectionModel } from '@angular/cdk/collections';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cart',
@@ -21,8 +21,9 @@ export class CartComponent implements OnInit {
   //sum of selected prices
   sumOfPrices:number = 0;
   sumOfQuantity:number = 0;
-  
-  constructor(private cartService: CartService) { 
+  durationInSeconds = 2; //for snackbar notif
+
+  constructor(private cartService: CartService, private _snackBar: MatSnackBar) { 
     this.cartProducts = new MatTableDataSource();
     
   }
@@ -57,6 +58,9 @@ export class CartComponent implements OnInit {
     }
     this.cartService.removeProduct(cartProd.product)
     this.cartProducts = new MatTableDataSource(this.cartService.display());
+    this._snackBar.open('Item successfuly deleted!', '', {
+      duration: this.durationInSeconds * 1000
+    })
   }
 
   onChangeQuantity(cartProd: CartItem,quantity: number){
