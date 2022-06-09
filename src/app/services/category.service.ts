@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Category } from '../models/Category'
 import { Subject } from 'rxjs'
 import { ProductService } from './product.service'
+import { environment } from '../../environments/environment'
+import { SuccessDialogComponent } from '../success/success-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
     providedIn: 'root'
@@ -12,13 +15,17 @@ export class CategoryService {
     private categories: Category[] = [];
     private categoriesUpdated = new Subject<Category[]>();
 
-    constructor(private http: HttpClient,public productService: ProductService) { }
-
+    constructor(private http: HttpClient, public productService: ProductService, private dialog: MatDialog) { }
     // CATEGORY
 
     getCategory() {
-        this.http.get<Category[]>('http://localhost:3000/api/category/list').subscribe((categoriesData) => {
+        this.http.get<Category[]>(environment.appURL +'/category/list').subscribe((categoriesData) => {
+            const nullCat: Category = { //added a null category
+                name:"None",
+                _id:""
+            }
             this.categories = categoriesData;
+            this.categories.push(nullCat);
             this.categoriesUpdated.next(this.categories);
         })
     }
@@ -33,20 +40,26 @@ export class CategoryService {
             _id: "",
             name: name,
         }
-        this.http.post<{ message: string }>('http://localhost:3000/api/category/add', cat)
+        this.http.post<{ message: string }>(environment.appURL +'/category/add', cat)
             .subscribe((responseData) => {
-                console.log(responseData.message);
+                this.dialog.open(SuccessDialogComponent, {
+                    width: '300px',
+                    data: { message: responseData.message }
+                });
                 this.getCategory();
             })
     }
 
     deleteCategory(categoryID: string) {
-        this.http.delete<{ message: string }>('http://localhost:3000/api/category/remove/' + categoryID)
+        this.http.delete<{ message: string }>(environment.appURL +'/category/remove/' + categoryID)
             .subscribe((responseData) => {
                 this.categories = this.categories.filter(category => category._id != categoryID)
                 this.categoriesUpdated.next([...this.categories])
                 this.productService.getProducts();
-                console.log(responseData.message)
+                this.dialog.open(SuccessDialogComponent, {
+                    width: '300px',
+                    data: { message: responseData.message }
+                });
             })
     }
 
@@ -60,10 +73,14 @@ export class CategoryService {
             _id:category._id,
             name:category.name
         }
-        this.http.put<{ message: string }>('http://localhost:3000/api/category/edit/'+category._id, cat)
-          .subscribe(() => {
+        this.http.put<{ message: string }>(environment.appURL +'/category/edit/'+category._id, cat)
+          .subscribe((responseData) => {
             this.getCategory();
             this.productService.getProducts();
+            this.dialog.open(SuccessDialogComponent, {
+                width: '300px',
+                data: { message: responseData.message }
+            });
           })
       }
 }

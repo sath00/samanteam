@@ -1,0 +1,44 @@
+<div class ="login-container">
+    <img src="./assets/store_9.jpg" class="bg-img1">
+    <img src="./assets/cart_4.jpg" class="bg-img2">
+    
+    <!-- credits: 
+        <a href="https://www.freepik.com/vectors/ecommerce">Ecommerce vector created by bs_k1d - www.freepik.com</a>
+        <a href="https://www.freepik.com/vectors/phone-shop">Phone shop vector created by bs_k1d - www.freepik.com</a>
+    -->
+
+    <div class="login-card" >
+        
+        <div class="top-bar">
+            <div class="yellow-strip">
+                <img src="./assets/romels_yellow_nocart.png" class="logo-img">
+            </div>
+        </div>
+
+        <div class="greeting"><h1>Welcome!</h1></div>
+
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+
+        <div class="subhead" *ngIf="!isLoading"><h3>Please enter your username and password, then click <b>Login</b> to continue.</h3></div>
+        <form  #itemForm="ngForm" autocomplete="off" class="login-form" >    
+            <div class="username-field" *ngIf="!isLoading">
+                <mat-form-field appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input type="text" matInput ngModel name = "Username" required>
+                </mat-form-field>
+            </div>
+        
+            <div class="password-field" *ngIf="!isLoading">
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input type="password" matInput ngModel name = "Password" required>
+                </mat-form-field>
+            </div> 
+        </form>
+        
+        <div class="bottom-bar" *ngIf="!isLoading">
+            <button mat-stroked-button (click)="onLogin(itemForm)" class="login-btn">Login</button>
+        </div>
+
+    </div>
+</div>

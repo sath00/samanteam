@@ -1,0 +1,86 @@
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    background: var(--color-yellow);
+    border-radius: var(--card-border-radius);
+    padding: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0;
+    padding: 1rem 1rem 0;
+}
+
+h3 {
+    font-size: 0.87rem;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 1rem 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.sub-main {
+    border: 1px solid blue;
+}
+
+.main {
+    display: flex;
+
+}
+
+.display {
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    height: 100%;
+}
+
+.dash{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dash-card {
+    color: var(--color-dark);
+    background: var(--color-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: var(--card-shadow);
+    transition: all 300ms ease;
+}
+
+.dash-item{
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--color-dark);
+    width: max-content;
+    background: var(--color-yellow);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    margin:2rem;
+    transition: all 300ms ease;
+}
+
+.dash-item div{
+    background: var(--color-white);
+    border-radius: var(--card-border-radius);
+    flex-basis: 100%;
+    text-align: center;
+    font-weight: 800;
+    font-size: 1.8rem;
+    font-family: 'Poppins', sans-serif;
+    padding:1rem 1rem;
+}

@@ -1,0 +1,31 @@
+<div class="top-bar">
+<div>
+  <h1>Inventory</h1>
+  <h3> Hello <b>Romel</b>, what would you like to do today?</h3>
+</div>
+
+</div>
+<mat-tab-group animationDuration="0ms" >
+  <mat-tab label="Products">
+    <app-griddisplay></app-griddisplay>
+  </mat-tab>
+  <!-- <mat-tab label="Products"> 
+    <app-tabledisplay></app-tabledisplay>
+  </mat-tab> -->
+  <mat-tab label="Categories">
+    <app-catdisplay></app-catdisplay>
+  </mat-tab>
+  
+</mat-tab-group>
+
+<div class="action-cards" id="cannotFind">
+  <a (click)="dismissMessage()">
+    <div class="view-products">
+      <span class="material-icons">production_quantity_limits</span>
+      <h2> Product cannot be found. </h2>
+      (Click here to return and dismiss message.)
+    </div>
+  </a>
+</div>
+
+

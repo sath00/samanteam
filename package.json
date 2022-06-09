@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "server": "nodemon server.js",
+    "server": "nodemon ./backend/server.js",
     "front": "ng serve"
   },
   "private": true,
@@ -24,6 +24,7 @@
     "@angular/router": "~13.2.0",
     "bcrpyt": "^2.0.0",
     "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "cloudinary": "^1.29.0",
     "cors": "^2.8.5",
@@ -54,5 +55,4 @@
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.5.2"
   }
-  
 }

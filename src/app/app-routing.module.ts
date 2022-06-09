@@ -1,34 +1,21 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { InvdashComponent } from './invdash/invdash.component';
-import { InvaddComponent } from './invadd/invadd.component';
-import { StoreinfoComponent } from './storeinfo/storeinfo.component';
-import { LoginComponent } from './login/login.component';
-import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
-import { DefaultLayoutComponent } from './layouts/default-layout/default-layout.component';
+import { InvdashComponent } from './owner/invdash/invdash.component';
+import { InvaddComponent } from './owner/invadd/invadd.component';
+import { StoreinfoComponent } from './owner/storeinfo/storeinfo.component';
 import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
-import { CustomerProdlistComponent } from './_customer/customer-prodlist/customer-prodlist.component';
+import { CustomerProdlistComponent } from './customer/customer-prodlist/customer-prodlist.component';
 import { OwnerLayoutComponent } from './layouts/owner-layout/owner-layout.component';
 import { AuthGuard } from './services/authentication/authentication.guard';
-import { CartComponent } from './_customer/cart/cart.component';
-import { CusdetailsComponent } from './_customer/cusdetails/cusdetails.component';
+import { CartComponent } from './customer/cart/cart.component';
+import { CusdetailsComponent } from './customer/cusdetails/cusdetails.component';
+import { DashboardComponent } from './owner/dashboard/dashboard.component';
 
 
 const routes: Routes = [
 
-  //multi-layout scheme
-
-  // default routes (owner)
-  // { path: '', component: DefaultLayoutComponent,
-  //   children: [
-  //     { path: 'view-dashboard', component: InvdashComponent },
-  //     { path: 'add-products', component: InvaddComponent },
-  //     { path: 'store-info', component: StoreinfoComponent}
-  //   ]
-  // },
-  
   // customer routes
+  {path:'', redirectTo:'customer',pathMatch:'full'},
   { path:'customer', component: CustomerLayoutComponent,
     children: [
       { path: 'shop', component: CustomerProdlistComponent},
@@ -40,7 +27,9 @@ const routes: Routes = [
   {
     path: 'admin', component: OwnerLayoutComponent,
     children: [
-      { path: 'view-dashboard', component: InvdashComponent},
+      { path: '', redirectTo: 'view-dashboard', pathMatch: 'full'},
+      { path: 'view-dashboard', component: DashboardComponent },
+      { path: 'inventory', component: InvdashComponent},
       { path: 'add-products', component: InvaddComponent },
       { path: 'store-info', component: StoreinfoComponent }
     ]
@@ -49,9 +38,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
-  
   exports: [RouterModule],
   providers: [AuthGuard]  //I added authGuard for future use
-
 })
 export class AppRoutingModule { }

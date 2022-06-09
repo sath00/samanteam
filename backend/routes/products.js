@@ -1,10 +1,11 @@
 const express = require('express');
-const Product = require('../models/products');
-const { Category } = require('../models/category');
 const multer = require('multer')
-const mongoose = require('mongoose');
 const router = express.Router();
 const { checkToken } = require('../authentication/authentication')
+const productController = require('../controllers/products')
+
+
+
 const MIME_TYPE_MAP = {
     "image/png": "png",
     "image/jpeg": "jpg",
@@ -20,7 +21,7 @@ const storage = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(error, "backend/images");
+        cb(error, "images");
     },
     filename: (req, file, cb) => {
         const name = file.originalname
@@ -32,157 +33,19 @@ const storage = multer.diskStorage({
     }
 });
 
-
 //api for deleting products
-router.delete('/remove/:id',checkToken, (req, res) => {
-    Product.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) }).then(result => {
-        if (result.deletedCount > 0) {
-            res.status(200).json({
-                message: 'Product was succesfully deleted!'
-            });
-        } else {
-            res.status(200).json({
-                message: 'Product was not found!'
-            });
-        }
-    }).catch((err) => {
-        res.status(400).json({
-            error: err._message
-        })
-    })
-})
+router.delete('/remove/:id',checkToken, productController.deleteProduct)
 
 //api for adding product (original)
-router.post('/add', checkToken, multer({ storage: storage }).single('image'), async (req, res) => {
-    const url = req.protocol + "://" + req.get("host");
-    //Category Check
-    let cat = new Category({
-        _id: null,
-        name: "None"
-    });
-    if (req.body.category !== "") {
-        await Category.findOne({ _id: mongoose.Types.ObjectId(req.body.category) }).then(result => {
-            cat = result;
-        });
-    }
-
-    const product = new Product({
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
-        category: cat,
-        imagePath: url + "/images/" + req.file.filename,
-        availability: req.body.availability
-    });
-    product.save().then((result) => {
-        res.status(200).json({
-            message: 'Product added successfully!'
-        });
-    }).catch((err) => {
-        res.status(400).json({
-            error: err._message
-        })
-    })
-})
-
+router.post('/add', checkToken, multer({ storage: storage }).single('image'), productController.addProduct )
 
 //this is the api for marking products as sold out or available
-router.post('/availability', checkToken, (req, res) => {
-    Product.updateOne({ _id: req.body._id }, { availability: req.body.availability })
-        .then(result => {
-            if (result.modifiedCount > 0) {
-                res.status(200).json({
-                    message: 'Product was succesfully Updated!'
-                });
-            } else {
-                res.status(200).json({
-                    message: 'Product was not found!'
-                });
-            }
-        })
-})
-
+router.post('/availability', checkToken, productController.updateAvailability)
 
 //this is the api for getting the products in the database
-router.get('/list', (req, res) => {
-    Product.find()
-        .then((result) => {
-            res.status(200).json(result);
-        }).catch((err) => {
-            res.status(400).json({
-                error: err._message
-            })
-        })
-})
-
-//this is the api for searching products
-router.get("/search/:key", async (req, res) => {
-    let data = await Product.find(
-        {
-            "$or": [
-                { "name": { $regex: req.params.key } },
-                { "category": { $regex: req.params.key } }
-            ]
-        }
-    )
-    res.json(data)
-})
-
-//api for obtaining a single product data
-router.get("/:id", (req, res) => {
-    console.log(req.params.id);
-    Product.findOne({ _id: mongoose.Types.ObjectId(req.params.id) })
-        .then((result) => {
-            res.status(200).json(result);
-            //should we add a checker if the returned document is null or not?
-        }).catch(err => {
-            res.status(400).json({
-                error: err._message
-            })
-        })
-})
+router.get('/list', productController.getProducts)
 
 //api for editing details in product
-router.put("/edit/:id", checkToken, multer({ storage: storage }).single('image'), async (req, res) => {
-    let impath = "";
-    if (req.file) {
-        const url = req.protocol + "://" + req.get("host");
-        impath = url + "/images/" + req.file.filename;
-    } else {
-        impath = req.body.imagePath;
-    }
-    //Category Check
-    let cat = new Category({
-        _id: null,
-        name: "None"
-    });
-    if (req.body.category !== "") {
-        await Category.findOne({ _id: mongoose.Types.ObjectId(req.body.category) }).then(result => {
-            cat = result;
-        });
-    }
-    Product.findOneAndUpdate({ _id: mongoose.Types.ObjectId(req.params.id) }, {
-        $set: {
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            category: cat,
-            imagePath: impath,
-            availability: req.body.availability
-        }
-    })
-        .then(result => {
-            res.status(200).json({
-                message: "Product Updated successfully!"
-            })
-        })
-        .catch(err => {
-            console.log(err);
-            res.status(500).json({
-                error: err
-            })
-        })
-})
-
+router.put("/edit/:id", checkToken, multer({ storage: storage }).single('image'), productController.updateProduct)
 
 module.exports = router;

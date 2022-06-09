@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
-
+import {environment} from '../../../environments/environment'
+import { MatDialog } from '@angular/material/dialog';
+import { SuccessDialogComponent } from 'src/app/success/success-dialog.component';
 
 @Injectable({
     providedIn: 'root'
@@ -11,20 +13,17 @@ export class AuthenticationService {
     private isAuth = false;
     private token: string = "";
     private authStatusListener = new Subject<boolean>();
-    // private credentialListener = new Subject()
-    // private validationListener = new Subject();
     private tokenTimer: any;
-    // private credentials:any;
-    // private validation:any;
 
-    constructor(private http: HttpClient, private router: Router) { }
+
+    constructor(private http: HttpClient, private router: Router, private dialog:MatDialog) { }
 
     loginOwner(username: string, password: string) {
         const authData = {
             username: username,
             password: password
         }
-        this.http.post<{ message: string, token: string, expiresIn: number }>('http://localhost:3000/api/admin/login', authData)
+        this.http.post<{ message: string, token: string, expiresIn: number }>(environment.appURL +'/admin/login', authData)
             .subscribe((responseData) => {
                 const token = responseData.token
                 if (token) {
@@ -40,9 +39,14 @@ export class AuthenticationService {
                     const now = new Date();
                     const expirationDate = new Date(now.getTime() + (expireDuration * 1000))
                     this.saveAuthData(this.token, expirationDate)
+                    this.dialog.open(SuccessDialogComponent, {
+                        width: '300px',
+                        data: { message: responseData.message }
+                    });
                 }
-                
-            })
+            }, error => {
+               this.authStatusListener.next(false);
+             })
     }
 
     logoutOwner() {
@@ -89,14 +93,6 @@ export class AuthenticationService {
     }
 
 
-    // getValidationListener() {
-    //     return this.validationListener.asObservable()
-    // }
-
-    // getCredentialListener() {
-    //     return this.credentialListener.asObservable()
-    // }
-
     private saveAuthData(token: string, expirationDate: Date) {
         localStorage.setItem('token', token);
         localStorage.setItem('expiration', expirationDate.toISOString());
@@ -119,38 +115,18 @@ export class AuthenticationService {
         }
     }
 
-    // getCredentials(){
-    //     this.http.get<{username:string,password:string}>('http://localhost:3000/api/admin/credentials')
-    //     .subscribe((responseData)=>{
-    //         this.credentials = responseData;
-    //         this.credentialListener.next(this.credentials);
-    //     })   
-    // }
-    
-
-    // validatePassword(password:string){
-    //     const credentials = {
-    //         password:password
-    //     }
-    //     this.http.post<{message:string,value:string}>('http://localhost:3000/api/admin/validate',credentials)
-    //     .subscribe((responseData)=>{
-    //         this.validation = responseData.value;
-    //         console.log("authservice:"+this.validation)
-    //         this.validationListener.next(this.validation);
-    //         return this.validation;
-    //     })
-        
-    // }
-
     updateCredentials(username: string, currentPassword: string, newPassword: string){
         const newCredentials = {
             username: username,
             currentPassword:currentPassword,
             newPassword:newPassword
         }
-        this.http.put<{ message: string }>('http://localhost:3000/api/admin/edit',newCredentials)
+        this.http.put<{ message: string }>(environment.appURL +'/admin/edit',newCredentials)
         .subscribe((responseData)=>{
-            console.log(responseData.message); 
+            this.dialog.open(SuccessDialogComponent, {
+                width: '300px',
+                data: { message: responseData.message }
+            });
         })
     }
 

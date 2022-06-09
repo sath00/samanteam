@@ -10,8 +10,11 @@
 </head>
 
 <body>
+  
   <app-login *ngIf="!isAuthenticated"></app-login>
   <div *ngIf="isAuthenticated" class="container">
+    <img src="./assets/store_9.jpg" class="bg-img1">
+    <img src="./assets/cart_4.jpg" class="bg-img2">
     <!--============ SIDEBAR (LEFT) ============-->
     <div class="sidebar">
       <app-sidebar></app-sidebar>

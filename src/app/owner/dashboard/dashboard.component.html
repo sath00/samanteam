@@ -1,0 +1,44 @@
+<div class="top-bar">
+    <div>
+        <h1>Dashboard</h1>
+        <h3> Hello <b>Romel</b>, this is your Dashboard</h3>
+    </div>
+</div>
+
+<br>
+<br>
+
+<div class="dash-card">
+    <div class="display">
+        <div>
+            <h1>Inventory Details</h1>
+        </div>
+    </div>
+    <div class="dash">
+        <div class="dash-item">
+            <span class="material-icons">shopping_cart</span>
+            <h3>Total Products</h3><br>
+            <div>{{this.totalProducts}}</div>
+        </div>
+        
+        <div class="dash-item">
+            <span class="material-icons">check_circle</span>
+            <h3>Total Products Available</h3>
+            <div>{{this.availableProducts}}</div>
+        </div>
+
+        <div class="dash-item">
+            <span class="material-icons">cancel</span>
+            <h3>Total Products Unavailable</h3><br>
+            <div id>{{this.unavailableProducts}}</div>
+        </div>
+        <div class="dash-item">
+            <span class="material-icons">description</span>
+            <h3>Total Categories</h3><br>
+            <div id>{{this.totalCategories}}</div>
+        </div>
+    </div>
+    
+
+
+</div>

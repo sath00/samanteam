@@ -1,0 +1,43 @@
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Product } from 'src/app/models/Product';
+import { CategoryService } from 'src/app/services/category.service';
+import { ProductService } from 'src/app/services/product.service';
+import { Category } from 'src/app/models/Category';
+import { CartService } from 'src/app/services/cart.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Action } from 'rxjs/internal/scheduler/Action';
+
+@Component({
+  selector: 'app-prod-info',
+  templateUrl: './prod-info.component.html',
+  styleUrls: ['./prod-info.component.css']
+})
+export class ProdInfoComponent implements OnInit {
+
+  constructor(public dialogRef:MatDialogRef<ProdInfoComponent>, @Inject(MAT_DIALOG_DATA)public data:Product,
+  private cartService:CartService, private _snackBar: MatSnackBar) { }
+  quantity = 0;
+  durationInSeconds = 2;
+  ngOnInit(): void {
+    this.quantity = 1;
+  }
+
+  onAddToCart(product:Product){
+    this.cartService.addProduct(product,this.quantity),
+    this._snackBar.open('Item successfuly added!', '', {
+      duration: this.durationInSeconds * 1000
+    })
+  }
+
+  plus(){
+    this.quantity++;
+  }
+  
+  minus(){
+    if(this.quantity != 1){
+      this.quantity--;
+    }
+  }
+
+}
