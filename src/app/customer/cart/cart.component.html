@@ -20,20 +20,6 @@
     <div class="orders-card">      
         <div class="orders-table">
             <div class="cart-products">
-                <!-- <div class="contain">
-                    <div class="mat-elevation-z8 list">
-                        <mat-card *ngFor="let product of this.cartProducts.filteredData">
-                            <mat-checkbox></mat-checkbox>
-                            {{product.product.name}}
-                        </mat-card>
-                    </div>
-                    <div class="mat-elevation-z8 info">
-
-                        <mat-card *ngFor="let product of this.cartProducts.filteredData">
-                            {{product.product.name}}
-                        </mat-card>
-                    </div>
-                </div> -->
                 <ng-container>
                     <table mat-table [dataSource]="cartProducts" class="mat-elevation-z8">
                         <!-- Checkbox Column -->

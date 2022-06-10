@@ -72,9 +72,10 @@ border-radius: 10px;
     /* ROUNDED TABLE FORMAT */
 
 .mat-table{
+    width: 100%;
     background-color: transparent !important;
-  
 }
+
 table{
     border-collapse: collapse;
     border-radius: var(--card-border-radius); 
@@ -82,7 +83,7 @@ table{
 }
    /*REMOVES THE BOT BORDER OF THE LAST ITEM */
 table tr:last-child td /*To remove the last border*/{
-  border-bottom:0 solid
+  border-bottom:0 solid;
 }
 
 
@@ -94,18 +95,23 @@ table tr:last-child td /*To remove the last border*/{
 }
 
 /* the height of the rows in table */
-table > td, th{
+/* table > td, th{
     height: 70px;
-}
+} */
 
 /* Width of the columns */
 .mat-column-select{
+    
     width: 10%;
 }
+
 .mat-column-image{
+    
     width: 20%;
 }
+
 .mat-column-name{
+  
     width: 30%;
 }
 
@@ -119,6 +125,17 @@ table > td, th{
 .mat-column-delete{
     width: 5%;
 }
+
+
+ td, th {
+    text-align: right !important;
+    vertical-align: middle !important;
+}
+
+.mat-sort-header-container {
+    justify-content: center !important;
+}
+
 .flex-row {
     display: flex;
     flex-direction: row;
@@ -161,3 +178,4 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance: textfield;
 }
+
