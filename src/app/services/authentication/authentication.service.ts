@@ -39,10 +39,6 @@ export class AuthenticationService {
                     const now = new Date();
                     const expirationDate = new Date(now.getTime() + (expireDuration * 1000))
                     this.saveAuthData(this.token, expirationDate)
-                    this.dialog.open(SuccessDialogComponent, {
-                        width: '300px',
-                        data: { message: responseData.message }
-                    });
                 }
             }, error => {
                this.authStatusListener.next(false);
