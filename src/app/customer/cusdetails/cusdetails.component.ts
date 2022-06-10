@@ -2,9 +2,10 @@ import { Component, OnInit} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { StoreInfo } from 'src/app/models/StoreInfo';
 import { storeInfoService } from 'src/app/services/storeinfo.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 import { NgForm } from '@angular/forms';
+import { FeedbackService } from 'src/app/services/feedback.service';
 
 @Component({
   selector: 'app-cusdetails',
@@ -14,7 +15,7 @@ import { NgForm } from '@angular/forms';
 export class CusdetailsComponent implements OnInit {
   private storeInfoSub:Subscription = new Subscription();
   storeInfo : StoreInfo[] = [];
-  constructor(public storeinfoservice: storeInfoService,private dialog:MatDialog) { }
+  constructor(public storeinfoservice: storeInfoService,private dialog:MatDialog,public feedbackService:FeedbackService) { }
   
   ngOnInit(): void {
     //get the info from the database
@@ -35,6 +36,7 @@ export class CusdetailsComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    form.resetForm();
+    this.feedbackService.addFeedback(form.value.feedback)
+    form.resetForm ();
   }
 }

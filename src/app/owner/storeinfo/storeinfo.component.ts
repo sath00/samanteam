@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscriber, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { StoreInfo } from '../../models/StoreInfo';
 import { Feedback } from 'src/app/models/Feedback';
 import { storeInfoService } from '../../services/storeinfo.service';

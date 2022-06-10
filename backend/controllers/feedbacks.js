@@ -1,4 +1,3 @@
-const mongoose = require('mongoose');
 const Feedback = require('../models/feedback');
 
 //api for adding new feedback

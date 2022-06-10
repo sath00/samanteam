@@ -1,6 +1,13 @@
+<div class="top-bar">
+  <div>
+    <h1>Dashboard</h1>
+    <h3> Hello <b>Romel</b>, this is your Store Information Details</h3>
+  </div>
+</div>
+
 <div class="container">
+
   <div class="store-info">
-   
    <div class="top">
      <h1>STORE DETAILS <button mat-raised-button id="on-edt-btn" (click)="onEdit()">
       <mat-icon>edit</mat-icon>
@@ -25,32 +32,19 @@
    referrerpolicy="no-referrer-when-downgrade">
    </iframe> 
   </div>
- 
-  <div class="cust-feed">
-    <!-- <div class="top">
-     <form  #feedForm = "ngForm">
-       <form class="feedback-form">
-           <mat-form-field class="input-fb" appearance="fill">
-             <mat-label>Leave a comment</mat-label>
-             <input class="text-field" type="text">
-           </mat-form-field>
-         </form>
-     </form>
-    </div> -->
-     <div class="top">
-       <h1>CUSTOMER FEEDBACK</h1>
-     </div>
- 
-    <div class="mid">
-      <tbody>
-        <tr *ngFor="let feed of feedback">
-            <td>{{feed.feedback}}</td>
-        </tr>
-    </tbody>
-    </div>
+
+<div class="cust-feed">
+  <div class="top">
+    <h1>CUSTOMER FEEDBACK</h1>
   </div>
- 
- 
+  <div class="mid">
+    <div *ngFor="let feed of feedback">
+      <mat-card class="feedback-card">{{feed.feedback}}</mat-card>
+    </div>
+    
+  </div>
+</div>
+
  </div>
 
 

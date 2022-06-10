@@ -1,20 +1,42 @@
-.container /*ENTIRE CONTENT*/{
-  
-  width: 100vw;
-  
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 1.5fr 1fr;
-  /* grid-template:  1fr 1fr / 1fr 2fr; SHORTCUT */
-  box-sizing: border-box;
-  margin: 50px 50px 0 0;
+
+/*topbar*/
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-yellow);
+  border-radius: var(--card-border-radius);
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+  padding: 1rem 1rem 0;
+}
+
+.top-bar h3 {
+  font-size: 0.87rem;
+  font-family: 'Poppins', sans-serif;
+  padding: 0 1rem 0;
+}
+
+.container /*ENTIRE CONTENT*/{  
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  background-color:transparent;
+  width: 100%;
 }
 
 /* ----------------------STORE INFO--------------------------- */
 .store-info{
   height:max-content;
   padding: 2rem  2rem 2rem;
-  background: var(---color-light);
+  background: var(--color-background);
   border-radius: var(--card-border-radius); 
   box-shadow: 0 0 3rem var(--color-info-light);
 }
@@ -55,8 +77,9 @@ pre {
 /* -----------CUSTOMER FEEDBACK--------------- */
 .cust-feed{
   height: max-content;
+  width:100%;
   padding: 2rem  2rem 2rem;
-  background: var(---color-light);
+  background: var(--color-background);
   border-radius: var(--card-border-radius); 
   box-shadow: 0 0 3rem var(--color-info-light);
 }
@@ -81,13 +104,13 @@ textarea{
 button{
   background-color:lightgrey ;
   border-radius: var(--card-border-radius);
+  bottom:3px;
+  right:-3px;
 }
 
 /* -------------------GOOGLE MAPS--------------------- */
 .map-container{
-  grid-column-start: 2;
-  grid-row-start: 1;
-  grid-row-end: 3;
+  width: 67%;
 }
 
 iframe{
@@ -96,4 +119,10 @@ iframe{
   background: var(---color-light);
   border-radius: var(--card-border-radius); 
   box-shadow: 0 0 3rem var(--color-info-light);;
+}
+/*--------------------Feedback cards --------------------*/
+
+.feedback-card{
+  border-radius: var(--card-border-radius);
+  margin:10px;
 }
