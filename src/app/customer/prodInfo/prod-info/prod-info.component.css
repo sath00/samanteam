@@ -84,6 +84,7 @@ mat-card div img{
 mat-card-content h1{
   padding: 1rem 1rem;
   text-align: center;
+  border: 2px solid black;
 }
 
 mat-card-content h4{
@@ -101,7 +102,10 @@ mat-card-content h4{
 
 .info2{
   border-bottom: 2px solid black;
-  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  /* border-bottom: 2px solid black;
+  border-top: 2px solid black; */
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
@@ -130,10 +134,13 @@ mat-card-content h4{
 mat-card-content h3{
   text-align: center;
   padding: 5px 5px;
-  border-bottom: 2px solid black;
-  border-top: 2px solid black;
+  border: 2px solid black;
+  /* border-bottom: 2px solid black;
+  border-top: 2px solid black; */
   margin-bottom: 0px;
 }
+
+
 
 mat-card-actions button, mat-dialog-actions button{
   background-color: var(--color-yellow);
