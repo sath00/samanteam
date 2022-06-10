@@ -136,17 +136,19 @@ table .mat-row:nth-child(odd){
     background-color: var(--color-white);
 }
 
-
+.flex-row{
+    display: flex;
+    justify-content: center;
+}
 .flex-row input {
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: 14px;  
     text-align: center;
-    background-color: inherit;
     width: 40%;
     background-color: var(--color-header-mobile);
-    padding: 3px;
-    border-radius: var(--border-radius-2);
+    /* border-radius: var(--border-radius-2); */
+    border-radius: var(--card-border-radius); 
 }
 
 div img{
