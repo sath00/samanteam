@@ -45,7 +45,6 @@ h3 {
   
 }
 .top-bar .close{
-  justify-content: flex-end;
   position: absolute;
   top: 0px;
   right: 0px;
@@ -56,11 +55,6 @@ h3 {
   background-color: var(--color-yellow);
 }
 /* ----------------MIDDLE BAR-------------------- */
-
-.middle-bar{
-  
-  background-color: green;
-}
 
 .middle-bar .product_card {
   width: 100%;
@@ -93,7 +87,11 @@ mat-card-content h1{
 }
 
 mat-card-content h4{
-  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 2px 2px;
+  text-align: left;
+  background-color: whitesmoke;
 }
 
 .info2 div{
@@ -122,68 +120,56 @@ mat-card-content h4{
   border-left: 2px solid black;
   grid-column-start: 2;
   grid-column-end: 3;
-  align-items: center;
+  justify-content: center;
 }
 
 .info2 div .Available{
   color:rgb(98, 242, 98);
 }
 
-
-
-.bottom-bar{
-  background-color: pink;
+mat-card-content h3{
+  text-align: center;
+  padding: 5px 5px;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+  margin-bottom: 0px;
 }
-/* mat-dialog-content{
-  position: relative;
-  
-} */
 
-/* mat-dialog-actions{
-  position: absolute;
-  z-index: 2;
-  top: -10px;
-} */
-
-
-  
-
-
-
-
-/* mat-card-content {
-  padding: 23px;
-} */
-
-
-
-/* mat-dialog-actions{
-  display: flex;
-  justify-content: center;
-  padding-bottom: 0.5rem;
-  top: 56px;
-  left: 779px;
-}
- */
-/* mat-card-actions button, mat-dialog-actions button{
+mat-card-actions button, mat-dialog-actions button{
   background-color: var(--color-yellow);
 }
- */
-  /* top-bar X button style (needs more perhaps) */
-/* .top-bar .mat-stroked-button{
-  border-radius: var(--card-border-radius);
-} */
-  /* to make the dialogcontainer have the same border radius as our other elements */
-/* ::ng-deep .mat-dialog-container {
-  width: 474px;
-  border-radius: var(--card-border-radius); 
-} */
-/*   .prod-price{
-    position: absolute;
-    right: 0;
-  }
 
-  input { 
-    text-align: center; 
+/* -------------BOTTOM BAR----------------- */
+
+.bottom-bar{
+  display: grid;
+  grid-template-rows: 1fr;
+
 }
- */
+
+.bottom-bar .quantity{
+  margin-top: 1rem;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+  
+.bottom-bar .add-cart{
+  display: flex;
+  padding-top: 1rem;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.mat-button{
+  border-radius: var(--card-border-radius);
+  background-color: var(--color-yellow);
+}
+
+input{
+  text-align: center;
+}

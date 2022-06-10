@@ -16,19 +16,17 @@
                     <div class="info2">
                         <div class="availability">
                             <div><mat-icon class="{{data.availability}}">indeterminate_check_box</mat-icon>{{data.availability}}</div>
-                        </div>
-                        
+                        </div>  
                         <div class="price">
                             <span>&#8369;</span>{{data.price}}
                         </div>
-
                     </div>
                     
-                    <h4>Category</h4>
+                    <h4><b>Category</b></h4>
                     <h3>{{data.category.name}}</h3>
             
                     
-                    <h4>Description</h4>
+                    <h4><b>Description</b></h4>
                     <h3>{{data.description}}</h3>
                     
                 </mat-card-content>
@@ -38,16 +36,17 @@
 
     <div class="bottom-bar">
 
-        <mat-card-actions class="quantity">
+        <div class="quantity">
             <button mat-button (click)="minus()"><mat-icon>remove_circle</mat-icon></button>
             <input type="text" [value] = "quantity">
             <button mat-button (click)="plus()"><mat-icon>add_circle</mat-icon></button>
-        </mat-card-actions>
+        </div>
 
-        <mat-card-actions class="add-cart">
+        <div class="add-cart">
             <button mat-button (click)="onAddToCart(this.data)" ><mat-icon>add_shopping_cart</mat-icon></button>
-        </mat-card-actions>
+        </div>
 
+        
     </div>
 
 </mat-dialog-content>

@@ -57,7 +57,9 @@ export class CartComponent implements OnInit {
       this.selection.deselect(cartProd);
     }
     this.cartService.removeProduct(cartProd.product)
-    this.cartProducts = new MatTableDataSource(this.cartService.display());
+    this.cartProducts.data = this.cartProducts.data.filter(prod=>{
+      return prod!=cartProd;
+    });
     this._snackBar.open('Item successfuly deleted!', '', {
       duration: this.durationInSeconds * 1000
     })

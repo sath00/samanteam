@@ -18,17 +18,33 @@
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-yellow);
 }
-
-mat-dialog-content {
+/* to center the add button (hence the .mat-dialog-content .bottom-bar ) */
+.mat-dialog-content{ 
+    display: grid;
+  }
+/* to make the dialogcontainer have the same border radius as our other elements */
+::ng-deep .mat-dialog-container {
+    width: 580px;
+    border-radius: var(--card-border-radius); 
+  }
+/* needs to be relative, because x button is absolute */
+.top-bar{
     position: relative;
     padding-bottom: 0.5rem;
 }
-
-mat-dialog-actions {
+/* to have the X button at the rightmost */
+.top-bar .mat-dialog-actions{
     position: absolute;
-    z-index: 2;
-    top: -10px;
-}
+    top: -15px;
+    right: 0;
+    /* float :right; -cannot positioned very well  */
+  }
+  
+  /* top-bar X button style (needs more perhaps) */
+  .top-bar .mat-stroked-button{
+    border-radius: var(--card-border-radius);
+  }
+  
 
 .product_card {
     width: 100%;

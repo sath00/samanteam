@@ -75,14 +75,17 @@
     <div class="top">
       <h1>FEEDBACK</h1>
     </div>
-
-   <div class="mid">
-     <textarea s></textarea>
-   </div>
-    
-    <div class="bot">
-        <button mat-stroked-button>Submit Feedback</button>
-    </div> 
+    <form #feedform = "ngForm">
+      <div class="mid">
+      <mat-form-field>
+        <input type="text" matInput ngModel name="feedback" Required>
+      </mat-form-field>
+      </div>
+      <div class="bot">
+        <button mat-stroked-button (click)="onSubmitFB(feedform)">Submit Feedback</button>
+      </div>
+    </form>
+  
  </div>
 
 
