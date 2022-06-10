@@ -67,57 +67,62 @@ border-radius: 10px;
     width: 70%;
     height: 10%;
     margin-right: 50px;
-    
 }
     /* ROUNDED TABLE FORMAT */
 
-.mat-table{
+table{
+    overflow: hidden;
+    border-radius: var(--card-border-radius); 
     width: 100%;
     background-color: transparent !important;
+   
 }
 
-table{
-    border-collapse: collapse;
-    border-radius: var(--card-border-radius); 
-    
-}
    /*REMOVES THE BOT BORDER OF THE LAST ITEM */
 table tr:last-child td /*To remove the last border*/{
-  border-bottom:0 solid;
-}
-
-
-.orders-card .orders-table .cart-products th{
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: 14px;    
+border-bottom:0 solid;
 }
 
 /* the height of the rows in table */
-/* table > td, th{
-    height: 70px;
-} */
+table td{
+    height: 100px;
+}
+
+table .mat-header-cell {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 14px;  
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.mat-cell{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;  
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+}
+
 
 /* Width of the columns */
 .mat-column-select{
-    
     width: 10%;
 }
 
 .mat-column-image{
-    
     width: 20%;
 }
 
 .mat-column-name{
-  
-    width: 30%;
+    width: 25%;
 }
 
 .mat-column-quantity { 
     width: 20%;
 }
+
 .mat-column-price{
     width: 15%;
 }
@@ -127,32 +132,27 @@ table tr:last-child td /*To remove the last border*/{
 }
 
 
- td, th {
-    text-align: right !important;
-    vertical-align: middle !important;
+table .mat-row:nth-child(odd){
+    background-color: var(--color-white);
 }
 
-.mat-sort-header-container {
-    justify-content: center !important;
-}
 
-.flex-row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.flex-row div input {
+.flex-row input {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;  
+    text-align: center;
+    background-color: inherit;
+    width: 40%;
     background-color: var(--color-header-mobile);
     padding: 3px;
     border-radius: var(--border-radius-2);
 }
 
-.img-container {
+div img{
     height: 70px;
     width: 70px;
     border-radius: var(--border-radius-2);
-    margin: 5px;
 }
 
 img{
