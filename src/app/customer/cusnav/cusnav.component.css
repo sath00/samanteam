@@ -6,6 +6,9 @@
     justify-content: space-between;
     margin: 0;
     height: 8rem;
+    top: 0;
+    width: 100%;
+    position: fixed;
    
 }
 
@@ -61,3 +64,9 @@ a.active {
     width: 50%;
 }
 
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
