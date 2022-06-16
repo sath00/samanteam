@@ -21,6 +21,12 @@ export class FeedbackService {
     getFeedback() {
         this.http.get<Feedback[]>(environment.appURL + '/feedback/list').subscribe((feedbacksData) => {
             this.feedbacks = feedbacksData;
+
+            if(this.feedbacks.length > 5) {
+                this.feedbacks = this.feedbacks.splice(-5);
+            }
+            this.feedbacks = this.feedbacks.reverse();
+
             this.feedbacksUpdated.next(this.feedbacks);
         })
     }

@@ -7,11 +7,11 @@ exports.addFeedback = (req, res) => {
     });
     feedback.save().then(() => {
         res.status(200).json({
-            message: 'Feedback Add Successful!'
+            message: 'FEEDBACK SENT SUCCESSFULLY!'
         });
     }).catch((err) => {
         res.status(400).json({
-            message: err._message
+            message: 'FEEDBACK SENT FAILED!'
         })
     })
 }
@@ -23,7 +23,7 @@ exports.getFeedback = (req, res) => {
             res.status(200).json(result);
         }).catch((err) => {
             res.status(400).json({
-                message: err._message
+                message: 'GETTING FEEDBACK FAILED!'
             })
         })
 }

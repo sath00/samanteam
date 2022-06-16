@@ -15,13 +15,13 @@ exports.updateInfo = (req, res) => {
     }, { upsert: false })
         .then(result => {
             res.status(200).json({
-                message: "Store Information Updated successfully!"
+                message: "STORE INFORMATION UPDATED SUCCESSFULLY!"
             })
         })
         .catch(err => {
             console.log(err);
             res.status(500).json({
-                error: err
+                message: "STORE INFORMATION UPDATE FAILED!"
             })
         })
 }
@@ -34,7 +34,7 @@ exports.getInfo = (req, res) => {
             res.status(200).json(result);
         }).catch((err) => {
             res.status(400).json({
-                error: err._message
+                message: "STORE INFORMATION GET ERROR!"
             })
         })
 }

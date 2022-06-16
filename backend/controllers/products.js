@@ -26,7 +26,7 @@ exports.addProduct = async (req, res) => {
     });
     product.save().then((result) => {
         res.status(200).json({
-            message: 'Product added successfully!'
+            message: 'PRODUCT ADDED SUCCESSFULLY!'
         });
     }).catch((err) => {
         res.status(400).json({
@@ -39,16 +39,16 @@ exports.deleteProduct = (req, res) => {
     Product.deleteOne({ _id: mongoose.Types.ObjectId(req.params.id) }).then(result => {
         if (result.deletedCount > 0) {
             res.status(200).json({
-                message: 'Product was succesfully deleted!'
+                message: 'PRODUCT DELETED SUCCESSFULLY!'
             });
         } else {
             res.status(200).json({
-                message: 'Product was not found!'
+                message: 'PRODUCT NOT FOUND!'
             });
         }
     }).catch((err) => {
         res.status(400).json({
-            error: err._message
+            message: 'PRODUCT DELETED ERROR!'
         })
     })
 }
@@ -83,13 +83,13 @@ exports.updateProduct = async (req, res) => {
     })
         .then(result => {
             res.status(200).json({
-                message: "Product Updated successfully!"
+                message: "PRODUCT UPDATED SUCCESSFULLY!"
             })
         })
         .catch(err => {
             console.log(err);
             res.status(500).json({
-                error: err
+                message: "PRODUCT UPDATE FAILED"
             })
         })
 }
@@ -99,11 +99,11 @@ exports.updateAvailability = (req, res) => {
         .then(result => {
             if (result.modifiedCount > 0) {
                 res.status(200).json({
-                    message: 'Product was succesfully Updated!'
+                    message: 'PRODUCT AVAILABILITY UPDATED SUCCESSFULLY'
                 });
             } else {
                 res.status(200).json({
-                    message: 'Product was not found!'
+                    message: 'PRODUCT NOT FOUND!'
                 });
             }
         })
@@ -115,7 +115,7 @@ exports.getProducts = (req, res) => {
             res.status(200).json(result);
         }).catch((err) => {
             res.status(400).json({
-                error: err._message
+                message: 'PRODUCT GET ERROR'
             })
         })
 }

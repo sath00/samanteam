@@ -7,7 +7,7 @@ exports.editCredentials = async (req, res) => {
     await bcrypt.hash(req.body.newPassword, 10, (err, hash) => {
         if (err) {
             return res.status(400).json({
-                error: err
+                message: 'CREDENTIAL UPDATE FAILED'
             })
         }
         newHash = hash
@@ -17,7 +17,7 @@ exports.editCredentials = async (req, res) => {
         admin = result[0]
     }))
     if (!admin) {
-        return res.status(401).json({ message: "Owners not found!" })
+        return res.status(401).json({ message: "OWNER NOT FOUND!" })
     }
     if (await bcrypt.compare(req.body.currentPassword, admin.password)) {
         Owner.findOneAndUpdate({ _id: admin._id }, {
@@ -27,10 +27,10 @@ exports.editCredentials = async (req, res) => {
             }
         })
             .then(() => {
-                return res.status(200).json({ message: "Credential Update Successful" })
+                return res.status(200).json({ message: "CREDENTIAL UPDATED SUCCESSFULLY!" })
             })
     } else {
-        return res.status(401).json({ message: "Credential Update Failed! Incorrect Password!" })
+        return res.status(401).json({ message: "CREDENTIAL UPDATE FAILED! INVALID PASSWORD!" })
     }
 }
 
@@ -51,7 +51,7 @@ exports.loginUser = async (req, res) => {
 
 
     if (!admin || req.body.username !== admin.username) {
-        return res.status(401).json({ message: "Invalid username!" })
+        return res.status(401).json({ message: "INVALID USERNAME!" })
     }
     try {
         if (await bcrypt.compare(req.body.password, admin.password)) {
@@ -62,13 +62,13 @@ exports.loginUser = async (req, res) => {
             );
             return res.status(200).json(
                 {
-                    message: "Login successful!",
+                    message: "LOG-IN SUCCESSFUL!",
                     token: token,
                     expiresIn: 3600 //1h
                 }
             )
         } else {
-            return res.status(401).json({ message: "Invalid password!" })
+            return res.status(401).json({ message: "INVALID PASSWORD!" })
         }
     } catch (e) {
         return res.status(401).json({ message: e.message})

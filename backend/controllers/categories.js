@@ -8,11 +8,11 @@ exports.addCategory = (req, res) => {
     });
     category.save().then(() => {
         res.status(200).json({
-            message: 'Category Add Successful!'
+            message: 'CATEGORY ADDED SUCCESSFULLY!'
         });
     }).catch((err) => {
         res.status(400).json({
-            message: err._message
+            message: 'CATEGORY ADD FAILED!'
         })
     })
 }
@@ -42,16 +42,16 @@ exports.deleteCategory = (req, res) => {
                 })
             if (result.deletedCount > 0) {
                 res.status(200).json({
-                    message: 'Category Delete Succesful '
+                    message: 'CATEGORY DELETED SUCCESSFULLY!'
                 });
             } else {
                 res.status(404).json({
-                    message: 'Category Not Found!'
+                    message: 'CATEGORY NOT FOUND!'
                 });
             }
         }).catch((err) => {
             res.status(400).json({
-                error: err._message
+                message: 'CATEGORY DELETE FAILED!'
             })
         })
 }
@@ -68,11 +68,11 @@ exports.updateCategory = (req, res) => {
                         message: err
                     })
                 })
-            res.status(200).json({ message: "Category Edit Successful!" })
+            res.status(200).json({ message: "CATEGORY UPDATED SUCCESSFULLY!" })
         })
         .catch(err => {
             res.status(500).json({
-                message: err
+                message: 'CATEGORY UPDATE FAILED!'
             })
         })
 
