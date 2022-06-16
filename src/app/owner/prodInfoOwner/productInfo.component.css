@@ -86,6 +86,7 @@ mat-card-content {
     color: red;
 }
 
+
 mat-card div img {
     /*this makes the image in src fit to the size specified below*/
     width: 100%;
@@ -93,15 +94,7 @@ mat-card div img {
     height: 100%;
     margin: auto;
     width: max-content;
-}
-
-  mat-dialog-actions{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 0.5rem;
-    top: 56px;
-    left: 779px;
-  }
+} 
 
   mat-card-actions button, mat-dialog-actions button{
     background-color: var(--color-yellow);
