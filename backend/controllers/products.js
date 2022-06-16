@@ -6,8 +6,15 @@ const fs = require('fs');
 
 
 exports.addProduct = async (req, res) => {
-
-    const gPath = await cloudinary.uploader.upload(req.file.path);
+    let gPath = "";
+    try{
+        gPath = await cloudinary.uploader.upload(req.file.path);
+        fs.unlinkSync(req.file.path);
+    }catch(err){
+        res.status(400).json({
+            message: err._message
+        })
+    }
     
     //Category Check
     let cat = new Category({
@@ -33,7 +40,7 @@ exports.addProduct = async (req, res) => {
         });
     }).catch((err) => {
         res.status(400).json({
-            error: err._message
+            message: err._message
         })
     })
 }
@@ -60,6 +67,7 @@ exports.updateProduct = async (req, res) => {
     let impath = "";
     if (req.file) {
         const gPath = await cloudinary.uploader.upload(req.file.path);
+        fs.unlinkSync(req.file.path);
         impath = gPath.url
     } else {
         impath = req.body.imagePath;
