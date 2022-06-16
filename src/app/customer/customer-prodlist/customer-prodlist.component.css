@@ -4,13 +4,14 @@
   flex-direction:row;
   padding-right: 10px;
 }
+
 h1 {
     font-weight: 500;
     font-size: 1.8rem;
     font-family: 'Poppins', sans-serif;
     margin-bottom: 0;
     padding: 1rem 2rem 0;
-  }
+}
   
 h3 {
     font-size: 0.87rem;
@@ -65,58 +66,70 @@ mat-cell{
 }
 
 /* GRID list style */
+mat-grid-list{
+  
+  overflow: hidden  ;
+}
+.mat-elevation-z8{
+  overflow: hidden;
+  border-radius: var(--card-border-radius);
+}
 
-.product_card {
+mat-card{
   width: 100%;
   height: 100%;
   padding: 0;
-  position: relative;
   transition: all 300ms ease;;
+  overflow: hidden;
+  border: 2px solid var(--color-background);
+  border-radius: var(--card-border-radius);
+  background-color: var(--color-yellow);
 }
-.product_card:hover{
-  transform: scale(0.95);
-  cursor: pointer;
-}
+
 .img-container{
   width: 100%;
-  height: 80%;
-  display: flex;
+  height: 70%;
   justify-content: center;  
-  background-color: rgb(235, 252, 141);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  background-color: white;
+  border-bottom: 2px solid var(--color-yellow);
 }
-div.info2{
-  display: flex;
-  justify-content: space-between;
+
+mat-card img{
+  /*this makes the image in src fit to the size specified below*/
+ width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+ height: 100%;
+ margin: auto;
+ width: max-content;
+ object-fit: cover;
 }
-.info2 div{
+
+mat-card-content h1{
+  padding: 0;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  border-bottom: 2px solid var(--color-background);
+}
+
+.info2{
+  font-weight: 500;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  padding:5px 20px;
   display: flex;
+}
+
+.availability mat-icon{
   vertical-align: middle;
 }
-mat-card-content {
-  padding: 5px;
-}
+
 .info2 div .Available{
   color:rgb(98, 242, 98);
 }
-.info2 div .Not{
-  color: red;
-}
-mat-card img{
-   /*this makes the image in src fit to the size specified below*/
-  width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-  height: 100%;
-  margin: auto;
-  /* width: max-content; */
-  object-fit: cover;
+
+mat-card:hover{
+  transform: scale(0.95);
+  cursor: pointer;
 }
 
-mat-grid-list{
-  resize: none;
-}
-
-.prod-price{
-  position: absolute;
-  right: 0;
-}

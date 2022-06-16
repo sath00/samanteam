@@ -30,6 +30,7 @@
 /* needs to be relative, because x button is absolute */
 .top-bar{
     position: relative;
+    padding-bottom: 0.5rem;
 }
 /* to have the X button at the rightmost */
 .top-bar .mat-dialog-actions{
@@ -74,7 +75,7 @@ div.info2 {
 }
 
 mat-card-content {
-    padding: 5px;
+    padding: 23px;
 }
 
 .info2 div .Available {
@@ -94,6 +95,33 @@ mat-card div img {
     width: max-content;
 }
 
+  mat-dialog-actions{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+    top: 56px;
+    left: 779px;
+  }
+
+  mat-card-actions button, mat-dialog-actions button{
+    background-color: var(--color-yellow);
+  }
+
+  mat-dialog-container {
+      height: 100%;
+      width: 100%;
+  }
+
+    /* top-bar X button style (needs more perhaps) */
+.top-bar .mat-stroked-button{
+    border-radius: var(--card-border-radius);
+  }
+    /* to make the dialogcontainer have the same border radius as our other elements */
+  ::ng-deep .mat-dialog-container {
+    width: 474px;
+    border-radius: var(--card-border-radius); 
+  }
+/*
 mat-card-actions {
     display: flex;
     justify-content: center;
@@ -103,7 +131,7 @@ mat-card-actions {
 mat-card-actions button {
     background-color: var(--color-yellow);
 }
-
+*/
 .prod-price {
     position: absolute;
     right: 0;
@@ -112,3 +140,4 @@ mat-card-actions button {
 input {
     text-align: center;
 }
+
