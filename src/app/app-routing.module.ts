@@ -15,7 +15,7 @@ import { DashboardComponent } from './owner/dashboard/dashboard.component';
 const routes: Routes = [
 
   // customer routes
-  {path:'', redirectTo:'shop',pathMatch:'full'},
+  {path:'', redirectTo:'/customer/shop',pathMatch:'full'},
   { path:'customer', component: CustomerLayoutComponent,
     children: [
       { path: 'shop', component: CustomerProdlistComponent},

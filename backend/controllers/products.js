@@ -1,10 +1,14 @@
 const Product = require('../models/products');
 const { Category } = require('../models/category');
 const mongoose = require('mongoose');
+const cloudinary = require('./cloudinary');
+const fs = require('fs');
 
 
 exports.addProduct = async (req, res) => {
-    const url = req.protocol + "://" + req.get("host");
+
+    const gPath = await cloudinary.uploader.upload(req.file.path);
+    
     //Category Check
     let cat = new Category({
         _id: null,
@@ -15,13 +19,12 @@ exports.addProduct = async (req, res) => {
             cat = result;
         });
     }
-
     const product = new Product({
         name: req.body.name,
         description: req.body.description,
         price: req.body.price,
         category: cat,
-        imagePath: url + "/images/" + req.file.filename,
+        imagePath: gPath.url,
         availability: req.body.availability
     });
     product.save().then((result) => {
@@ -56,8 +59,8 @@ exports.deleteProduct = (req, res) => {
 exports.updateProduct = async (req, res) => {
     let impath = "";
     if (req.file) {
-        const url = req.protocol + "://" + req.get("host");
-        impath = url + "/images/" + req.file.filename;
+        const gPath = await cloudinary.uploader.upload(req.file.path);
+        impath = gPath.url
     } else {
         impath = req.body.imagePath;
     }
