@@ -37,6 +37,7 @@ h3 {
     padding: 0;
     position: relative;
     transition: all 300ms ease;
+    z-index: 1; /* grrr how??? */
 }
 
 .product_card:hover {

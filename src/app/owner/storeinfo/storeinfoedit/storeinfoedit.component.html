@@ -72,6 +72,8 @@
                     <mat-label>Other details</mat-label>
                     <textarea matInput  [(ngModel)]="this.tempStoreInfo.details" name="storeDetails"></textarea>
                   </mat-form-field>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
               </mat-step>
 
               <mat-step>
@@ -79,7 +81,7 @@
                 <p>You are now done.</p>
                 <div>
                     <button mat-button matStepperPrevious>Back</button>
-                    <button mat-button (click)="stepper.reset()">Reset</button>
+                  <!--  <button mat-button (click)="stepper.reset()">Reset</button> -->
                     <button mat-button (click)="onSaveDetails()">Save Details</button>
                 </div>
               </mat-step>
