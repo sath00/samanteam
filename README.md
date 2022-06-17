@@ -62,3 +62,9 @@ use ng serv for frontend:
 
 # Note: 
 remove *node_modules* folder then run `npm install` when greeted with an error regarding dependencies.
+
+
+# How to clear Angular Cache
+
+1. `npm cache clear --force`
+2. `npm cache verify`

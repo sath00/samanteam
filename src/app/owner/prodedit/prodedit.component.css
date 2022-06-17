@@ -1,0 +1,100 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: darkgray; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 0.87rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* to center the add button (hence the .mat-dialog-content .bottom-bar ) */
+.mat-dialog-content{ 
+  display: grid;
+}
+
+/* to make the dialogcontainer have the same border radius as our other elements */
+::ng-deep .mat-dialog-container {
+  width: 580px;
+  border-radius: var(--card-border-radius); 
+}
+
+/* to have the X button at the rightmost */
+.top-bar .mat-dialog-actions{
+  float: right;
+}
+
+/* top-bar X button style (needs more perhaps) */
+.top-bar .mat-stroked-button{
+  border-radius: var(--card-border-radius);
+}
+
+/* img preview style (for now) */
+#prdImg {
+  border-radius: var(--card-border-radius);
+  height: 260px;
+  width: 255px;
+  float:right;  
+}
+
+/*arrange the input fields like how they are now arranged */
+.top-fields > .mat-form-field, .mid-fields > .mat-form-field{
+  display: inline-block;
+  min-width: 49%;
+  margin: 0px 1px;
+}
+
+/* bigger description input area */
+.mid-fields textarea {
+  height: 140px;
+}
+
+/* upload btn style */
+#upldBtn {
+  float: right;
+  min-width: 49%;
+  margin: 0px 1px;
+}
+
+/* centers add button (while setting the container mat-dialog-content display to grid*/
+.mat-dialog-content .bottom-bar{
+  margin: auto;
+}
+
+/* add btn positioning then style */
+.bottom-bar > .mat-dialog-actions{
+  margin-top: 20px;
+}
+
+.bottom-bar .mat-stroked-button{
+  background-color:lightgrey ;
+  border-radius: var(--card-border-radius);
+}
+
+input[type='file'] {
+  visibility: hidden;
+}

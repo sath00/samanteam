@@ -1,0 +1,43 @@
+
+<div style="display: flex;" class="filter-bar">
+    <mat-form-field appearance="standard">
+        <mat-label>Search for an item:</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Titan" #input>
+    </mat-form-field>
+    <div class="button-container">
+        <button mat-raised-button (click)="onCreate()" id="on-create-btn">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button mat-raised-button (click)="onEditInventory()" id="edit-inventory-btn">
+            <mat-icon>edit</mat-icon>
+        </button>
+    </div>
+</div>
+
+
+
+<div class="mat-elevation-z8">
+
+    <mat-grid-list [cols]="5" rowHeight="300px" gutterSize="10px" role="grid" *ngIf="this.products.filteredData.length>0">
+        
+        <mat-grid-tile class="mat-elevation-z1" *ngFor="let product of this.products.filteredData">
+            
+            <mat-card class="product_card" >
+                <button mat-raised-button class="del-btn" *ngIf="this.editON" (click)="onDeleteProduct(product)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <div class="img-container" (click)="onProdSelect(product)"><img mat-card-image [src]="product.imagePath"></div>
+                <mat-card-content>
+                    <div class="product_name">{{product.name}}</div>
+                    <div class="availability-container">
+                        <mat-slide-toggle *ngIf="this.editON" [checked]="product.availability === 'Available' ? true : false"
+                            (change)="(toggleAvailability(product))"></mat-slide-toggle>
+                        <mat-icon *ngIf="!this.editON" class="{{product.availability}}">indeterminate_check_box</mat-icon>
+                        <div>{{product.availability}}</div>
+                    </div>
+                    
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        
+    </mat-grid-list>

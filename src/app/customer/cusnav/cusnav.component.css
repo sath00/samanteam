@@ -1,0 +1,74 @@
+/*Will contain logo and close sign.*/
+.topbar {
+    background: var(--color-yellow);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    height: 8rem;
+    top: 0;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px
+   
+}
+
+.topbar .logo img {
+  display: flex;
+  margin-left: 2rem;
+  height: 4.2rem;
+}
+
+.topbar .nav-links{
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  height: 4.2rem;
+  /* top: 8%;
+  left: 50%;
+	transform: translate(-50%,-50%);
+  */
+}
+
+.topbar .nav-links a{
+  float: left;
+	text-align: center;
+  align-items: center;
+	padding: 0 30px;
+  transition: all 300ms ease;
+}
+
+.topbar .nav-links a .material-icons{
+  width: 100%;
+	font-size: 34px;
+	transition: 0.5s; /* adding the transition to make it more attractive */
+	color: #000;
+}
+
+.topbar h3{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.topbar .nav-links a:hover .material-icons{
+  transform: translateY(-10%);
+	color: white;
+}
+
+a.active {
+	color: yellowgreen;
+}
+
+.mat-form-field {
+    left: 100px;
+    width: 50%;
+}
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}

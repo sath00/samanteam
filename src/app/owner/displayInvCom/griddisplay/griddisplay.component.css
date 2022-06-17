@@ -1,0 +1,138 @@
+
+/*General styles*/
+.header-txt {
+    display: flex;
+    flex-direction: row;
+    padding-right: 10px;
+}
+
+h1 {
+    font-weight: 500;
+    font-size: 1.8rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0;
+    padding: 1rem 2rem 0;
+}
+
+h3 {
+    font-size: 0.87rem;
+    font-family: 'Poppins', sans-serif;
+    padding: 0 2rem 0;
+}
+
+
+.product_name {
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+
+
+/* GRID list style */
+
+.product_card {
+    width: 100%;
+    height: max-content;
+    padding: 0;
+    position: relative;
+    transition: all 300ms ease;
+    z-index: 1; /* grrr how??? */
+}
+
+.product_card:hover {
+    transform: scale(0.95);
+    cursor: pointer;
+}
+
+.img-container {
+    width: 100%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(235, 252, 141);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+mat-card img {
+    /*this makes the image in src fit to the size specified below*/
+    width: 100%;
+    /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 100%;
+    margin: auto;
+    /* width: max-content; */
+    object-fit: cover;
+}
+
+mat-grid-list {
+    resize: none;
+}
+
+.prod-price {
+    position: absolute;
+    right: 0;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+}
+.product_card {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    position: relative;
+    transition: all 300ms ease;
+}
+
+#edit-inventory-btn.active {
+    background-color: yellow;
+}
+
+#on-create-btn:disabled {
+    background-color: lightgray;
+}
+
+.del-btn:hover,
+.edit-btn:hover {
+    background-color: yellow;
+}
+
+div div button {
+    height: 60px;
+    width: 60px;
+    margin-right: 10px;
+}
+
+div {
+    justify-content: space-between;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 50%;
+}
+
+.del-btn{
+    position:absolute;
+    left:69.5%;
+}
+
+.availability-container{
+    display: flex;
+    position: absolute;
+    left:4%;
+}
+.availability-container div{
+    margin:auto
+}
+
+
+.availability-container .Available {
+    color: rgb(98, 242, 98);
+}
+
+.availability-container .Not {
+    color: red;
+}

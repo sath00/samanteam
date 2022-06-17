@@ -1,0 +1,10 @@
+.error-container{
+    text-align: center;
+    border-radius: var(--card-border-radius);
+}
+
+.error-close{
+    margin:auto;
+    padding:10px;
+    margin-left:30%;
+}

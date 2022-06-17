@@ -1,0 +1,97 @@
+<div class="mainn">
+<div class="header-txt">
+    <div>
+        <h1>Valued customer, welcome to <b>Romel's Store.</b></h1>
+        <h3>Take a look into our offered products below and click on any product to view their details:</h3>
+    </div>
+    <div>
+        <mat-button-toggle-group name="displayOption" aria-label="Option" value="grid">
+            <mat-button-toggle value="table" (click)="isTableView=true"><mat-icon>table_chart</mat-icon></mat-button-toggle>
+            <mat-button-toggle value="grid" (click)="isTableView=false"><mat-icon>grid_on</mat-icon></mat-button-toggle>
+        </mat-button-toggle-group>
+    </div>
+</div>
+
+<div style="display: flex;" class="filter-bar">
+    <mat-form-field appearance="standard">
+        <mat-label>Search for an item:</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Titan" #input>
+    </mat-form-field>
+</div>
+
+<!-- List view -->
+
+<div class="mat-elevation-z8" [hidden]="!isTableView">
+    <table mat-table [dataSource]="products" matSort>
+        <!-- Name column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        </ng-container>
+        <!-- Description column -->
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+        <!-- Price column -->
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+            <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+        <!-- Category column -->
+        <ng-container matColumnDef="category">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+            <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
+        </ng-container>
+        <!-- Image column -->
+        <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Image</th>
+            <td mat-cell *matCellDef="let element"> <img src={{element.imagePath}}/> </td>
+            <!-- <mat-cell *matCellDef="let element">
+                <img [src]="element.imagePath" />
+            </mat-cell> -->
+        </ng-container>
+        <!-- Availability column -->
+        <ng-container matColumnDef="availability">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Availability</th>
+            <td mat-cell *matCellDef="let element"> {{element.availability}} </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onProdSelect(row)"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+        </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of products"></mat-paginator>
+</div>
+
+<!-- Grid View -->
+<div class="mat-elevation-z8" [hidden]="isTableView" (window:resize)="onResize($event)">
+
+    <mat-grid-list [cols]="gridCol" rowHeight="250px" gutterSize="5px" role="grid" *ngIf="this.products.filteredData.length>0 else noData">
+        <mat-grid-tile class="mat-elevation-z1" *ngFor="let product of this.products.filteredData">
+            <mat-card class="product_card" (click)="onProdSelect(product)">
+                <div class="img-container"><img mat-card-image [src]="product.imagePath"></div>
+                <mat-card-content>
+                    <h1>{{product.name}}</h1>
+                    <div class="info2">
+                        <div class="availability">
+                            <mat-icon class="{{product.availability}}">indeterminate_check_box</mat-icon>{{product.availability}}   
+                        </div>
+                        
+                        <span>&#8369; {{product.price}}</span>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <!-- NO data     -->
+    <ng-template #noData>
+        <h1>No data matching the filter!</h1>
+    </ng-template>
+</div>
+</div>

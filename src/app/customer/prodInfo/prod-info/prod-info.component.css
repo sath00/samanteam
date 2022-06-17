@@ -1,0 +1,193 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: darkgray; 
+    border-radius: 10px;
+}
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-yellow); 
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+}
+
+h3 {
+  font-size: 0.87rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.mat-dialog-content{ 
+  border-radius: var(--card-border-radius); 
+}
+
+::ng-deep .mat-dialog-container {
+  width: 400px;
+  border-radius: var(--card-border-radius); 
+}
+
+/* -----------------TOP BAR--------------- */
+.top-bar{
+  padding-bottom: 3rem;
+  overflow: hidden;
+  position: relative;
+  
+}
+.top-bar .close{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+.mat-stroked-button{
+  border-radius: var(--card-border-radius);
+  background-color: var(--color-yellow);
+}
+/* ----------------MIDDLE BAR-------------------- */
+
+.middle-bar .product_card {
+  width: 100%;
+  padding: 0;
+  position: relative;
+  transition: all 300ms ease;
+}
+
+.img-container{
+  width: 100%;
+  height: 250px;
+  display: flex;
+  justify-content: center;  
+  background-color: whitesmoke;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+mat-card div img{
+  /*this makes the image in src fit to the size specified below*/
+  width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 100%;
+  margin: auto;
+  width: max-content;
+}
+
+mat-card-content h1{
+  padding: 1rem 1rem;
+  text-align: center;
+  border: 2px solid black;
+}
+
+mat-card-content h4{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 2px 2px;
+  text-align: left;
+  background-color: whitesmoke;
+}
+
+.info2 div{
+  display: flex;
+  vertical-align: middle;
+} 
+
+.info2{
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  /* border-bottom: 2px solid black;
+  border-top: 2px solid black; */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  box-sizing: border-box;
+}
+
+.info2 .availability{
+  padding: 5px 5px;
+  vertical-align: middle;
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+
+.info2 .price{
+  padding: 5px 5px;
+  border-left: 2px solid black;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  justify-content: center;
+}
+
+.info2 div .Available{
+  color:rgb(98, 242, 98);
+}
+
+.info2 div .Not.Available{
+  color:rgb(255, 0, 0);
+}
+
+mat-card-content h3{
+  text-align: center;
+  padding: 5px 5px;
+  border: 2px solid black;
+  /* border-bottom: 2px solid black;
+  border-top: 2px solid black; */
+  margin-bottom: 0px;
+}
+
+
+
+mat-card-actions button, mat-dialog-actions button{
+  background-color: var(--color-yellow);
+}
+
+/* -------------BOTTOM BAR----------------- */
+
+.bottom-bar{
+  display: grid;
+  grid-template-rows: 1fr;
+
+}
+
+.bottom-bar .quantity{
+  margin-top: 1rem;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+  
+.bottom-bar .add-cart{
+  display: flex;
+  padding-top: 1rem;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.mat-button{
+  border-radius: var(--card-border-radius);
+  background-color: var(--color-yellow);
+}
+
+input{
+  text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

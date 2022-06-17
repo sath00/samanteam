@@ -1,0 +1,82 @@
+
+<div class="top-bar">
+  <mat-dialog-actions >
+    <button mat-stroked-button mat-dialog-close>X</button>
+  </mat-dialog-actions>
+
+  <h1>Add Products</h1>
+  <h3>Input fields below and then click <b>Add Product</b> to save.</h3>
+  
+  
+</div>
+
+
+<mat-dialog-content>
+  <form #itemForm="ngForm" autocomplete="off">
+    
+    <div class="top-fields">
+
+      <mat-form-field appearance="outline" >
+        <mat-label>Name</mat-label>
+        <input type="text" matInput ngModel name = "ProductName" required>
+      </mat-form-field>
+      
+      <mat-form-field appearance="outline" style="float: right;">
+        <mat-label>Price</mat-label>
+        <span matPrefix>₱&nbsp;</span>
+        <input type="number" min="0.01" step="0.01" matInput ngModel name = "ProductPrice" required>
+      </mat-form-field>
+
+    </div>
+
+    <div class="mid-fields">  
+      
+
+      <img id="prdImg" *ngIf="imagePrev!=='' && imagePrev" [src]="imagePrev">
+      <img id="prdImg" *ngIf="imagePrev=='' || imagePrev==null" src="https://via.placeholder.com/250">
+      
+
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select matSelect ngModel name = "ProductCat" required > 
+          <mat-option value="None">None</mat-option>
+          <mat-option *ngFor="let cat of categoryList" value="{{cat._id}}">{{cat.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>      
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="Ex. Humot haha" ngModel name="ProductDisc" required></textarea>
+      </mat-form-field>
+
+      <button mat-stroked-button id="upldBtn" (click)="filepicker.click()">Upload Image</button>
+      <input type="file" #filepicker (change)="onImagePicked($event)">
+
+      <div id="status">
+        <mat-label>Status</mat-label>
+      </div>
+      <mat-slide-toggle [(ngModel)]="isChecked" name="availability">Available?</mat-slide-toggle>
+      
+
+    </div>
+      <!-- need it for now to add item since upload image is not yet done. just uncomment to add item -->
+      <!-- <mat-form-field appearance="outline">
+        <mat-label>Upload Image</mat-label>
+        <textarea matInput ngModel name = "ProductImg"></textarea>
+      </mat-form-field> -->
+
+    </form> 
+
+    <div class="bottom-bar">
+
+      <mat-dialog-actions>
+        <button mat-stroked-button (click)="onAddItem(itemForm)">Add Product</button>
+      </mat-dialog-actions>
+  
+    </div>
+
+  </mat-dialog-content>
+
+  
+
+  

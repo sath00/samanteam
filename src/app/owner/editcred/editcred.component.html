@@ -1,0 +1,49 @@
+<div class="login-card">
+    <div class="top-bar">
+        <div class="yellow-strip">
+            <img src="./assets/romels_yellow_nocart.png" class="logo-img">
+        </div>
+    </div>
+
+
+
+    <div class="greeting">
+        <h1>Welcome!</h1>
+    </div>
+    <div class="subhead">
+        <h3>Please enter your new username or new password, then click <b>Save</b> to update.</h3>
+    </div>
+    <form #itemForm="ngForm" autocomplete="off" class="login-form">
+        <div class="username-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Username</mat-label>
+                <input type="text" matInput ngModel name="username" required>
+            </mat-form-field>
+        </div>
+
+        <div class="password-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Current Password</mat-label>
+                <input type="text" matInput ngModel name="currentPassword" required>
+            </mat-form-field>
+        </div>
+        <div class="password-field">
+            <mat-form-field appearance="outline">
+                <mat-label>New Password</mat-label>
+                <input type="text" matInput ngModel name="newPassword" required>
+            </mat-form-field>
+        </div>
+        <div class="password-field">
+            <mat-form-field appearance="outline">
+                <mat-label>Confirm Password</mat-label>
+                <input type="text" matInput ngModel name="confirmPassword" required>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <div class="bottom-bar">
+        <button mat-stroked-button (click)="onSubmit(itemForm)" class="login-btn">Save</button>
+    </div>
+
+
+</div>

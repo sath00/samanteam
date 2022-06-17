@@ -1,0 +1,11 @@
+{
+    "env":
+    {
+        "MONGO_ATLAS_PW":"tkjKS74gP3BHehQT",
+        "JWT_KEY":"secret",
+        "CLOUD_NAME":"djrvcfplh",
+        "API_KEY":"583186261232139",
+        "API_SECRET":"fAaAnDLEgasO-hXJroSlp4vMMU0",
+        "IMAGE_FOLDER":"backend/images"
+    }
+}

@@ -1,0 +1,32 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Angular-Formatted Inventory</title>
+  <!-- ICONS -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- STYLESHEET -->
+  <!-- <link rel="stylesheet" href="/inv_dash.css"> -->
+</head>
+
+<body>
+  
+  <app-login *ngIf="!isAuthenticated"></app-login>
+  <div *ngIf="isAuthenticated" class="container">
+    <img src="./assets/store_9.jpg" class="bg-img1">
+    <img src="./assets/cart_4.jpg" class="bg-img2">
+    <!--============ SIDEBAR (LEFT) ============-->
+    <div class="sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+    <!--============ MIDDLE (MAIN) SECTION ============-->
+    <div class="middle-part">
+      <router-outlet></router-outlet>
+    </div>
+    <!--============ RIGHT SECTION "sidesection"  ============-->
+    <!-- removed for now since unnecessary and the scripting was done in javascript and not typescript -->
+    <!--============ END OF RIGHT SECTION ============-->
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<div class="top-bar">
+
+    <div class="close">
+        <button mat-stroked-button mat-dialog-close>X</button>  
+    </div>
+    
+</div>
+
+<mat-dialog-content>
+    <div class="middle-bar">
+        <mat-card class="product_card">
+            <div class="img-container"><img mat-card-image [src]="data.imagePath"></div>
+                <mat-card-content>
+                    <h1>{{data.name}}</h1>
+
+                    <div class="info2">
+                        <div class="availability">
+                            <div><mat-icon class="{{data.availability}}">indeterminate_check_box</mat-icon>{{data.availability}}</div>
+                        </div>  
+                        <div class="price">
+                            <span>&#8369;</span>{{data.price}}
+                        </div>
+                    </div>
+                    
+                    <h4><b>Category</b></h4>
+                    <h3>{{data.category.name}}</h3>
+            
+                    
+                    <h4><b>Description</b></h4>
+                    <h3>{{data.description}}</h3>
+                    
+                </mat-card-content>
+        </mat-card>
+    </div>
+    
+
+    <div class="bottom-bar">
+
+        <div class="quantity">
+            <button mat-button (click)="minus()"><mat-icon>remove_circle</mat-icon></button>
+            <input type="number" matInput [(ngModel)]="quantity">
+            <button mat-button (click)="plus()"><mat-icon>add_circle</mat-icon></button>
+        </div>
+
+        <div class="add-cart">
+            <button mat-button (click)="onAddToCart(this.data)" ><mat-icon>add_shopping_cart</mat-icon></button>
+        </div>
+
+        
+    </div>
+
+</mat-dialog-content>
+

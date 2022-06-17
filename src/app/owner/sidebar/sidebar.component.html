@@ -1,0 +1,33 @@
+<aside>
+  <div class="topbar">
+    <div class="logo">
+      <img src="./assets/romels_yellow_nocart.png">
+    </div>
+    <div class="close" id="close-btn">
+      <span class="material-icons">close</span>
+    </div>
+  </div>
+  
+  <div class="sidebar">
+    <a routerLink="/admin/view-dashboard">
+      <span class="material-icons">dashboard</span>
+      <h3>View Dashboard</h3>
+    </a>
+    <a routerLink="/admin/inventory">
+      <span class="material-icons">shopping_bag</span>
+      <h3>Inventory</h3>
+    </a>
+    <a routerLink="/admin/store-info">
+      <span class="material-icons">phone</span>
+      <h3>Store Information</h3>
+    </a>
+    <button mat-button (click)="onEditCred()">
+      <span class="material-icons">account_circle</span>
+      <h3>Account</h3>
+    </button>
+    <button mat-button (click)="onLogout()">
+      <span class="material-icons">logout</span>
+      <h3>Logout</h3>
+    </button>
+  </div>
+</aside>

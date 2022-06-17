@@ -1,0 +1,128 @@
+
+/*topbar*/
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-yellow);
+  border-radius: var(--card-border-radius);
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+  padding: 1rem 1rem 0;
+}
+
+.top-bar h3 {
+  font-size: 0.87rem;
+  font-family: 'Poppins', sans-serif;
+  padding: 0 1rem 0;
+}
+
+.container /*ENTIRE CONTENT*/{  
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  background-color:transparent;
+  width: 100%;
+}
+
+/* ----------------------STORE INFO--------------------------- */
+.store-info{
+  height:max-content;
+  padding: 2rem  2rem 2rem;
+  background: var(--color-background);
+  border-radius: var(--card-border-radius); 
+  box-shadow: 0 0 3rem var(--color-info-light);
+}
+
+div div button {
+    height: 100%;
+    float: right;
+}
+
+.top{
+  background: var(--color-yellow);
+  border-radius: var(--card-border-radius);  
+  margin-bottom:1px;
+}
+
+.top h1 {
+  padding: 5px 10px 5px;
+  font-weight: 800;
+  font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.store-info .bot {
+  background: var(--color-yellow);
+  border-radius: var(--card-border-radius);  
+  margin-bottom:1px;
+   
+}
+
+pre {
+  line-height: 3;
+  font-weight: 500;
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* -----------CUSTOMER FEEDBACK--------------- */
+.cust-feed{
+  height: max-content;
+  width:100%;
+  padding: 2rem  2rem 2rem;
+  background: var(--color-background);
+  border-radius: var(--card-border-radius); 
+  box-shadow: 0 0 3rem var(--color-info-light);
+}
+
+textarea{
+  border-radius: var(--card-border-radius);
+  line-height: 1;
+  font-weight: 500;
+  font-size: 0.87rem;
+  font-family: 'Poppins', sans-serif;
+  padding:1rem 1rem;
+  resize: none;
+  width: 100%;
+  
+  border: 1px solid gray;
+
+}
+.cust-feed .bot{
+  padding: 1rem  0  0;
+}
+
+button{
+  background-color:lightgrey ;
+  border-radius: var(--card-border-radius);
+  bottom:3px;
+  right:-3px;
+}
+
+/* -------------------GOOGLE MAPS--------------------- */
+.map-container{
+  width: 67%;
+}
+
+iframe{
+  width: 100%;
+  height: 100%;
+  background: var(---color-light);
+  border-radius: var(--card-border-radius); 
+  box-shadow: 0 0 3rem var(--color-info-light);;
+}
+/*--------------------Feedback cards --------------------*/
+
+.feedback-card{
+  border-radius: var(--card-border-radius);
+  margin:10px;
+}

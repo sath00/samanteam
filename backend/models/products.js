@@ -1,5 +1,6 @@
 //Imports
 const mongoose = require('mongoose');
+const {CategorySchema} = require('./category');
 
 //instantiated the schema
 const Schema = mongoose.Schema;
@@ -9,8 +10,8 @@ const ProductSchema = new Schema({
     name:{type: 'string',required: true},
     description:{type: 'string',required: true},
     price:{type: 'string',required: true},
-    category:{type: 'string',required: true},
-    image:{type: 'string',required: true},
+    category:{type: CategorySchema, required: true},
+    imagePath:{type: 'string',required: true},
     availability:{type: 'string',required: true},
 }, {timestamps: true}); //added timestamps because we can use this someday
 

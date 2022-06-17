@@ -1,0 +1,285 @@
+.top-bar {
+  display: flex;
+  flex-direction: row;
+  background: var(--color-yellow);
+  border-radius: var(--card-border-radius);
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-bar .search-form {
+  background-color: white;
+  vertical-align: top;
+  align-items: center;
+  padding: 4px;
+  border-radius: var(--card-border-radius);
+  margin-right: 5px;
+  margin-left: 5px;
+  display: flex;
+}
+
+.top-bar .search-form .search-btn > span {
+  border-width: 4px;
+  font-size: 27px;
+}
+
+.top-bar .search-btn {
+  display: inline;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.top-bar input[type='search'] {
+  padding: 6px;
+  margin-right: 5px;
+  border: none;
+  font-size: 15px;
+  vertical-align: top;
+  background-color: transparent;
+}
+
+.top-bar .refresh-inventory{
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.top-bar .add-product {
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.top-bar .add-product > span{
+  font-size: 27px;
+}
+
+.top-bar .edit-inventory{
+  background-color: white;
+  padding: 5px;
+  border-radius: 10px;
+  margin-right: 0px;
+  cursor: pointer;
+}
+
+.top-bar a .edit-inventory.active{
+  background-color: yellow;
+}
+
+
+.del-btn, .edit-btn{
+  cursor: pointer;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+#availability-toggle {
+  display: none;
+}
+#availability-toggle.active{
+  display: table-cell;
+}
+
+#availability-content {
+  display: none;
+}
+#availability-content.active{
+  display: table-cell;
+}
+
+.del-btn:hover, .edit-btn:hover{
+  background-color: yellow;
+}
+#delete, #edit{
+  display: none;
+  transition: all 300ms ease-in-out;
+}
+#delete.active, #edit.active{
+  display:table-cell;
+}
+
+h1 {
+  font-weight: 800;
+  font-size: 1.8rem;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0;
+  padding: 1rem 1rem 0;
+}
+
+h3 {
+  font-size: 0.87rem;
+  font-family: 'Poppins', sans-serif;
+  padding: 0 1rem 0;
+}
+
+
+/*Styles from old dashboard below*/
+
+.middle-part {
+  margin-top: 1.4rem;
+}
+
+.middle-part h1 {
+  color: var(--color-dark);
+}
+
+.middle-part h3 {
+  color: var(--color-dark);
+  font-weight:300;
+}
+
+.middle-part b {
+  font-weight: 500;
+}
+
+.middle-part .action-cards {
+  margin-top: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+
+.middle-part .action-cards > a > div {
+  background: white;
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  margin-top: 1rem;
+  box-shadow: var(--card-shadow);
+  transition: all 300ms ease;
+}
+
+.middle-part .action-cards > a > div:hover {
+  box-shadow: none;
+}
+
+/*Icons within action cards*/
+.middle-part .action-cards > a span {
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: white;
+  font-size: 5rem;
+}
+
+.middle-part .action-cards .add-products {
+  background-color: cadetblue;
+  color: white;
+}
+
+.middle-part .action-cards .remove-products {
+  background-color: indianred;
+  color: white;
+}
+
+.middle-part .action-cards .view-products {
+  background-color: mediumpurple;
+  color: white;
+}
+
+.middle-part .action-cards .edit-products {
+  background-color: cornflowerblue;
+  color: white;
+}
+
+.middle-part .inventory-table {
+  margin-top: 2.37rem;
+  display: block;
+}
+
+.middle-part .inventory-table table {
+  color: var(--color-dark);
+  background: var(--color-white);
+  width: 100%;
+  border-radius: var(--card-border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+  transition: all 300ms ease;
+}
+
+.middle-part .inventory-table table:hover {
+  box-shadow: none;
+}
+
+.middle-part table thead {
+  height: 2.8rem;
+}
+
+.middle-part table tbody td {
+  height: 2.8rem;
+  border-bottom: 1px solid var(--color-light);
+  color: var(--color-dark);
+}
+
+.middle-part table tbody tr:last-child td {
+  border: none;
+}
+
+
+/*Styles for "Product cannot be found" message below.*/
+#cannotFind{
+  margin: auto;
+  padding: 1rem;
+  display: none;
+}
+
+#cannotFind .view-products{
+  background-color: #F6F6F9;
+  color: rgb(238, 152, 136);
+  text-align: center;
+  box-shadow: none;
+}
+
+#cannotFind h2{
+  font-family: 'Poppins', sans-serif;
+}
+
+#cannotFind span{
+  color: rgb(238, 152, 136);
+}
+/*Product cannot be found ends here.*/
+
+/*
+.prevent-click.active{
+  position:fixed;
+  min-height: 100%;
+  min-width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.confirm-del{
+  display: none;
+  background-color: white;
+  padding: 10px;
+  border: #FFDB58 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.05),0 1px 0 rgba(255,255,255,.075);
+}
+
+.confirm-del.active{
+  position:fixed;
+  left: 500px;
+  top: 200px;
+  display: block;
+  z-index: 1;
+}
+.yes-btn{
+  background-color: green;
+}
+.no-btn{
+  background-color: red;
+}
+.yes-btn, .no-btn{
+  margin: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 50px;
+  font: 1em sans-serif;
+  color: white;
+}*/
+
