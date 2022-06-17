@@ -39,7 +39,6 @@ export class storeInfoService {
             cellphone: storeinfo.cellphone,
             city: storeinfo.city,
             state: storeinfo.state,
-            zip: storeinfo.zip,
             details: storeinfo.details
         }
 

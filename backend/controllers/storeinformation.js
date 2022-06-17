@@ -9,7 +9,6 @@ exports.updateInfo = (req, res) => {
             streetAdd: req.body.streetAdd,
             city: req.body.city,
             state: req.body.state,
-            zip: req.body.zip,
             details: req.body.details
         }
     }, { upsert: false })
