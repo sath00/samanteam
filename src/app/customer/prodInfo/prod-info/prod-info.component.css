@@ -131,6 +131,10 @@ mat-card-content h4{
   color:rgb(98, 242, 98);
 }
 
+.info2 div .Not.Available{
+  color:rgb(255, 0, 0);
+}
+
 mat-card-content h3{
   text-align: center;
   padding: 5px 5px;

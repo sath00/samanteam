@@ -130,6 +130,10 @@ mat-card-content h1{
   color:rgb(98, 242, 98);
 }
 
+.info2 div .Not.Available{
+  color:rgb(255, 0, 0);
+}
+
 mat-card:hover{
   transform: scale(0.95);
   cursor: pointer;
