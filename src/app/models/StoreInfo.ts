@@ -5,6 +5,5 @@ export interface StoreInfo {
     streetAdd: string;
     city: string;
     state: string;
-    zip: string;
     details: string;
 }

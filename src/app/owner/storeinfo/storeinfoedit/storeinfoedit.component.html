@@ -19,14 +19,14 @@
                         <mat-form-field class="input-field" appearance="fill">
                           <mat-label>Telephone</mat-label>
                           <span matPrefix>+32 &nbsp;</span>
-                          <input type="tel" matInput [(ngModel)]="this.tempStoreInfo.telephone" name="storeTelephone">
+                          <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" matInput [(ngModel)]="this.tempStoreInfo.telephone" name="storeTelephone">
                           <mat-icon matSuffix>mode_edit</mat-icon>
                         </mat-form-field>
     
                         <mat-form-field class="input-field" appearance="fill">
                             <mat-label>Cellphone</mat-label>
                             <span matPrefix>+63 &nbsp;</span>
-                            <input type="tel" matInput  [(ngModel)]="this.tempStoreInfo.cellphone" name="storeCellphone">
+                            <input type="number" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" matInput  [(ngModel)]="this.tempStoreInfo.cellphone" name="storeCellphone">
                             <mat-icon matSuffix>mode_edit</mat-icon>
                           </mat-form-field>
     
@@ -52,12 +52,6 @@
                       <mat-form-field class="input-field" appearance="fill">
                         <mat-label>State/Province</mat-label>
                         <input matInput  [(ngModel)]="this.tempStoreInfo.state" name="storeState">
-                        <mat-icon matSuffix>mode_edit</mat-icon>
-                      </mat-form-field>
-    
-                      <mat-form-field class="input-field" appearance="fill">
-                        <mat-label>Zip/Postal Code</mat-label>
-                        <input matInput placeholder="Enter">
                         <mat-icon matSuffix>mode_edit</mat-icon>
                       </mat-form-field>
     
