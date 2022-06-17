@@ -48,6 +48,9 @@ import { ProductService } from "src/app/services/product.service";
         this.categoryService.getCategory();
         this.categorySubscription = this.categoryService.getCategoryUpdatedListener()
         .subscribe((categories: Category[]) =>{
+            categories = categories.filter((cat) => {
+                return cat.name != "None";
+            })
             this.totalCategories = categories.length;
         })
     }
