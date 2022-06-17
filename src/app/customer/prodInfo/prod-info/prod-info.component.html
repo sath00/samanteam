@@ -38,7 +38,7 @@
 
         <div class="quantity">
             <button mat-button (click)="minus()"><mat-icon>remove_circle</mat-icon></button>
-            <input type="text" [value] = "quantity">
+            <input type="number" matInput [(ngModel)]="quantity">
             <button mat-button (click)="plus()"><mat-icon>add_circle</mat-icon></button>
         </div>
 

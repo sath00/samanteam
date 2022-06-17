@@ -20,10 +20,17 @@ export class ProdInfoComponent implements OnInit {
   }
 
   onAddToCart(product:Product){
-    this.cartService.addProduct(product,this.quantity),
-    this._snackBar.open('Item successfuly added!', '', {
-      duration: this.durationInSeconds * 1000
-    })
+    if(this.quantity==0){
+      this._snackBar.open('Cannot add zero quantity!','',{
+        duration: this.durationInSeconds*1000
+      })
+    }else{
+      this.cartService.addProduct(product, this.quantity),
+        this._snackBar.open('Item successfuly added!', '', {
+          duration: this.durationInSeconds * 1000
+        })
+    }
+    
   }
 
   plus(){
