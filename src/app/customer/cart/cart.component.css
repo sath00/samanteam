@@ -28,7 +28,7 @@ border-radius: 10px;
     box-shadow: 0 2rem 3rem var(--color-info-light);
     border-radius: var(--card-border-radius); 
     width: 25%;
-    height: 55%;
+    height: 40%;
     left: 35px;  
     z-index: 1;
     top: 150px;
