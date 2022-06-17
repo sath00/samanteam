@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  appURL: "http://localhost:3000/api"
+  appURL: "http://romelswebmartapi.eba-fcswhbac.ap-southeast-1.elasticbeanstalk.com/api"
 };
 
 /*
