@@ -1,5 +1,1 @@
- - change app.use("/images", express.static(path.join("images"))) on appRoutes.js to app.use("/images", express.static(path.join("backend/images"))) when in development
- - change line 24 in routes/products.js      cb(error, "images"); to      cb(error, "backend/images"); when in ddevelopment
-
-
-- backend folder no longer needed
+- if on production make sure to update the images folder to "images"

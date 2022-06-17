@@ -30,7 +30,7 @@ mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
 //used the body parser for parsing posts requests data this is later used in /add-items
 app.use(bodyparser.json());
 app.use(express.json());
-app.use("backend/images", express.static(path.join("images")))
+app.use(process.env.IMAGE_FOLDER, express.static(path.join("images")))
 
 //cors headers
 app.use((req, res, next) => {
