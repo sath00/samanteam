@@ -49,10 +49,10 @@ use the command:
 
 
 use nodemon for backend:
-`nodemon server.js`
+`npm run server`
 
 use ng serv for frontend:
-`ng serve`
+`npm run front`
 
 
 # How set `npm start` manually:
@@ -68,3 +68,6 @@ remove *node_modules* folder then run `npm install` when greeted with an error r
 
 1. `npm cache clear --force`
 2. `npm cache verify`
+
+# Deployed website on heroku
+http://romel-webmart.herokuapp.com/customer/shop
